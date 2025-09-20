@@ -489,7 +489,7 @@ spriteset(spriteset_8_Modern_EOTD,   "gfx/Gen5_Boxcar_EOTD.png") {template_8(7, 
 spriteset(spriteset_8_Modern_EOTD_r,   "gfx/Gen5_Boxcar_EOTD.png") {template_8_r(7, 39)}
 
 //Gen2_Boxcar_Base
-spriteset(spriteset_Gen2_Boxcar_Purchase,   "gfx/Gen2_Boxcar_Base0.png") {template_purchase(7, 21)}
+spriteset(spriteset_Gen2_Boxcar_Purchase,   "gfx/Gen2_Boxcar_Base0.png") {template_purchase_5(7, 21)}
 
 spriteset(spriteset_Gen2_Boxcar_Base0,   "gfx/Gen2_Boxcar_Base0.png") {template_5_repeat(7, 39)}
 spriteset(spriteset_Gen2_Boxcar_Base1,   "gfx/Gen2_Boxcar_Base1.png") {template_5_repeat(7, 39)}
@@ -744,7 +744,7 @@ item (FEAT_TRAINS, Item_Gen5_Boxcar_Base, 25000) {
 }
 
 //Gen6_HiCube_Boxcar_Base
-spriteset(spriteset_Gen6_HiCube_Boxcar_Purchase,   "gfx/Gen6_HiCube_Boxcar_Base0.png") {template_purchase(7, 21)}
+spriteset(spriteset_Gen6_HiCube_Boxcar_Purchase,   "gfx/Gen6_HiCube_Boxcar_Base0.png") {template_purchase_8(7, 21)}
 
 spriteset(spriteset_Gen6_HiCube_Boxcar_Base0,   "gfx/Gen6_HiCube_Boxcar_Base0.png") {template_8_repeat(7, 39)}
 spriteset(spriteset_Gen6_HiCube_Boxcar_Base1,   "gfx/Gen6_HiCube_Boxcar_Base1.png") {template_8_repeat(7, 39)}
