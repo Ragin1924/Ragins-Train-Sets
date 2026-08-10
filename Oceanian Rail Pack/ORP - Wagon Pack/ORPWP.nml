@@ -8272,7 +8272,7 @@ spriteset(spriteset_Comeng_AuroraCoach_Liv0_Terminal,   "gfx/Comeng_AuroraCoach_
 spriteset(spriteset_Comeng_AuroraCoach_Liv0_Terminal_r,   "gfx/Comeng_AuroraCoach_Liv0.png") {template_8_r(7, 129)}
 
 switch(FEAT_TRAINS, SELF, switch_Comeng_AuroraCoach_Liv0_dinerposition, position_in_consist - position_in_consist_from_end) {
- -3..-2: spriteset_Comeng_AuroraCoach_Liv0_Lounge;
+ -3..-2: spriteset_Comeng_AuroraCoach_Liv0_Diner;
  0..1: spriteset_Comeng_AuroraCoach_Liv0_Lounge;
   spriteset_Comeng_AuroraCoach_Liv0;
 }
