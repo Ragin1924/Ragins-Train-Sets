@@ -8241,6 +8241,300 @@ item (FEAT_TRAINS, Item_Mail_Tulloch_InterurbanCoach_Liv4, Mail_Tulloch_Interurb
 }
 }
 
+//Comeng_AuroraCoach_Coach
+//ID
+const Comeng_AuroraCoach_ID = 10300;
+//introduction_date
+const Comeng_AuroraCoach_IntroDate = date(1961, 1, 1);
+//speed
+const Comeng_AuroraCoach_Speed = 130;
+//cost_factor
+const Comeng_AuroraCoach_CostFactor = 63;
+//running_cost_factor
+const Comeng_AuroraCoach_RunningCostFactor = 26;
+//Cargo Capacity
+const Comeng_AuroraCoach_CargoCapacity = 84;
+//weight
+const Comeng_AuroraCoach_Weight = 38;
+//length
+const Comeng_AuroraCoach_Length = 8;
+
+spriteset(spriteset_Comeng_AuroraCoach_EOTD,   "gfx/Comeng_AuroraCoach_EOTD.png") {template_8(7, 39)}
+spriteset(spriteset_Comeng_AuroraCoach_EOTD_r,   "gfx/Comeng_AuroraCoach_EOTD.png") {template_8_r(7, 39)}
+
+//Comeng_AuroraCoach_Liv0
+spriteset(spriteset_Comeng_AuroraCoach_Liv0_Purchase,   "gfx/Comeng_AuroraCoach_Liv0.png") {template_purchase_8(7, 21)}
+
+spriteset(spriteset_Comeng_AuroraCoach_Liv0,   "gfx/Comeng_AuroraCoach_Liv0.png") {template_8(7, 39)}
+spriteset(spriteset_Comeng_AuroraCoach_Liv0_Diner,   "gfx/Comeng_AuroraCoach_Liv0.png") {template_8(7, 69)}
+spriteset(spriteset_Comeng_AuroraCoach_Liv0_Lounge,   "gfx/Comeng_AuroraCoach_Liv0.png") {template_8(7, 99)}
+spriteset(spriteset_Comeng_AuroraCoach_Liv0_Terminal,   "gfx/Comeng_AuroraCoach_Liv0.png") {template_8(7, 129)}
+spriteset(spriteset_Comeng_AuroraCoach_Liv0_Terminal_r,   "gfx/Comeng_AuroraCoach_Liv0.png") {template_8_r(7, 129)}
+
+switch(FEAT_TRAINS, SELF, switch_Comeng_AuroraCoach_Liv0_dinerposition, position_in_consist - position_in_consist_from_end) {
+ -3..-2: spriteset_Comeng_AuroraCoach_Liv0_Lounge;
+ 0..1: spriteset_Comeng_AuroraCoach_Liv0_Lounge;
+  spriteset_Comeng_AuroraCoach_Liv0;
+}
+
+switch (FEAT_TRAINS, SELF, switch_Comeng_AuroraCoach_Liv0_SpriteStack1, [
+    STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 3 ? CB_FLAG_MORE_SPRITES : 0) | PALETTE_USE_DEFAULT, 0x100),
+    getbits(extra_callback_info1, 8, 8)
+    ]) {
+    0: spriteset_Comeng_AuroraCoach_Liv0_Terminal;
+	1: switch_Couplers_8_r;
+    2: spriteset_Comeng_AuroraCoach_EOTD;
+}
+
+switch(FEAT_TRAINS, SELF, switch_Comeng_AuroraCoach_Liv0_rearcheck1, position_in_consist_from_end){
+    0 : switch_Comeng_AuroraCoach_Liv0_SpriteStack1;
+    return switch_Comeng_AuroraCoach_Liv0_dinerposition;
+}
+
+switch (FEAT_TRAINS, SELF, switch_Comeng_AuroraCoach_Liv0_SpriteStack2, [
+    STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 3 ? CB_FLAG_MORE_SPRITES : 0) | PALETTE_USE_DEFAULT, 0x100),
+    getbits(extra_callback_info1, 8, 8)
+    ]) {
+    0: spriteset_Comeng_AuroraCoach_Liv0_Terminal_r;
+	1: switch_Couplers_8;
+    2: spriteset_Comeng_AuroraCoach_EOTD_r;
+}
+
+switch(FEAT_TRAINS, SELF, switch_Comeng_AuroraCoach_Liv0_rearcheck2, position_in_consist_from_end){
+    0 : switch_Comeng_AuroraCoach_Liv0_SpriteStack2;
+    return switch_Comeng_AuroraCoach_Liv0_dinerposition;
+}
+
+switch(FEAT_TRAINS, SELF, switch_Comeng_AuroraCoach_Liv0_position, vehicle_is_flipped) {
+ 0: switch_Comeng_AuroraCoach_Liv0_rearcheck1;
+ 1: switch_Comeng_AuroraCoach_Liv0_rearcheck2;
+}
+
+const Comeng_AuroraCoach_Liv0_ID = (Comeng_AuroraCoach_ID + Liv0_ID);
+
+item (FEAT_TRAINS, Item_Comeng_AuroraCoach_Liv0, Comeng_AuroraCoach_Liv0_ID) {
+    property {
+		sprite_id:                      SPRITE_ID_NEW_TRAIN;
+		misc_flags:                     bitmask(TRAIN_FLAG_2CC, TRAIN_FLAG_SPRITE_STACK, TRAIN_FLAG_AUTOREFIT);
+		track_type:                     RAIL;
+		running_cost_base:              RUNNING_COST_STEAM;
+//        ai_special_flag:                AI_FLAG_PASSENGER;
+		bitmask_vehicle_info:           0;
+	
+		climates_available:             (param_ProposalDisable == 0) ? ALL_CLIMATES : NO_CLIMATE;
+		refittable_cargo_classes:       CC_PASSENGERS;
+		default_cargo_type:				PASS;
+		cargo_allow_refit:              [PASS, TOUR];    
+
+        name:                           string(STR_NAME_COMENG_AURORACOACH);
+		
+		refit_cost:                     0;
+        dual_headed:                    0;
+        air_drag_coefficient:           0.08;
+        model_life:                     30;
+		
+        introduction_date:              Comeng_AuroraCoach_IntroDate;		
+		length:                         Comeng_AuroraCoach_Length;
+		
+		loading_speed:					SD_Suburban_LoadingSpeed;
+		speed:							Comeng_AuroraCoach_Speed km/h;
+		cost_factor:					Comeng_AuroraCoach_CostFactor;
+		running_cost_factor:			Comeng_AuroraCoach_RunningCostFactor;
+		cargo_capacity: 				(Comeng_AuroraCoach_CargoCapacity / param_capacity_mod);
+		power:							0 hp;
+		weight:							Comeng_AuroraCoach_Weight ton;
+
+//        variant_group: 					Item_Comeng_AuroraCoach_Liv0;
+//        extra_flags:  					bitmask (VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE, VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW, VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW, VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+	}
+    graphics {
+    default:                            switch_Comeng_AuroraCoach_Liv0_position;
+    purchase:                           spriteset_Comeng_AuroraCoach_Liv0_Purchase;
+    additional_text: 					string(STR_INFO_COMENG_AURORACOACH);
+	cargo_capacity: 					(Comeng_AuroraCoach_CargoCapacity / param_capacity_mod);
+}
+}
+
+const Comeng_AuroraCoach_BG_Liv0_ID = (Comeng_AuroraCoach_ID + 15);
+
+item (FEAT_TRAINS, Item_Comeng_AuroraCoach_BG_Liv0, Comeng_AuroraCoach_BG_Liv0_ID) {
+    property {
+		sprite_id:                      SPRITE_ID_NEW_TRAIN;
+		misc_flags:                     bitmask(TRAIN_FLAG_2CC, TRAIN_FLAG_SPRITE_STACK, TRAIN_FLAG_AUTOREFIT);
+		track_type:                     BG_RAIL_ONLY;
+		running_cost_base:              RUNNING_COST_STEAM;
+//        ai_special_flag:                AI_FLAG_PASSENGER;
+		bitmask_vehicle_info:           0;
+	
+		climates_available:             (param_ProposalDisable == 0) ? ALL_CLIMATES : NO_CLIMATE;
+		refittable_cargo_classes:       CC_PASSENGERS;
+		default_cargo_type:				PASS;
+		cargo_allow_refit:              [PASS, TOUR];    
+
+        name:                           string(STR_NAME_COMENG_AURORACOACH_BG);
+		
+		refit_cost:                     0;
+        dual_headed:                    0;
+        air_drag_coefficient:           0.08;
+        model_life:                     30;
+		
+        introduction_date:              Comeng_AuroraCoach_IntroDate;		
+		length:                         Comeng_AuroraCoach_Length;
+		
+		loading_speed:					SD_Suburban_LoadingSpeed;
+		speed:							Comeng_AuroraCoach_Speed km/h;
+		cost_factor:					Comeng_AuroraCoach_CostFactor;
+		running_cost_factor:			Comeng_AuroraCoach_RunningCostFactor;
+		cargo_capacity: 				(Comeng_AuroraCoach_CargoCapacity / param_capacity_mod);
+		power:							0 hp;
+		weight:							Comeng_AuroraCoach_Weight ton;
+
+//        variant_group: 					Item_Comeng_AuroraCoach_BG_Liv0;
+//        extra_flags:  					bitmask (VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE, VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW, VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW, VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+	}
+    graphics {
+    default:                            switch_Comeng_AuroraCoach_Liv0_position;
+    purchase:                           spriteset_Comeng_AuroraCoach_Liv0_Purchase;
+    additional_text: 					string(STR_INFO_COMENG_AURORACOACH_BG);
+	cargo_capacity: 					(Comeng_AuroraCoach_CargoCapacity / param_capacity_mod);
+}
+}
+
+//Mail_Comeng_AuroraCoach_Liv0
+spriteset(spriteset_Mail_Comeng_AuroraCoach_Liv0_Purchase,   "gfx/Comeng_AuroraCoach_Liv0.png") {template_purchase_8(187, 21)}
+spriteset(spriteset_Mail_Comeng_AuroraCoach_Liv0,   "gfx/Comeng_AuroraCoach_Liv0.png") {template_8_repeat(187, 39)}
+
+switch (FEAT_TRAINS, SELF, switch_Mail_Comeng_AuroraCoach_Liv0_PurchaseStack, [
+    STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 3 ? CB_FLAG_MORE_SPRITES : 0) | PALETTE_USE_DEFAULT, 0x100),
+    getbits(extra_callback_info1, 8, 8)
+    ]) {
+    0: spriteset_Mail_Comeng_AuroraCoach_Liv0_Purchase;
+	1: switch_Couplers_8_Repeat_Purchase;
+}
+
+switch (FEAT_TRAINS, SELF, switch_Mail_Comeng_AuroraCoach_Liv0_SpriteStack1, [
+    STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 3 ? CB_FLAG_MORE_SPRITES : 0) | PALETTE_USE_DEFAULT, 0x100),
+    getbits(extra_callback_info1, 8, 8)
+    ]) {
+    0: spriteset_Mail_Comeng_AuroraCoach_Liv0;
+	1: switch_Couplers_8_Repeat;
+    2: spriteset_Comeng_AuroraCoach_EOTD;
+}
+
+switch(FEAT_TRAINS, SELF, switch_Mail_Comeng_AuroraCoach_Liv0_rearcheck1, position_in_consist_from_end){
+    0 : switch_Mail_Comeng_AuroraCoach_Liv0_SpriteStack1;
+    return spriteset_Mail_Comeng_AuroraCoach_Liv0;
+}
+
+switch (FEAT_TRAINS, SELF, switch_Mail_Comeng_AuroraCoach_Liv0_SpriteStack2, [
+    STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 3 ? CB_FLAG_MORE_SPRITES : 0) | PALETTE_USE_DEFAULT, 0x100),
+    getbits(extra_callback_info1, 8, 8)
+    ]) {
+    0: spriteset_Mail_Comeng_AuroraCoach_Liv0;
+	1: switch_Couplers_8_Repeat;
+    2: spriteset_Comeng_AuroraCoach_EOTD_r;
+}
+
+switch(FEAT_TRAINS, SELF, switch_Mail_Comeng_AuroraCoach_Liv0_rearcheck2, position_in_consist_from_end){
+    0 : switch_Mail_Comeng_AuroraCoach_Liv0_SpriteStack2;
+    return spriteset_Mail_Comeng_AuroraCoach_Liv0;
+}
+
+switch(FEAT_TRAINS, SELF, switch_Mail_Comeng_AuroraCoach_Liv0_position, vehicle_is_flipped) {
+ 0: switch_Mail_Comeng_AuroraCoach_Liv0_rearcheck1;
+ 1: switch_Mail_Comeng_AuroraCoach_Liv0_rearcheck2;
+}
+
+const Mail_Comeng_AuroraCoach_Liv0_ID = (Comeng_AuroraCoach_Liv0_ID + 50);
+
+item (FEAT_TRAINS, Item_Mail_Comeng_AuroraCoach_Liv0, Mail_Comeng_AuroraCoach_Liv0_ID) {
+    property {
+		sprite_id:                      SPRITE_ID_NEW_TRAIN;
+		misc_flags:                     bitmask(TRAIN_FLAG_2CC, TRAIN_FLAG_SPRITE_STACK, TRAIN_FLAG_AUTOREFIT);
+		track_type:                     RAIL;
+		running_cost_base:              RUNNING_COST_STEAM;
+//        ai_special_flag:                AI_FLAG_PASSENGER;
+		bitmask_vehicle_info:           0;
+	
+		climates_available:             (param_ProposalDisable == 0) ? ALL_CLIMATES : NO_CLIMATE;
+		refittable_cargo_classes:       bitmask (CC_MAIL, CC_EXPRESS);
+		default_cargo_type:				MAIL;
+//		cargo_allow_refit:              [];    
+
+        name:                           string(STR_NAME_MAIL_COMENG_AURORACOACH);
+		
+		refit_cost:                     0;
+        dual_headed:                    0;
+        air_drag_coefficient:           0.08;
+        model_life:                     30;
+		
+        introduction_date:              Comeng_AuroraCoach_IntroDate;		
+		length:                         8;
+		
+		loading_speed:					SD_Intercity_LoadingSpeed;
+		speed:							Comeng_AuroraCoach_Speed km/h;
+		cost_factor:					Comeng_AuroraCoach_CostFactor;
+		running_cost_factor:			Comeng_AuroraCoach_RunningCostFactor;
+		cargo_capacity: 				(Comeng_AuroraCoach_CargoCapacity / param_capacity_mod);
+		power:							0 hp;
+		weight:							Comeng_AuroraCoach_Weight ton;
+
+//        variant_group: 					Item_Mail_Comeng_AuroraCoach_Liv0;
+//        extra_flags:  					bitmask (VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE, VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW, VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW, VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+	}
+    graphics {
+    default:                            switch_Mail_Comeng_AuroraCoach_Liv0_position;
+    purchase:                           switch_Mail_Comeng_AuroraCoach_Liv0_PurchaseStack;
+    additional_text: 					string(STR_INFO_MAIL_COMENG_AURORACOACH);
+	cargo_capacity: 					(Comeng_AuroraCoach_CargoCapacity / param_capacity_mod);
+}
+}
+
+const Mail_Comeng_AuroraCoach_Liv0_BG_ID = (Comeng_AuroraCoach_BG_Liv0_ID + 50);
+
+item (FEAT_TRAINS, Item_Mail_Comeng_AuroraCoach_BG_Liv0, Mail_Comeng_AuroraCoach_Liv0_BG_ID) {
+    property {
+		sprite_id:                      SPRITE_ID_NEW_TRAIN;
+		misc_flags:                     bitmask(TRAIN_FLAG_2CC, TRAIN_FLAG_SPRITE_STACK, TRAIN_FLAG_AUTOREFIT);
+		track_type:                     BG_RAIL_ONLY;
+		running_cost_base:              RUNNING_COST_STEAM;
+//        ai_special_flag:                AI_FLAG_PASSENGER;
+		bitmask_vehicle_info:           0;
+	
+		climates_available:             (param_ProposalDisable == 0) ? ALL_CLIMATES : NO_CLIMATE;
+		refittable_cargo_classes:       bitmask (CC_MAIL, CC_EXPRESS);
+		default_cargo_type:				MAIL;
+//		cargo_allow_refit:              [];    
+
+        name:                           string(STR_NAME_MAIL_COMENG_AURORACOACH_BG);
+		
+		refit_cost:                     0;
+        dual_headed:                    0;
+        air_drag_coefficient:           0.08;
+        model_life:                     30;
+		
+        introduction_date:              Comeng_AuroraCoach_IntroDate;		
+		length:                         8;
+		
+		loading_speed:					SD_Intercity_LoadingSpeed;
+		speed:							Comeng_AuroraCoach_Speed km/h;
+		cost_factor:					Comeng_AuroraCoach_CostFactor;
+		running_cost_factor:			Comeng_AuroraCoach_RunningCostFactor;
+		cargo_capacity: 				(Comeng_AuroraCoach_CargoCapacity / param_capacity_mod);
+		power:							0 hp;
+		weight:							Comeng_AuroraCoach_Weight ton;
+
+//        variant_group: 					Item_Mail_Comeng_AuroraCoach_BG_Liv0;
+//        extra_flags:  					bitmask (VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE, VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW, VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW, VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+	}
+    graphics {
+    default:                            switch_Mail_Comeng_AuroraCoach_Liv0_position;
+    purchase:                           switch_Mail_Comeng_AuroraCoach_Liv0_PurchaseStack;
+    additional_text: 					string(STR_INFO_MAIL_COMENG_AURORACOACH_BG);
+	cargo_capacity: 					(Comeng_AuroraCoach_CargoCapacity / param_capacity_mod);
+}
+}
+
 //SilverStar
 spriteset(spriteset_SilverStar_EOTD,   "gfx/SilverStar_EOTD.png") {template_8(7, 39)}
 spriteset(spriteset_SilverStar_EOTD_r,   "gfx/SilverStar_EOTD.png") {template_8_r(7, 39)}
