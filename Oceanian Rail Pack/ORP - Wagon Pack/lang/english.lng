@@ -187,6 +187,16 @@ STR_INFO_MAIL_COMENG_AURORACOACH:{BLACK}Role:{GOLD}Mail Van {}{BLACK}Gauge:{GOLD
 STR_NAME_MAIL_COMENG_AURORACOACH_BG:Comeng Aurora Mail Coach
 STR_INFO_MAIL_COMENG_AURORACOACH_BG:{BLACK}Role:{GOLD}Mail Van {}{BLACK}Gauge:{GOLD} Broad Gauge {}{BLACK}Based on:{GOLD}Joint NSW & VR Southern Aurora Coaches used between Sydney & Melbourne.
 
+STR_NAME_COMENG_TRANSCONTINENTALCOACHMKII:Comeng MkII Transcontinental Coach
+STR_INFO_COMENG_TRANSCONTINENTALCOACHMKII:{BLACK}Role:{GOLD}Intercity Service {}{BLACK}Gauge:{GOLD} Standard Gauge  {}{BLACK}Based on:{GOLD}Commonwealth Railways stainless steel stock used on the Ghan and Indian Pacific.
+STR_NAME_COMENG_TRANSCONTINENTALCOACHMKII_BG:Comeng MkII Transcontinental Coach
+STR_INFO_COMENG_TRANSCONTINENTALCOACHMKII_BG:{BLACK}Role:{GOLD}Intercity Service {}{BLACK}Gauge:{GOLD} Broad Gauge  {}{BLACK}Based on:{GOLD}Commonwealth Railways stainless steel stock used on the Ghan and Indian Pacific.
+
+STR_NAME_MAIL_COMENG_TRANSCONTINENTALCOACHMKII:Comeng MkII Transcontinental Mail Coach
+STR_INFO_MAIL_COMENG_TRANSCONTINENTALCOACHMKII:{BLACK}Role:{GOLD}Mail Van {}{BLACK}Gauge:{GOLD} Standard Gauge {}{BLACK}Based on:{GOLD}Commonwealth Railways stainless steel stock used on the Ghan and Indian Pacific.
+STR_NAME_MAIL_COMENG_TRANSCONTINENTALCOACHMKII_BG:Comeng MkII Transcontinental Mail Coach
+STR_INFO_MAIL_COMENG_TRANSCONTINENTALCOACHMKII_BG:{BLACK}Role:{GOLD}Mail Van {}{BLACK}Gauge:{GOLD} Broad Gauge {}{BLACK}Based on:{GOLD}Commonwealth Railways stainless steel stock used on the Ghan and Indian Pacific.
+
 STR_NAME_SILVERSTAR:Hitachi-Nippon Sharyo Silver Star Coach
 STR_INFO_SILVERSTAR:{BLACK}Role:{GOLD}Intercity Service {}{BLACK}Gauge:{GOLD} Narrow Gauge {}{BLACK}Based on: {GOLD}NZR Silver Star Coaches
 STR_NAME_MAIL_SILVERSTAR:Hitachi-Nippon Sharyo Silver Star Mail Coach
