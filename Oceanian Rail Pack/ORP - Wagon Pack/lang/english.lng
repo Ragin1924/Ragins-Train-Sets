@@ -173,9 +173,14 @@ STR_NAME_MAIL_NZR_56FT_NG:56ft Bogie Mail Coach
 STR_INFO_MAIL_NZR_56FT_NG:{BLACK}Role:{GOLD}Mail Van {}{BLACK}Gauge:{GOLD} Narrow Gauge  {}{BLACK}Based on:{GOLD}NZR 56ft Coaches
 
 STR_NAME_TULLOCH_INTERURBANCOACH:Tulloch Interurban Coach
-STR_INFO_TULLOCH_INTERURBANCOACH:{BLACK}Role:{GOLD}Intercity Service {}{BLACK}Gauge:{GOLD} Standard Gauge {}{BLACK}Based on: {GOLD}NSW RUB Stock
+STR_INFO_TULLOCH_INTERURBANCOACH:{BLACK}Role:{GOLD}Intercity Service {}{BLACK}Gauge:{GOLD} Standard Gauge {}{BLACK}Based on: {GOLD}NSW RUB Stock.
 STR_NAME_MAIL_TULLOCH_INTERURBANCOACH:Tulloch Interurban Mail Coach
-STR_INFO_MAIL_TULLOCH_INTERURBANCOACH:{BLACK}Role:{GOLD}Mail Van {}{BLACK}Gauge:{GOLD} Standard Gauge {}{BLACK}Based on: {GOLD}NSW RUB Stock
+STR_INFO_MAIL_TULLOCH_INTERURBANCOACH:{BLACK}Role:{GOLD}Mail Van {}{BLACK}Gauge:{GOLD} Standard Gauge {}{BLACK}Based on: {GOLD}NSW RUB Stock.
+
+STR_NAME_COMENG_SUNLANDERCOACH:Comeng Sunlander Coach
+STR_INFO_COMENG_SUNLANDERCOACH:{BLACK}Role:{GOLD}Intercity Service {}{BLACK}Gauge:{GOLD} Standard Gauge {}{BLACK}Based on: {GOLD}QR M-Series Coaches.
+STR_NAME_MAIL_COMENG_SUNLANDERCOACH:Comeng Sunlander Mail Coach
+STR_INFO_MAIL_COMENG_SUNLANDERCOACH:{BLACK}Role:{GOLD}Mail Van {}{BLACK}Gauge:{GOLD} Standard Gauge {}{BLACK}Based on: {GOLD}QR M-Series Coaches.
 
 STR_NAME_COMENG_AURORACOACH:Comeng Aurora Coach
 STR_INFO_COMENG_AURORACOACH:{BLACK}Role:{GOLD}Intercity Service {}{BLACK}Gauge:{GOLD} Standard Gauge  {}{BLACK}Based on:{GOLD}Joint NSW & VR Southern Aurora Coaches used between Sydney & Melbourne.
