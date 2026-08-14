@@ -9536,7 +9536,7 @@ switch(FEAT_TRAINS, SELF, switch_MK_CaliforniaCar_DT_Liv0_position, vehicle_is_f
  1: spriteset_MK_CaliforniaCar_DT_Liv0_Fw;
 }
 
-switch(FEAT_TRAINS, SELF, switch_MK_CaliforniaCar_Liv0_rearcheck, position_in_consist_from_end){
+switch(FEAT_TRAINS, SELF, switch_MK_CaliforniaCar_DT_Liv0_rearcheck, position_in_consist_from_end){
     0 : switch_MK_CaliforniaCar_DT_Liv0_position;
     return switch_MK_CaliforniaCar_DT_Liv0_Random;
 }
@@ -9585,7 +9585,7 @@ item (FEAT_TRAINS, Item_MK_CaliforniaCar_DT_Liv0, MK_CaliforniaCar_DT_Liv0_ID) {
 //        extra_flags:  					bitmask (VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE, VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW, VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW, VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY, VEHICLE_FLAG_TRAIN_HAS_CAB);
 	}
     graphics {
-    default:                            switch_MK_CaliforniaCar_Liv0_rearcheck;
+    default:                            switch_MK_CaliforniaCar_DT_Liv0_rearcheck;
     purchase:                           spriteset_MK_CaliforniaCar_DT_Liv0_Purchase;
     additional_text: 					string(STR_INFO_MK_CALIFORNIACAR_DT);
 	cargo_capacity: 					(MK_CaliforniaCar_CargoCapacity / param_capacity_mod);
@@ -9687,7 +9687,7 @@ switch(FEAT_TRAINS, SELF, switch_MK_CaliforniaCar_DT_Liv1_position, vehicle_is_f
  1: spriteset_MK_CaliforniaCar_DT_Liv1_Fw;
 }
 
-switch(FEAT_TRAINS, SELF, switch_MK_CaliforniaCar_Liv1_rearcheck, position_in_consist_from_end){
+switch(FEAT_TRAINS, SELF, switch_MK_CaliforniaCar_DT_Liv1_rearcheck, position_in_consist_from_end){
     0 : switch_MK_CaliforniaCar_DT_Liv1_position;
     return switch_MK_CaliforniaCar_DT_Liv1_Random;
 }
@@ -9736,7 +9736,7 @@ item (FEAT_TRAINS, Item_MK_CaliforniaCar_DT_Liv1, MK_CaliforniaCar_DT_Liv1_ID) {
         extra_flags:  					bitmask (VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE, VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW, VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW, VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY, VEHICLE_FLAG_TRAIN_HAS_CAB);
 	}
     graphics {
-    default:                            switch_MK_CaliforniaCar_Liv1_rearcheck;
+    default:                            switch_MK_CaliforniaCar_DT_Liv1_rearcheck;
     purchase:                           spriteset_MK_CaliforniaCar_DT_Liv1_Purchase;
     additional_text: 					string(STR_INFO_MK_CALIFORNIACAR_DT);
 	cargo_capacity: 					(MK_CaliforniaCar_CargoCapacity / param_capacity_mod);

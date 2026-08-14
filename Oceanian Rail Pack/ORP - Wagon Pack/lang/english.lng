@@ -89,6 +89,21 @@ STR_INFO_CLERESTORYCOMPARTMENTCOACH_BG:{BLACK}Role:{GOLD}General Service {}{BLAC
 STR_NAME_AY_SUBURBANCOACH_NG:Westralian Suburban Coach
 STR_INFO_AY_SUBURBANCOACH_NG:{BLACK}Role:{GOLD}Suburban/Country Service {}{BLACK}Gauge:{GOLD} Narrow Gauge  {}{BLACK}Based on:{GOLD}WAGR AY Suburban Coaches
 
+STR_NAME_COMENG_SXCOACH:Comeng SX Suburban Coach
+STR_INFO_COMENG_SXCOACH:{BLACK}Role:{GOLD}Suburban Service {}{BLACK}Gauge:{GOLD} Narrow Gauge  {}{BLACK}Based on:{GOLD}QR SX Coaches used in Brisbane, Perth, New Zealand, Thailand, Chile & Peru.
+STR_NAME_COMENG_SXCOACH_DT:Comeng SX Driving Trailer
+STR_INFO_COMENG_SXCOACH_DT:{BLACK}Role:{GOLD}Suburban {}{BLACK}Gauge:{GOLD} Narrow Gauge {}{BLACK}Based on:{GOLD}QR SX Coaches used in Brisbane, Perth, New Zealand, Thailand, Chile & Peru.
+
+STR_NAME_COMENG_AUSFLEETSUBURBAN:Comeng Ausfleet Suburban Coach
+STR_INFO_COMENG_AUSFLEETSUBURBAN:{BLACK}Role:{GOLD}Suburban Service {}{BLACK}Gauge:{GOLD} Standard Gauge  {}{BLACK}Based on:{GOLD}Fictional, Australianised version of the Budd Amfleet.
+STR_NAME_COMENG_AUSFLEETSUBURBAN_BG:Comeng Ausfleet Suburban Coach
+STR_INFO_COMENG_AUSFLEETSUBURBAN_BG:{BLACK}Role:{GOLD}Suburban Service {}{BLACK}Gauge:{GOLD} Broad Gauge  {}{BLACK}Based on:{GOLD}Fictional, Australianised version of the Budd Amfleet.
+
+STR_NAME_COMENG_AUSFLEETSUBURBAN_DT:Comeng Ausfleet Driving Trailer
+STR_INFO_COMENG_AUSFLEETSUBURBAN_DT:{BLACK}Role:{GOLD}Suburban Service {}{BLACK}Gauge:{GOLD} Standard Gauge {}{BLACK}Based on:{GOLD}Fictional, Australianised version of the Budd Amfleet.
+STR_NAME_COMENG_AUSFLEETSUBURBAN_DT_BG:Comeng Ausfleet Driving Trailer
+STR_INFO_COMENG_AUSFLEETSUBURBAN_DT_BG:{BLACK}Role:{GOLD}Suburban Service {}{BLACK}Gauge:{GOLD} Broad Gauge {}{BLACK}Based on:{GOLD}Fictional, Australianised version of the Budd Amfleet.
+
 STR_NAME_VLINE_HTYPE:Comeng-M&K H-Type Suburban Coach
 STR_INFO_VLINE_HTYPE:{BLACK}Role:{GOLD}Suburban/Country Service {}{BLACK}Gauge:{GOLD} Standard Gauge  {}{BLACK}Based on:{GOLD}VLine H-Type Coaches
 STR_NAME_VLINE_HTYPE_BG:Comeng-M&K H-Type Suburban Coach
@@ -178,9 +193,9 @@ STR_NAME_MAIL_TULLOCH_INTERURBANCOACH:Tulloch Interurban Mail Coach
 STR_INFO_MAIL_TULLOCH_INTERURBANCOACH:{BLACK}Role:{GOLD}Mail Van {}{BLACK}Gauge:{GOLD} Standard Gauge {}{BLACK}Based on: {GOLD}NSW RUB Stock.
 
 STR_NAME_COMENG_SUNLANDERCOACH:Comeng Sunlander Coach
-STR_INFO_COMENG_SUNLANDERCOACH:{BLACK}Role:{GOLD}Intercity Service {}{BLACK}Gauge:{GOLD} Standard Gauge {}{BLACK}Based on: {GOLD}QR M-Series Coaches.
+STR_INFO_COMENG_SUNLANDERCOACH:{BLACK}Role:{GOLD}Intercity Service {}{BLACK}Gauge:{GOLD} Narrow Gauge {}{BLACK}Based on: {GOLD}QR M-Series Coaches.
 STR_NAME_MAIL_COMENG_SUNLANDERCOACH:Comeng Sunlander Mail Coach
-STR_INFO_MAIL_COMENG_SUNLANDERCOACH:{BLACK}Role:{GOLD}Mail Van {}{BLACK}Gauge:{GOLD} Standard Gauge {}{BLACK}Based on: {GOLD}QR M-Series Coaches.
+STR_INFO_MAIL_COMENG_SUNLANDERCOACH:{BLACK}Role:{GOLD}Mail Van {}{BLACK}Gauge:{GOLD} Narrow Gauge {}{BLACK}Based on: {GOLD}QR M-Series Coaches.
 
 STR_NAME_COMENG_AURORACOACH:Comeng Aurora Coach
 STR_INFO_COMENG_AURORACOACH:{BLACK}Role:{GOLD}Intercity Service {}{BLACK}Gauge:{GOLD} Standard Gauge  {}{BLACK}Based on:{GOLD}Joint NSW & VR Southern Aurora Coaches used between Sydney & Melbourne.
