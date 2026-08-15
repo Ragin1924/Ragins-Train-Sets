@@ -187,6 +187,16 @@ STR_INFO_NZR_56FT_NG:{BLACK}Role:{GOLD}General/Intercity Service {}{BLACK}Gauge:
 STR_NAME_MAIL_NZR_56FT_NG:56ft Bogie Mail Coach
 STR_INFO_MAIL_NZR_56FT_NG:{BLACK}Role:{GOLD}Mail Van {}{BLACK}Gauge:{GOLD} Narrow Gauge  {}{BLACK}Based on:{GOLD}NZR 56ft Coaches
 
+STR_NAME_VR_STYPE:Spirit of Progress Intercity Coach
+STR_INFO_VR_STYPE:{BLACK}Role:{GOLD}Intercity Service {}{BLACK}Gauge:{GOLD} Standard Gauge  {}{BLACK}Based on:{GOLD}VR S-Type Coaches.
+STR_NAME_VR_STYPE_BG:Spirit of Progress Intercity Coach
+STR_INFO_VR_STYPE_BG:{BLACK}Role:{GOLD}Intercity Service {}{BLACK}Gauge:{GOLD} Broad Gauge  {}{BLACK}Based on:{GOLD}VR S-Type Coaches.
+
+STR_NAME_MAIL_VR_STYPE:Spirit of Progress Mail Coach
+STR_INFO_MAIL_VR_STYPE:{BLACK}Role:{GOLD}Mail Van {}{BLACK}Gauge:{GOLD} Standard Gauge {}{BLACK}Based on:{GOLD}VR S-Type Coaches.
+STR_NAME_MAIL_VR_STYPE_BG:Spirit of Progress Mail Coach
+STR_INFO_MAIL_VR_STYPE_BG:{BLACK}Role:{GOLD}Mail Van {}{BLACK}Gauge:{GOLD} Broad Gauge {}{BLACK}Based on:{GOLD}VR S-Type Coaches.
+
 STR_NAME_TULLOCH_INTERURBANCOACH:Tulloch Interurban Coach
 STR_INFO_TULLOCH_INTERURBANCOACH:{BLACK}Role:{GOLD}Intercity Service {}{BLACK}Gauge:{GOLD} Standard Gauge {}{BLACK}Based on: {GOLD}NSW RUB Stock.
 STR_NAME_MAIL_TULLOCH_INTERURBANCOACH:Tulloch Interurban Mail Coach
