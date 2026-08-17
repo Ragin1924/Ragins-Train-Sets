@@ -207,6 +207,16 @@ STR_INFO_COMENG_SUNLANDERCOACH:{BLACK}Role:{GOLD}Intercity Service {}{BLACK}Gaug
 STR_NAME_MAIL_COMENG_SUNLANDERCOACH:Comeng Sunlander Mail Coach
 STR_INFO_MAIL_COMENG_SUNLANDERCOACH:{BLACK}Role:{GOLD}Mail Van {}{BLACK}Gauge:{GOLD} Narrow Gauge {}{BLACK}Based on: {GOLD}QR M-Series Coaches.
 
+STR_NAME_VR_ZTYPE:Newport Intercity Coach
+STR_INFO_VR_ZTYPE:{BLACK}Role:{GOLD}Intercity Service {}{BLACK}Gauge:{GOLD} Standard Gauge  {}{BLACK}Based on:{GOLD}VR Z & N-Type Coaches.
+STR_NAME_VR_ZTYPE_BG:Newport Intercity Coach
+STR_INFO_VR_ZTYPE_BG:{BLACK}Role:{GOLD}Intercity Service {}{BLACK}Gauge:{GOLD} Broad Gauge  {}{BLACK}Based on:{GOLD}VR Z & N-Type Coaches.
+
+STR_NAME_MAIL_VR_ZTYPE:Newport Intercity Mail Coach
+STR_INFO_MAIL_VR_ZTYPE:{BLACK}Role:{GOLD}Mail Van {}{BLACK}Gauge:{GOLD} Standard Gauge {}{BLACK}Based on:{GOLD}VR Z & N-Type Coaches.
+STR_NAME_MAIL_VR_ZTYPE_BG:Newport Intercity Mail Coach
+STR_INFO_MAIL_VR_ZTYPE_BG:{BLACK}Role:{GOLD}Mail Van {}{BLACK}Gauge:{GOLD} Broad Gauge {}{BLACK}Based on:{GOLD}VR Z & N-Type Coaches.
+
 STR_NAME_COMENG_AURORACOACH:Comeng Aurora Coach
 STR_INFO_COMENG_AURORACOACH:{BLACK}Role:{GOLD}Intercity Service {}{BLACK}Gauge:{GOLD} Standard Gauge  {}{BLACK}Based on:{GOLD}Joint NSW & VR Southern Aurora Coaches used between Sydney & Melbourne.
 STR_NAME_COMENG_AURORACOACH_BG:Comeng Aurora Coach
