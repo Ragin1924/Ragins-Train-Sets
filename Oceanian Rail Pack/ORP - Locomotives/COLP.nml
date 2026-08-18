@@ -10142,9 +10142,26 @@ item(FEAT_TRAINS, Item_Clyde_JL22C_Liv38, Clyde_JL22C_Liv38_ID) {
 }
 }
 
+//ID
+const Clyde_ML2_ID = 25100;
+//introduction_date
+const Clyde_ML2_IntroDate = date(1952, 1, 1);
+//speed
+const Clyde_ML2_Speed = 130;
+//cost_factor
+const Clyde_ML2_CostFactor = 39;
+//running_cost_factor
+const Clyde_ML2_RunningCostFactor = 104;
+//power
+const Clyde_ML2_Power = 1500;
+//weight
+const Clyde_ML2_Weight = 114;
+//weight
+const Clyde_ML2_Length = 8;
+
 //Clyde_ML2_Liv0
 spriteset(spriteset_Clyde_ML2_Liv0_Purchase,   "gfx/Clyde_ML2_Liv0.png") {template_purchase_8(7, 21)}
-spriteset(spriteset_Clyde_ML2_Liv0,   "gfx/Clyde_ML2_Liv0.png") {template_8_repeat(7, 39)} // <- Define a wagon, in this case the cab
+spriteset(spriteset_Clyde_ML2_Liv0,   "gfx/Clyde_ML2_Liv0.png") {template_8_repeat(7, 39)}
 
 //Purchase Sprite Stacker
 switch (FEAT_TRAINS, SELF, switch_Clyde_ML2_Liv0_Purchase_Stack, [
@@ -10163,88 +10180,96 @@ switch (FEAT_TRAINS, SELF, switch_Clyde_ML2_Liv0_Normal_Stack, [
     1: switch_Couplers_8F_Repeat;
 }
 
-item(FEAT_TRAINS, Item_Clyde_ML2_Liv0, 25100) {
+const Clyde_ML2_Liv0_ID = (Clyde_ML2_ID + Liv0_ID);
+
+item(FEAT_TRAINS, Item_Clyde_ML2_Liv0, Clyde_ML2_Liv0_ID) {
     property {
-        sprite_id:                        SPRITE_ID_NEW_TRAIN;
-        refit_cost:                        0;
-        climates_available:                (param_RealDisable == 0) ? ALL_CLIMATES : NO_CLIMATE;
-        bitmask_vehicle_info:            0;
-        misc_flags:                        bitmask(TRAIN_FLAG_2CC, TRAIN_FLAG_SPRITE_STACK); // <- Train Flag MU needed here
+        sprite_id:                      SPRITE_ID_NEW_TRAIN;
+		misc_flags:                     bitmask(TRAIN_FLAG_2CC, TRAIN_FLAG_SPRITE_STACK); // <- Train Flag MU needed here
+		track_type:                     RAIL;
+		running_cost_base:              RUNNING_COST_DIESEL;
+        engine_class:                   ENGINE_CLASS_DIESEL;
+//        ai_special_flag:                AI_FLAG_PASSENGER;
+		bitmask_vehicle_info:           0;
+	
+		climates_available:             (param_RealDisable == 0) ? ALL_CLIMATES : NO_CLIMATE;
+		visual_effect_and_powered: 		visual_effect_and_powered(VISUAL_EFFECT_DIESEL, 3, DISABLE_WAGON_POWER);
 
-        track_type:                        RAIL;
-        running_cost_base:                RUNNING_COST_DIESEL;
-        engine_class:                     ENGINE_CLASS_DIESEL;
-//        ai_special_flag:                AI_FLAG_CARGO;
-        dual_headed:                    0; // <- Double Headed, so cab on each end
-
-        visual_effect_and_powered: visual_effect_and_powered(VISUAL_EFFECT_DIESEL, 3, DISABLE_WAGON_POWER);
-
-        name:                            string(STR_NAME_CLYDE_ML2);
-        introduction_date:                date(1952,1,1);
-        vehicle_life:                     50;
-        model_life:                        30;
-        length:                            8;
-
-        weight:                        114 ton;
-        speed:                            130 km/h;
-        power:                            1500 hp;
-        tractive_effort_coefficient:     0.5;
-        cost_factor:                     39;
-        running_cost_factor:             104;
-		cargo_capacity:                  0;
-
-//        variant_group: Item_Clyde_ML2_Liv0;
-//        extra_flags:  bitmask (VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE, VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW, VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW, VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+        name:                           string(STR_NAME_CLYDE_ML2);
+		
+		refit_cost:                     0;
+        dual_headed:                    0;
+        air_drag_coefficient:           0.08;
+        model_life:                     30;
+		vehicle_life:                   50;
+		tractive_effort_coefficient:	0.3;
+		
+        introduction_date:              Clyde_ML2_IntroDate;		
+		length:                         Clyde_ML2_Length;
+		
+		speed:							Clyde_ML2_Speed km/h;
+		cost_factor:					Clyde_ML2_CostFactor;
+		running_cost_factor:			Clyde_ML2_RunningCostFactor;
+		cargo_capacity: 				0;
+		power:							Clyde_ML2_Power;
+		weight:							Clyde_ML2_Weight;
+		
+//        variant_group: 					Item_Clyde_ML2_Liv0;
+//        extra_flags:  					bitmask (VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE, VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW, VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW, VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
     }
     graphics {
-        default: switch_Clyde_ML2_Liv0_Normal_Stack;
-//		sound_effect: switch_Generic_Modern_Diesel;
-        purchase: switch_Clyde_ML2_Liv0_Purchase_Stack;
-        additional_text: string(STR_INFO_CLYDE_ML2);
-		reverse_build_probability: return 50;
+		default: 						switch_Clyde_ML2_Liv0_Normal_Stack;
+//		sound_effect: 					switch_EMD_12_645;
+        purchase: 						switch_Clyde_ML2_Liv0_Purchase_Stack;
+        additional_text: 				string(STR_INFO_CLYDE_ML2);
+		reverse_build_probability: 		return 50;
 }
 }
+
+const Clyde_ML2_Liv0_BG_ID = (Clyde_ML2_Liv0_ID + 50);
 
 //Clyde_ML2_BG_Liv0
-item(FEAT_TRAINS, Item_Clyde_ML2_BG_Liv0, 25150) {
+item(FEAT_TRAINS, Item_Clyde_ML2_BG_Liv0, Clyde_ML2_Liv0_BG_ID) {
     property {
-        sprite_id:                        SPRITE_ID_NEW_TRAIN;
-        refit_cost:                        0;
-        climates_available:                (param_RealDisable == 0) ? ALL_CLIMATES : NO_CLIMATE;
-        bitmask_vehicle_info:            0;
-        misc_flags:                        bitmask(TRAIN_FLAG_2CC, TRAIN_FLAG_SPRITE_STACK); // <- Train Flag MU needed here
+        sprite_id:                      SPRITE_ID_NEW_TRAIN;
+		misc_flags:                     bitmask(TRAIN_FLAG_2CC, TRAIN_FLAG_SPRITE_STACK); // <- Train Flag MU needed here
+		track_type:                     BG_RAIL_ONLY;
+		running_cost_base:              RUNNING_COST_DIESEL;
+        engine_class:                   ENGINE_CLASS_DIESEL;
+//        ai_special_flag:                AI_FLAG_PASSENGER;
+		bitmask_vehicle_info:           0;
+	
+		climates_available:             (param_RealDisable == 0) ? ALL_CLIMATES : NO_CLIMATE;
+		visual_effect_and_powered: 		visual_effect_and_powered(VISUAL_EFFECT_DIESEL, 3, DISABLE_WAGON_POWER);
 
-        track_type:                        BG_RAIL_ONLY;
-        running_cost_base:                RUNNING_COST_DIESEL;
-        engine_class:                     ENGINE_CLASS_DIESEL;
-//        ai_special_flag:                AI_FLAG_CARGO;
-        dual_headed:                    0; // <- Double Headed, so cab on each end
-
-        visual_effect_and_powered: visual_effect_and_powered(VISUAL_EFFECT_DIESEL, 3, DISABLE_WAGON_POWER);
-
-        name:                            string(STR_NAME_CLYDE_ML2_BG);
-        introduction_date:                date(1952,1,1);
-        vehicle_life:                     50;
-        model_life:                        30;
-        length:                            8;
-
-        weight:                        114 ton;
-        speed:                            130 km/h;
-        power:                            1500 hp;
-        tractive_effort_coefficient:     0.5;
-        cost_factor:                     39;
-        running_cost_factor:             104;
-		cargo_capacity:                  0;
-
-//        variant_group: Item_Clyde_ML2_BG_Liv0;
-//        extra_flags:  bitmask (VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE, VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW, VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW, VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+        name:                           string(STR_NAME_CLYDE_ML2_BG);
+		
+		refit_cost:                     0;
+        dual_headed:                    0;
+        air_drag_coefficient:           0.08;
+        model_life:                     30;
+		vehicle_life:                   50;
+		tractive_effort_coefficient:	0.3;
+		
+        introduction_date:              Clyde_ML2_IntroDate;		
+		length:                         Clyde_ML2_Length;
+		
+		speed:							Clyde_ML2_Speed km/h;
+		cost_factor:					Clyde_ML2_CostFactor;
+		running_cost_factor:			Clyde_ML2_RunningCostFactor;
+		cargo_capacity: 				0;
+		power:							Clyde_ML2_Power;
+		weight:							Clyde_ML2_Weight;
+		
+//        variant_group: 					Item_Clyde_ML2_Liv0_BG;
+//        extra_flags:  					bitmask (VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE, VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW, VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW, VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
     }
     graphics {
-        default: switch_Clyde_ML2_Liv0_Normal_Stack;
-//		sound_effect: switch_Generic_Modern_Diesel;
-        purchase: switch_Clyde_ML2_Liv0_Purchase_Stack;
-        additional_text: string(STR_INFO_CLYDE_ML2_BG);
-		reverse_build_probability: return 50;
+		default: 						switch_Clyde_ML2_Liv0_Normal_Stack;
+//		sound_effect: 					switch_EMD_12_645;
+        purchase: 						switch_Clyde_ML2_Liv0_Purchase_Stack;
+        additional_text: 				string(STR_INFO_CLYDE_ML2_BG);
+		reverse_build_probability: 		return 50;
 }
 }
 
