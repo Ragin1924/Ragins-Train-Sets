@@ -370,13 +370,13 @@ STR_NAME_CLYDE_JT26C2SS_G_BG:Clyde-EMD JT26C-2SS
 STR_INFO_CLYDE_JT26C2SS_G_BG:{BLACK}Role: {GOLD}Mixed Traffic {}{BLACK}Gauge: {GOLD}Broad Gauge {}{BLACK}Power: {BROWN}Diesel {}{BLACK}Based on: {GOLD}V/Line G Class, AN BL Class
 
 STR_NAME_CLYDE_AT42C:Clyde-EMD AT42C
-STR_INFO_CLYDE_AT42C:{BLACK}Role: {GOLD}Mixed Traffic {}{BLACK}Gauge:{GOLD} Standard Gauge  {}{BLACK}Power: {BROWN}Diesel {}{BLACK}Gauge: {GOLD}Standard Gauge {}{BLACK}Based on: {GOLD}AN DL Class
+STR_INFO_CLYDE_AT42C:{BLACK}Role: {GOLD}Mixed Traffic {}{BLACK}Gauge:{GOLD} Standard Gauge  {}{BLACK}Power: {BROWN}Diesel {}{BLACK}Based on: {GOLD}AN DL Class
 
 STR_NAME_CLYDE_GT46CW:Clyde-EMD GT46CW
 STR_INFO_CLYDE_GT46CW:{BLACK}Role: {GOLD}Mixed Traffic {}{BLACK}Gauge:{GOLD} Standard Gauge  {}{BLACK}Power: {BROWN}Diesel {}{BLACK}Based on: {GOLD}Proposed NR Class Design {}They gave a 90 class Ozempic.
 
 STR_NAME_GONINAN_CV409I:GE-UGL Cv40-9i
-STR_INFO_GONINAN_CV409I:{BLACK}Role: {GOLD}Mixed Traffic {}{BLACK}Gauge:{GOLD} Standard Gauge  {}{BLACK}Power: {BROWN}Diesel {}{BLACK}Based on: {GOLD}National Rail NR Class
+STR_INFO_GONINAN_CV409I:{BLACK}Role: {GOLD}Mixed Traffic {}{BLACK}Gauge:{GOLD} Standard Gauge  {}{BLACK}Power: {BROWN}Diesel {}{BLACK}Based on: {GOLD}National Rail NR Class {}Effectively an Australianised version of the American Dash-9 series.
 
 
 
