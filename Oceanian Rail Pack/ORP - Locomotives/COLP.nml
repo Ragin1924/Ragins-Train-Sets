@@ -7897,6 +7897,162 @@ item(FEAT_TRAINS, Item_Clyde_JT42C_S_Liv1, Clyde_JT42C_S_Liv1_ID) {
 }
 
 //ID
+const Goninan_C44ACi_ID = 16250;
+//introduction_date
+const Goninan_C44ACi_IntroDate = date(2008, 1, 1);
+//speed
+const Goninan_C44ACi_Speed = 130;
+//cost_factor
+const Goninan_C44ACi_CostFactor = 71;
+//running_cost_factor
+const Goninan_C44ACi_RunningCostFactor = 190;
+//power
+const Goninan_C44ACi_Power = 4400;
+//weight
+const Goninan_C44ACi_Weight = 138;
+//length
+const Goninan_C44ACi_Length = 8;
+
+//Goninan_C44ACi_Liv0
+spriteset(spriteset_Goninan_C44ACi_Liv0_Purchase,   "gfx/Goninan_C44ACi_Liv0.png") {template_purchase_8(7, 21)}
+spriteset(spriteset_Goninan_C44ACi_Liv0,   "gfx/Goninan_C44ACi_Liv0.png") {template_8(7, 39)}
+spriteset(spriteset_Goninan_C44ACi_Liv0_r,   "gfx/Goninan_C44ACi_Liv0.png") {template_8_r(7, 39)}
+
+//Purchase Sprite Stacker
+switch (FEAT_TRAINS, SELF, switch_Goninan_C44ACi_Liv0_Purchase_Stack, [
+    STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 1 ? CB_FLAG_MORE_SPRITES : 0) | PALETTE_USE_DEFAULT, 0x100),
+    getbits(extra_callback_info1, 8, 8)
+    ]) {
+    0: spriteset_Goninan_C44ACi_Liv0_Purchase;
+    1: switch_Couplers_8_Repeat_Purchase;
+}
+
+//Forward Stack
+switch (FEAT_TRAINS, SELF, switch_Goninan_C44ACi_Liv0_Fw_Stack, [
+    STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 1 ? CB_FLAG_MORE_SPRITES : 0) | PALETTE_USE_DEFAULT, 0x100),
+    getbits(extra_callback_info1, 8, 8)
+    ]) {
+    0: spriteset_Goninan_C44ACi_Liv0;
+    1: switch_Couplers_8_Repeat;
+}
+
+//Rear Stack
+switch (FEAT_TRAINS, SELF, switch_Goninan_C44ACi_Liv0_Rw_Stack, [
+    STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 1 ? CB_FLAG_MORE_SPRITES : 0) | PALETTE_USE_DEFAULT, 0x100),
+    getbits(extra_callback_info1, 8, 8)
+    ]) {
+    0: spriteset_Goninan_C44ACi_Liv0_r;
+    1: switch_Couplers_8_Repeat;
+}
+
+switch(FEAT_TRAINS, SELF, switch_Goninan_C44ACi_Liv0_pair, position_in_vehid_chain % 2) {
+ 1: switch_Goninan_C44ACi_Liv0_Rw_Stack;
+  switch_Goninan_C44ACi_Liv0_Fw_Stack;
+}
+
+switch(FEAT_TRAINS, SELF, switch_Goninan_C44ACi_Liv0_rear, position_in_vehid_chain_from_end) {
+ 0: switch_Goninan_C44ACi_Liv0_Rw_Stack;
+  switch_Goninan_C44ACi_Liv0_pair;
+}
+
+switch(FEAT_TRAINS, SELF, switch_Goninan_C44ACi_Liv0_position, position_in_consist) {
+ 0: switch_Goninan_C44ACi_Liv0_Fw_Stack;
+  switch_Goninan_C44ACi_Liv0_rear;
+}
+
+const Goninan_C44ACi_Liv0_ID = (Goninan_C44ACi_ID + Liv0_ID);
+
+item(FEAT_TRAINS, Item_Goninan_C44ACi_Liv0, Goninan_C44ACi_Liv0_ID) {
+    property {
+		sprite_id:                      SPRITE_ID_NEW_TRAIN;
+		misc_flags:                     bitmask(TRAIN_FLAG_2CC, TRAIN_FLAG_SPRITE_STACK); // <- Train Flag MU needed here
+		track_type:                     RAIL;
+		running_cost_base:              RUNNING_COST_DIESEL;
+        engine_class:                   ENGINE_CLASS_DIESEL;
+//        ai_special_flag:                AI_FLAG_PASSENGER;
+		bitmask_vehicle_info:           0;
+	
+		climates_available:             (param_RealDisable == 0) ? ALL_CLIMATES : NO_CLIMATE;
+		visual_effect_and_powered: 		visual_effect_and_powered(VISUAL_EFFECT_DIESEL, 3, DISABLE_WAGON_POWER);
+
+        name:                           string(STR_NAME_GONINAN_C44ACI);
+		
+		refit_cost:                     0;
+        dual_headed:                    0;
+        air_drag_coefficient:           0.08;
+        model_life:                     30;
+		vehicle_life:                   50;
+		tractive_effort_coefficient:	0.3;
+		
+        introduction_date:              Goninan_C44ACi_IntroDate;		
+		length:                         Goninan_C44ACi_Length;
+		
+		speed:							Goninan_C44ACi_Speed km/h;
+		cost_factor:					Goninan_C44ACi_CostFactor;
+		running_cost_factor:			Goninan_C44ACi_RunningCostFactor;
+		cargo_capacity: 				0;
+		power:							Goninan_C44ACi_Power;
+		weight:							Goninan_C44ACi_Weight;
+		
+//        variant_group: 					Item_Goninan_C44ACi_Liv0;
+//        extra_flags:  					bitmask (VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE, VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW, VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW, VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+    }
+    graphics {
+        default: 						switch_Goninan_C44ACi_Liv0_position;
+//		sound_effect: 					switch_EMD_16_645;
+        purchase: 						switch_Goninan_C44ACi_Liv0_Purchase_Stack;
+        additional_text: 				string(STR_INFO_GONINAN_C44ACI);
+//		reverse_build_probability: 		return 25;
+}
+}
+
+const Goninan_C44ACi_BG_Liv0_ID = (Goninan_C44ACi_Liv0_ID + 50);
+//Goninan_C44ACi_BG_Liv0
+item(FEAT_TRAINS, Item_Goninan_C44ACi_BG_Liv0, Goninan_C44ACi_BG_Liv0_ID) {
+    property {
+        sprite_id:                      SPRITE_ID_NEW_TRAIN;
+		misc_flags:                     bitmask(TRAIN_FLAG_2CC, TRAIN_FLAG_SPRITE_STACK); // <- Train Flag MU needed here
+		track_type:                     BG_RAIL_ONLY;
+		running_cost_base:              RUNNING_COST_DIESEL;
+        engine_class:                   ENGINE_CLASS_DIESEL;
+//        ai_special_flag:                AI_FLAG_PASSENGER;
+		bitmask_vehicle_info:           0;
+	
+		climates_available:             (param_RealDisable == 0) ? ALL_CLIMATES : NO_CLIMATE;
+		visual_effect_and_powered: 		visual_effect_and_powered(VISUAL_EFFECT_DIESEL, 3, DISABLE_WAGON_POWER);
+
+        name:                           string(STR_NAME_GONINAN_C44ACI_BG);
+		
+		refit_cost:                     0;
+        dual_headed:                    0;
+        air_drag_coefficient:           0.08;
+        model_life:                     30;
+		vehicle_life:                   50;
+		tractive_effort_coefficient:	0.3;
+		
+        introduction_date:              Goninan_C44ACi_IntroDate;		
+		length:                         Goninan_C44ACi_Length;
+		
+		speed:							Goninan_C44ACi_Speed km/h;
+		cost_factor:					Goninan_C44ACi_CostFactor;
+		running_cost_factor:			Goninan_C44ACi_RunningCostFactor;
+		cargo_capacity: 				0;
+		power:							Goninan_C44ACi_Power;
+		weight:							Goninan_C44ACi_Weight;
+		
+//        variant_group: 					Item_Goninan_C44ACi_BG_Liv0;
+//        extra_flags:  					bitmask (VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE, VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW, VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW, VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+    }
+    graphics {
+        default: 						switch_Goninan_C44ACi_Liv0_position;
+//		sound_effect: 					switch_EMD_16_567;
+        purchase: 						switch_Goninan_C44ACi_Liv0_Purchase_Stack;
+        additional_text: 				string(STR_INFO_GONINAN_C44ACI_BG);
+//		reverse_build_probability: 		return 25;
+}
+}
+
+//ID
 const Clyde_GT26C_ID = 20400;
 //introduction_date
 const Clyde_GT26C_IntroDate = date(1967, 1, 1);
