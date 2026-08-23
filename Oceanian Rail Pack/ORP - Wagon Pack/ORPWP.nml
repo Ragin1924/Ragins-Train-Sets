@@ -9283,7 +9283,7 @@ item (FEAT_TRAINS, Item_Mail_Tulloch_InterurbanCoach_Liv4, Mail_Tulloch_Interurb
 //ID
 const Comeng_SunLanderCoach_ID = 10250;
 //introduction_date
-const Comeng_SunLanderCoach_IntroDate = date(115, 1, 1);
+const Comeng_SunLanderCoach_IntroDate = date(1953, 1, 1);
 //speed
 const Comeng_SunLanderCoach_Speed = 80;
 //cost_factor
