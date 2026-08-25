@@ -187,7 +187,12 @@ STR_INFO_EE_ML255C:{BLACK}Role: {GOLD}Light Freight {}{BLACK}Gauge:{GOLD} Narrow
 
 
 STR_NAME_MLW_RSC3:ALCO-MLW RSC-3
-STR_INFO_MLW_RSC3:{BLACK}Role: {GOLD}Freight {}{BLACK}Gauge:{GOLD} Standard Gauge {}{BLACK}Power: {BROWN}Diesel {}{BLACK}Based on: {GOLD}NSW 40 Class
+STR_INFO_MLW_RSC3:{BLACK}Role: {GOLD}Freight {}{BLACK}Gauge: {GOLD}Standard Gauge {}{BLACK}Power: {BROWN}Diesel {}{BLACK}Based on: {GOLD}NSW 40 Class
+
+STR_NAME_ALCO_DL541:Goodwin-ALCO DL-541
+STR_INFO_ALCO_DL541:{BLACK}Role: {GOLD}Freight {}{BLACK}Gauge: {GOLD}Standard Gauge {}{BLACK}Power: {BROWN}Diesel {}{BLACK}Based on: {GOLD}NSW 45 Class, SAR 600 Class {}{GOLD}Also known as the ALCO RSD-20.
+STR_NAME_ALCO_DL541_BG:Goodwin-ALCO DL-541
+STR_INFO_ALCO_DL541_BG:{BLACK}Role: {GOLD}Freight {}{BLACK}Gauge: {GOLD}Broad Gauge {}{BLACK}Power: {BROWN}Diesel {}{BLACK}Based on: {GOLD}NSW 45 Class, SAR 600 Class {}{GOLD}Also known as the ALCO RSD-20.
 
 STR_NAME_CLYDE_G16CS1:Clyde-EMD G16C
 STR_INFO_CLYDE_G16CS1:{BLACK}Role: {GOLD}Freight {}{BLACK}Gauge:{GOLD} Standard Gauge {}{BLACK}Power: {BROWN}Diesel {}{BLACK}Based on: {GOLD}VR X Class Series 1
@@ -209,15 +214,6 @@ STR_INFO_CLYDE_G26CS3_BG:{BLACK}Role: {GOLD}Freight {}{BLACK}Gauge:{GOLD} Broad 
 
 STR_NAME_EE_1250CLASS:English-Electric MCH139C 
 STR_INFO_EE_1250CLASS:{BLACK}Role: {GOLD}Freight {}{BLACK}Power: {BROWN}Diesel {}{BLACK}Based on: {GOLD}QR 1250 Class
-
-STR_NAME_ALCODL541:Goodwin-ALCO DL541
-STR_INFO_ALCODL541:{BLACK}Role: {GOLD}Freight {}{BLACK}Power: {BROWN}Diesel {}{BLACK}Based on: {GOLD}NSW 45 Class, SAR 600 Class {}{}{GOLD}Union's didn't like these
-
-STR_NAME_ALCODL541_CROCODILE:Goodwin-ALCO DL541 (Chop-Nose)
-STR_INFO_ALCODL541_CROCODILE:{BLACK}Role: {GOLD}Freight {}{BLACK}Power: {BROWN}Diesel {}{BLACK}Based on: {GOLD}Junee Workshops 103 (formerly NSW 4537) {}{}{GOLD}Aussie Crocodile
-
-STR_NAME_ALCODL541_PILBARA:Goodwin-ALCO DL541 (Pilbara Cab)
-STR_INFO_ALCODL541_PILBARA:{BLACK}Role: {GOLD}Freight {}{BLACK}Power: {BROWN}Diesel {}{BLACK}Based on: {GOLD}Junee Workshops attempted rebuild of NSW 3505 (formerly 4505)
 
 STR_NAME_GMD_GL22MC:GMD GL22MC
 STR_INFO_GMD_GL22MC:{BLACK}Role: {GOLD}Freight {}{BLACK}Gauge:{GOLD} Narrow Gauge {}{BLACK}Power: {BROWN}Diesel {}{BLACK}Based on: {GOLD}NZ DF Class
@@ -306,11 +302,11 @@ STR_INFO_CLYDE_G8B_FLATTOP:{BLACK}Role: {GOLD}Light Mixed Traffic {}{BLACK}Gauge
 STR_NAME_CLYDE_G8B_FLATTOP_BG:Clyde-EMD G8B (Flat Top)
 STR_INFO_CLYDE_G8B_FLATTOP_BG:{BLACK}Role: {GOLD}Light Mixed Traffic {}{BLACK}Gauge:{GOLD} Broad Gauge {}{BLACK}Power: {BROWN}Diesel {}{BLACK}Based on: {GOLD}Early VR T Classes, BHP Whyala DE Class & Fyansford Cement Railway Locomotive
 
-STR_NAME_ALCO_DL531_NG:Goodwin-ALCO DL531
+STR_NAME_ALCO_DL531_NG:Goodwin-ALCO DL-531
 STR_INFO_ALCO_DL531_NG:{BLACK}Role: {GOLD}Light Mixed Traffic {}{BLACK}Gauge:{GOLD} Narrow Gauge {}{BLACK}Power: {BROWN}Diesel {}{BLACK}Based on: {GOLD}NSW 48 Class, SAR 830 Class, Silverton 48s Class {}{GOLD}Also known as the ALCO RSD-8
-STR_NAME_ALCO_DL531:Goodwin-ALCO DL531
+STR_NAME_ALCO_DL531:Goodwin-ALCO DL-531
 STR_INFO_ALCO_DL531:{BLACK}Role: {GOLD}Light Mixed Traffic {}{BLACK}Gauge:{GOLD} Standard Gauge {}{BLACK}Power: {BROWN}Diesel {}{BLACK}Based on: {GOLD}NSW 48 Class, SAR 830 Class, Silverton 48s Class {}{GOLD}Also known as the ALCO RSD-8
-STR_NAME_ALCO_DL531_BG:Goodwin-ALCO DL531
+STR_NAME_ALCO_DL531_BG:Goodwin-ALCO DL-531
 STR_INFO_ALCO_DL531_BG:{BLACK}Role: {GOLD}Light Mixed Traffic {}{BLACK}Gauge:{GOLD} Broad Gauge {}{BLACK}Power: {BROWN}Diesel {}{BLACK}Based on: {GOLD}NSW 48 Class, SAR 830 Class, Silverton 48s Class {}{GOLD}Also known as the ALCO RSD-8
 
 STR_NAME_CLYDE_G8B_RAISEDCAB_NG:Clyde-EMD G8B (Raised Cab)
@@ -354,17 +350,17 @@ STR_INFO_EE_DFCLASS:{BLACK}Role: {GOLD}Mixed Traffic {}{BLACK}Gauge: {GOLD}Narro
 STR_NAME_CLYDE_G12A:Clyde-EMD G12A
 STR_INFO_CLYDE_G12A:{BLACK}Role: {GOLD}Mixed Traffic {}{BLACK}Gauge:{GOLD} Narrow Gauge {}{BLACK}Power: {BROWN}Diesel {}{BLACK}Based on: {GOLD}NZ DA Class
 
-STR_NAME_ALCO_DL500B:Goodwin-ALCO DL500B
+STR_NAME_ALCO_DL500B:Goodwin-ALCO DL-500B
 STR_INFO_ALCO_DL500B:{BLACK}Role: {GOLD}Mixed Traffic {}{BLACK}Gauge: {GOLD}Standard Gauge{}{BLACK}Power: {BROWN}Diesel {}{BLACK}Based on: {GOLD}NSW 44 Class, SAR 930 Class
-STR_NAME_ALCO_DL500B_BG:Goodwin-ALCO DL500B
+STR_NAME_ALCO_DL500B_BG:Goodwin-ALCO DL-500B
 STR_INFO_ALCO_DL500B_BG:{BLACK}Role: {GOLD}Mixed Traffic {}{BLACK}Gauge: {GOLD}Broad Gauge{}{BLACK}Power: {BROWN}Diesel {}{BLACK}Based on: {GOLD}NSW 44 Class, SAR 930 Class
 
 STR_NAME_CLYDE_J26C:Clyde-EMD J26C
 STR_INFO_CLYDE_J26C:{BLACK}Role: {GOLD}Mixed Traffic {}{BLACK}Gauge: {GOLD}Standard Gauge {}{BLACK}Power: {BROWN}Diesel {}{BLACK}Based on: {GOLD}NSW 422 Class
 
-STR_NAME_ALCO_DL500G:Goodwin-ALCO DL500G "Jumbo"
+STR_NAME_ALCO_DL500G:Goodwin-ALCO DL-500G "Jumbo"
 STR_INFO_ALCO_DL500G:{BLACK}Role: {GOLD}Mixed Traffic {}{BLACK}Gauge: {GOLD}Standard Gauge{}{BLACK}Power: {BROWN}Diesel {}{BLACK}Based on: {GOLD}NSW 442 Class, SAR 700 Class
-STR_NAME_ALCO_DL500G_BG:Goodwin-ALCO DL500G "Jumbo"
+STR_NAME_ALCO_DL500G_BG:Goodwin-ALCO DL-500G "Jumbo"
 STR_INFO_ALCO_DL500G_BG:{BLACK}Role: {GOLD}Mixed Traffic {}{BLACK}Gauge: {GOLD}Broad Gauge{}{BLACK}Power: {BROWN}Diesel {}{BLACK}Based on: {GOLD}NSW 442 Class, SAR 700 Class
 
 STR_NAME_COMENG_CE615A:Comeng CE615A

@@ -5835,7 +5835,161 @@ item(FEAT_TRAINS, Item_MLW_RSC3_Liv0, 14300) {
 }
 
 //ID
-const Clyde_G16CS1_ID = 14500;
+const ALCO_DL541_ID = 14400;
+//introduction_date
+const ALCO_DL541_IntroDate = date(1962, 1, 1);
+//speed
+const ALCO_DL541_Speed = 120;
+//cost_factor
+const ALCO_DL541_CostFactor = 44;
+//running_cost_factor
+const ALCO_DL541_RunningCostFactor = 118;
+//power
+const ALCO_DL541_Power = 1950;
+//weight
+const ALCO_DL541_Weight = 110;
+//length
+const ALCO_DL541_Length = 7;
+
+//ALCO_DL541_Liv0
+spriteset(spriteset_ALCO_DL541_Liv0_Purchase,   "gfx/ALCO_DL541_Liv0.png") {template_purchase_7(7, 21)}
+spriteset(spriteset_ALCO_DL541_Liv0,   "gfx/ALCO_DL541_Liv0.png") {template_7(7, 39)}
+spriteset(spriteset_ALCO_DL541_Liv0_r,   "gfx/ALCO_DL541_Liv0.png") {template_7_r(7, 39)}
+
+//Purchase Sprite Stacker
+switch (FEAT_TRAINS, SELF, switch_ALCO_DL541_Liv0_Purchase_Stack, [
+    STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 1 ? CB_FLAG_MORE_SPRITES : 0) | PALETTE_USE_DEFAULT, 0x100),
+    getbits(extra_callback_info1, 8, 8)
+    ]) {
+    0: spriteset_ALCO_DL541_Liv0_Purchase;
+    1: switch_Couplers_7_Repeat_Purchase;
+}
+
+switch (FEAT_TRAINS, SELF, switch_ALCO_DL541_Liv0_Fw, [
+    STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 1 ? CB_FLAG_MORE_SPRITES : 0) | PALETTE_USE_DEFAULT, 0x100),
+    getbits(extra_callback_info1, 8, 8)
+    ]) {
+    0: spriteset_ALCO_DL541_Liv0;
+	1: switch_Couplers_7_Repeat;
+}
+
+switch (FEAT_TRAINS, SELF, switch_ALCO_DL541_Liv0_r, [
+    STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 1 ? CB_FLAG_MORE_SPRITES : 0) | PALETTE_USE_DEFAULT, 0x100),
+    getbits(extra_callback_info1, 8, 8)
+    ]) {
+    0: spriteset_ALCO_DL541_Liv0_r;
+	1: switch_Couplers_7_Repeat;
+}
+
+switch(FEAT_TRAINS, SELF, switch_ALCO_DL541_Liv0_pair, position_in_vehid_chain % 2) {
+ 1: switch_ALCO_DL541_Liv0_r;
+  switch_ALCO_DL541_Liv0_Fw;
+}
+
+switch(FEAT_TRAINS, SELF, switch_ALCO_DL541_Liv0_rear, position_in_vehid_chain_from_end) {
+ 0: switch_ALCO_DL541_Liv0_r;
+  switch_ALCO_DL541_Liv0_pair;
+}
+
+switch(FEAT_TRAINS, SELF, switch_ALCO_DL541_Liv0_position, position_in_consist) {
+ 0: switch_ALCO_DL541_Liv0_Fw;
+  switch_ALCO_DL541_Liv0_rear;
+}
+
+const ALCO_DL541_Liv0_ID = (ALCO_DL541_ID + Liv0_ID);
+//ALCO_DL541_Liv0
+item(FEAT_TRAINS, Item_ALCO_DL541_Liv0, ALCO_DL541_Liv0_ID) {
+    property {
+        sprite_id:                      SPRITE_ID_NEW_TRAIN;
+		misc_flags:                     bitmask(TRAIN_FLAG_2CC, TRAIN_FLAG_SPRITE_STACK); // <- Train Flag MU needed here
+		track_type:                     RAIL;
+		running_cost_base:              RUNNING_COST_DIESEL;
+        engine_class:                   ENGINE_CLASS_DIESEL;
+//        ai_special_flag:                AI_FLAG_PASSENGER;
+		bitmask_vehicle_info:           0;
+	
+		climates_available:             (param_RealDisable == 0) ? ALL_CLIMATES : NO_CLIMATE;
+		visual_effect_and_powered: 		visual_effect_and_powered(VISUAL_EFFECT_DIESEL, 3, DISABLE_WAGON_POWER);
+
+        name:                           string(STR_NAME_ALCO_DL541);
+		
+		refit_cost:                     0;
+        dual_headed:                    0;
+        air_drag_coefficient:           0.08;
+        model_life:                     30;
+		vehicle_life:                   50;
+		tractive_effort_coefficient:	0.3;
+		
+        introduction_date:              ALCO_DL541_IntroDate;		
+		length:                         ALCO_DL541_Length;
+		
+		speed:							ALCO_DL541_Speed km/h;
+		cost_factor:					ALCO_DL541_CostFactor;
+		running_cost_factor:			ALCO_DL541_RunningCostFactor;
+		cargo_capacity: 				0;
+		power:							ALCO_DL541_Power;
+		weight:							ALCO_DL541_Weight;
+		
+//        variant_group: 					Item_ALCO_DL541_Liv0;
+//        extra_flags:  					bitmask (VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE, VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW, VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW, VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+    }
+    graphics {
+        default: 						switch_ALCO_DL541_Liv0_position;
+//		sound_effect: 					switch_GE_7FDL12;
+        purchase: 						switch_ALCO_DL541_Liv0_Purchase_Stack;
+        additional_text: 				string(STR_INFO_ALCO_DL541);
+		reverse_build_probability: 		return 25;
+}
+}
+
+const ALCO_DL541_BG_Liv0_ID = (ALCO_DL541_Liv0_ID + 50);
+//ALCO_DL541_BG_Liv0
+item(FEAT_TRAINS, Item_ALCO_DL541_BG_Liv0, ALCO_DL541_BG_Liv0_ID) {
+    property {
+        sprite_id:                      SPRITE_ID_NEW_TRAIN;
+		misc_flags:                     bitmask(TRAIN_FLAG_2CC, TRAIN_FLAG_SPRITE_STACK); // <- Train Flag MU needed here
+		track_type:                     BG_RAIL_ONLY;
+		running_cost_base:              RUNNING_COST_DIESEL;
+        engine_class:                   ENGINE_CLASS_DIESEL;
+//        ai_special_flag:                AI_FLAG_PASSENGER;
+		bitmask_vehicle_info:           0;
+	
+		climates_available:             (param_RealDisable == 0) ? ALL_CLIMATES : NO_CLIMATE;
+		visual_effect_and_powered: 		visual_effect_and_powered(VISUAL_EFFECT_DIESEL, 3, DISABLE_WAGON_POWER);
+
+        name:                           string(STR_NAME_ALCO_DL541_BG);
+		
+		refit_cost:                     0;
+        dual_headed:                    0;
+        air_drag_coefficient:           0.08;
+        model_life:                     30;
+		vehicle_life:                   50;
+		tractive_effort_coefficient:	0.3;
+		
+        introduction_date:              ALCO_DL541_IntroDate;		
+		length:                         ALCO_DL541_Length;
+		
+		speed:							ALCO_DL541_Speed km/h;
+		cost_factor:					ALCO_DL541_CostFactor;
+		running_cost_factor:			ALCO_DL541_RunningCostFactor;
+		cargo_capacity: 				0;
+		power:							ALCO_DL541_Power;
+		weight:							ALCO_DL541_Weight;
+		
+//        variant_group: 					Item_ALCO_DL541_BG_Liv0;
+//        extra_flags:  					bitmask (VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE, VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW, VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW, VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+    }
+    graphics {
+        default: 						switch_ALCO_DL541_Liv0_position;
+//		sound_effect: 					switch_GE_7FDL12;
+        purchase: 						switch_ALCO_DL541_Liv0_Purchase_Stack;
+        additional_text: 				string(STR_INFO_ALCO_DL541_BG);
+		reverse_build_probability: 		return 25;
+}
+}
+
+//ID
+const Clyde_G16CS1_ID = 14550;
 //introduction_date
 const Clyde_G16CS1_IntroDate = date(1966, 1, 1);
 //speed
@@ -6126,7 +6280,7 @@ item(FEAT_TRAINS, Item_Clyde_G16CS1_BG_Liv23, Clyde_G16CS1_BG_Liv23_ID) {
 }
 
 //ID
-const Clyde_G26CS2_ID = 14750;
+const Clyde_G26CS2_ID = 14800;
 //introduction_date
 const Clyde_G26CS2_IntroDate = date(1970, 1, 1);
 //speed
@@ -6325,7 +6479,7 @@ item(FEAT_TRAINS, Item_Clyde_G26CS2_BG_Liv23, Clyde_G26CS2_BG_Liv23_ID) {
 }
 
 //ID
-const GE_U26C_ID = 14850;
+const GE_U26C_ID = 14900;
 //introduction_date
 const GE_U26C_IntroDate = date(1972, 1, 1);
 //speed
@@ -6390,7 +6544,7 @@ item(FEAT_TRAINS, Item_GE_U26C_Liv0, GE_U26C_Liv0_ID) {
     property {
         sprite_id:                      SPRITE_ID_NEW_TRAIN;
 		misc_flags:                     bitmask(TRAIN_FLAG_2CC, TRAIN_FLAG_SPRITE_STACK); // <- Train Flag MU needed here
-		track_type:                     NG_RAIL_ONLY;
+		track_type:                     NG_RAIL;
 		running_cost_base:              RUNNING_COST_DIESEL;
         engine_class:                   ENGINE_CLASS_DIESEL;
 //        ai_special_flag:                AI_FLAG_PASSENGER;
@@ -6480,7 +6634,7 @@ item(FEAT_TRAINS, Item_GE_U26C_Liv6, GE_U26C_Liv6_ID) {
     property {
         sprite_id:                      SPRITE_ID_NEW_TRAIN;
 		misc_flags:                     bitmask(TRAIN_FLAG_2CC, TRAIN_FLAG_SPRITE_STACK); // <- Train Flag MU needed here
-		track_type:                     NG_RAIL_ONLY;
+		track_type:                     NG_RAIL;
 		running_cost_base:              RUNNING_COST_DIESEL;
         engine_class:                   ENGINE_CLASS_DIESEL;
 //        ai_special_flag:                AI_FLAG_PASSENGER;
@@ -6570,7 +6724,7 @@ item(FEAT_TRAINS, Item_GE_U26C_Liv7, GE_U26C_Liv7_ID) {
     property {
         sprite_id:                      SPRITE_ID_NEW_TRAIN;
 		misc_flags:                     bitmask(TRAIN_FLAG_2CC, TRAIN_FLAG_SPRITE_STACK); // <- Train Flag MU needed here
-		track_type:                     NG_RAIL_ONLY;
+		track_type:                     NG_RAIL;
 		running_cost_base:              RUNNING_COST_DIESEL;
         engine_class:                   ENGINE_CLASS_DIESEL;
 //        ai_special_flag:                AI_FLAG_PASSENGER;
@@ -6660,7 +6814,7 @@ item(FEAT_TRAINS, Item_GE_U26C_Liv8, GE_U26C_Liv8_ID) {
     property {
         sprite_id:                      SPRITE_ID_NEW_TRAIN;
 		misc_flags:                     bitmask(TRAIN_FLAG_2CC, TRAIN_FLAG_SPRITE_STACK); // <- Train Flag MU needed here
-		track_type:                     NG_RAIL_ONLY;
+		track_type:                     NG_RAIL;
 		running_cost_base:              RUNNING_COST_DIESEL;
         engine_class:                   ENGINE_CLASS_DIESEL;
 //        ai_special_flag:                AI_FLAG_PASSENGER;
@@ -6750,7 +6904,7 @@ item(FEAT_TRAINS, Item_GE_U26C_Liv9, GE_U26C_Liv9_ID) {
     property {
         sprite_id:                      SPRITE_ID_NEW_TRAIN;
 		misc_flags:                     bitmask(TRAIN_FLAG_2CC, TRAIN_FLAG_SPRITE_STACK); // <- Train Flag MU needed here
-		track_type:                     NG_RAIL_ONLY;
+		track_type:                     NG_RAIL;
 		running_cost_base:              RUNNING_COST_DIESEL;
         engine_class:                   ENGINE_CLASS_DIESEL;
 //        ai_special_flag:                AI_FLAG_PASSENGER;
@@ -6840,7 +6994,7 @@ item(FEAT_TRAINS, Item_GE_U26C_Liv10, GE_U26C_Liv10_ID) {
     property {
         sprite_id:                      SPRITE_ID_NEW_TRAIN;
 		misc_flags:                     bitmask(TRAIN_FLAG_2CC, TRAIN_FLAG_SPRITE_STACK); // <- Train Flag MU needed here
-		track_type:                     NG_RAIL_ONLY;
+		track_type:                     NG_RAIL;
 		running_cost_base:              RUNNING_COST_DIESEL;
         engine_class:                   ENGINE_CLASS_DIESEL;
 //        ai_special_flag:                AI_FLAG_PASSENGER;
@@ -6880,7 +7034,7 @@ item(FEAT_TRAINS, Item_GE_U26C_Liv10, GE_U26C_Liv10_ID) {
 }
 
 //ID
-const Clyde_G26CS3_ID = 14950;
+const Clyde_G26CS3_ID = 15000;
 //introduction_date
 const Clyde_G26CS3_IntroDate = date(1975, 1, 1);
 //speed
@@ -7165,7 +7319,7 @@ item(FEAT_TRAINS, Item_Clyde_G26CS3_BG_Liv23, Clyde_G26CS3_BG_Liv23_ID) {
 }
 
 //ID
-const GMD_GL22MC_ID = 15050;
+const GMD_GL22MC_ID = 15100;
 //introduction_date
 const GMD_GL22MC_IntroDate = date(1979, 1, 1);
 //speed
@@ -7316,7 +7470,7 @@ switch(FEAT_TRAINS, SELF, switch_Clyde_GL26C2_Liv0_position, position_in_consist
   switch_Clyde_GL26C2_Liv0_rear;
 }
 
-item(FEAT_TRAINS, Item_Clyde_GL26C2_Liv0, 15100) {
+item(FEAT_TRAINS, Item_Clyde_GL26C2_Liv0, 15150) {
     property {
         sprite_id:                        SPRITE_ID_NEW_TRAIN;
         refit_cost:                        0;
@@ -7358,7 +7512,7 @@ item(FEAT_TRAINS, Item_Clyde_GL26C2_Liv0, 15100) {
 }
 
 //ID
-const Clyde_JT42C_GML_ID = 15300;
+const Clyde_JT42C_GML_ID = 15350;
 //introduction_date
 const Clyde_JT42C_GML_IntroDate = date(1990, 1, 1);
 //speed
