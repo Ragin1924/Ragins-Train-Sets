@@ -119,6 +119,9 @@ STR_INFO_CLYDE_ML1_BG:{BLACK}Role: {GOLD}Passenger {}{BLACK}Gauge: {GOLD}Broad G
 STR_NAME_EE_1200CLASS:English-Electric M129C
 STR_INFO_EE_1200CLASS:{BLACK}Role: {GOLD}Passenger {}{BLACK}Power: {BROWN}Diesel {}{BLACK}Based on: {GOLD}QR 1200 Class
 
+STR_NAME_BEYERPEACOCK_XCLASS:Beyer-Peacock X Class
+STR_INFO_BEYERPEACOCK_XCLASS:{BLACK}Role: {GOLD}Passenger {}{BLACK}Gauge:{GOLD} Narrow Gauge{} {BLACK}Power: {BROWN}Diesel {}{BLACK}Based on: {GOLD}WAGR X/XA Class
+
 STR_NAME_CLYDE_A16C:Clyde-EMD A16C
 STR_INFO_CLYDE_A16C:{BLACK}Role: {GOLD}Passenger {}{BLACK}Gauge: {GOLD}Standard Gauge{}{BLACK}Power: {BROWN}Diesel {}{BLACK}Based on: {GOLD}NSW 42 Class, VR S Class
 STR_NAME_CLYDE_A16C_BG:Clyde-EMD A16C
