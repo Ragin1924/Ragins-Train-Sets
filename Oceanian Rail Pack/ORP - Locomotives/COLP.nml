@@ -14772,6 +14772,8 @@ const Comeng_CE615A_RunningCostFactor = 127;
 const Comeng_CE615A_Power = 2000;
 //weight
 const Comeng_CE615A_Weight = 121;
+//length
+const Comeng_CE615A_Length = 8;
 
 //Comeng_CE615A_Liv0
 spriteset(spriteset_Comeng_CE615A_Liv0_Purchase,   "gfx/Comeng_CE615A_Liv0.png") {template_purchase_8(7, 21)}
@@ -14819,7 +14821,7 @@ item(FEAT_TRAINS, Item_Comeng_CE615A_Liv0, Comeng_CE615A_Liv0_ID) {
 		tractive_effort_coefficient:	0.3;
 		
         introduction_date:              Comeng_CE615A_IntroDate;		
-		length:                         8;
+		length:                         Comeng_CE615A_Length;
 		
 		speed:							Comeng_CE615A_Speed km/h;
 		cost_factor:					Comeng_CE615A_CostFactor;
@@ -19272,6 +19274,8 @@ const Comeng_CL627_RunningCostFactor = 144;
 const Comeng_CL627_Power = 3620;
 //weight
 const Comeng_CL627_Weight = 123;
+//length
+const Comeng_CL627_Length = 8;
 
 spriteset(spriteset_Comeng_CL627_Pantograph_Purchase,   "gfx/Comeng_CL627_Pantographs.png") {template_purchase_8(7, 21)}
 
@@ -19362,7 +19366,7 @@ item(FEAT_TRAINS, Item_Comeng_CL627_Liv0, Comeng_CL627_Liv0_ID) {
 		tractive_effort_coefficient:	0.3;
 		
         introduction_date:              Comeng_CL627_IntroDate;		
-		length:                         8;
+		length:                         Comeng_CL627_Length;
 		
 		speed:							Comeng_CL627_Speed km/h;
 		cost_factor:					Comeng_CL627_CostFactor;
@@ -19508,17 +19512,30 @@ item(FEAT_TRAINS, Item_Clyde_JE28C_Liv0, Clyde_JE28C_Liv0_ID) {
 }
 }
 
+//ID
+const Comeng_CL627A_ID = 35050;
+//introduction_date
+const Comeng_CL627A_IntroDate = date(1983, 1, 1);
+const Comeng_CL627A_TriBo_IntroDate = date(1985, 1, 1);
+//speed
+const Comeng_CL627A_Speed = 130;
+//cost_factor
+const Comeng_CL627A_CostFactor = 54;
+//running_cost_factor
+const Comeng_CL627A_RunningCostFactor = 146;
+//power
+const Comeng_CL627A_Power = 3620;
+//weight
+const Comeng_CL627A_Weight = 119;
+const Comeng_CL627A_TriBo_Weight = 123;
+//length
+const Comeng_CL627A_Length = 8;
+
 spriteset(spriteset_Comeng_CL627A_Pantograph_Purchase,   "gfx/Comeng_CL627A_Pantographs.png") {template_purchase_8(7, 21)}
 
 spriteset(spriteset_Comeng_CL627A_PantoDown,   "gfx/Comeng_CL627A_Pantographs.png") {template_8_repeat(7, 39)}
-spriteset(spriteset_Comeng_CL627A_PantoBothUp,   "gfx/Comeng_CL627A_Pantographs.png") {template_8_repeat(7, 69)}
 spriteset(spriteset_Comeng_CL627A_PantoUp,   "gfx/Comeng_CL627A_Pantographs.png") {template_8(7, 99)}
 spriteset(spriteset_Comeng_CL627A_PantoUp_r,   "gfx/Comeng_CL627A_Pantographs.png") {template_8_r(7, 99)}
-
-spriteset(spriteset_Comeng_CL627A_PantoDown_Single,   "gfx/Comeng_CL627A_Pantographs.png") {template_8_repeat(187, 39)}
-spriteset(spriteset_Comeng_CL627A_PantoBothUp_Single,   "gfx/Comeng_CL627A_Pantographs.png") {template_8_repeat(187, 69)}
-spriteset(spriteset_Comeng_CL627A_PantoUp_Single,   "gfx/Comeng_CL627A_Pantographs.png") {template_8(187, 99)}
-spriteset(spriteset_Comeng_CL627A_PantoUp_Single_r,   "gfx/Comeng_CL627A_Pantographs.png") {template_8_r(187, 99)}
 
 switch(FEAT_TRAINS, SELF, switch_Comeng_CL627A_Pantograph_PantoUp, train_is_driving_backwards) {
  0: spriteset_Comeng_CL627A_PantoUp;
@@ -19530,37 +19547,14 @@ switch(FEAT_TRAINS, SELF, switch_Comeng_CL627A_Pantograph_PantoUp_r, train_is_dr
  1: spriteset_Comeng_CL627A_PantoUp;
 }
 
-random_switch(FEAT_TRAINS, SELF, switch_Comeng_CL627A_Pantograph_Random, bitmask(TRIGGER_VEHICLE_SERVICE)){ //verify this works before using it in more stuff
-    1 : spriteset_Comeng_CL627A_PantoBothUp;
-    1 : switch_Comeng_CL627A_Pantograph_PantoUp;
-	1 : switch_Comeng_CL627A_Pantograph_PantoUp_r;
-}
-
-random_switch(FEAT_TRAINS, SELF, switch_Comeng_CL627A_Pantograph_Single_Random, bitmask(TRIGGER_VEHICLE_SERVICE)){ //verify this works before using it in more stuff
-    1 : spriteset_Comeng_CL627A_PantoBothUp_Single;
-    1 : spriteset_Comeng_CL627A_PantoUp_Single;
-	1 : spriteset_Comeng_CL627A_PantoUp_Single_r;
-}
-
-random_switch(FEAT_TRAINS, SELF, switch_Comeng_CL627A_Pantograph_SingleOrDouble, bitmask(TRIGGER_VEHICLE_SERVICE)){ //verify this works before using it in more stuff
-    47 : switch_Comeng_CL627A_Pantograph_Random;
-    3 : switch_Comeng_CL627A_Pantograph_Single_Random;
-}
-
-switch(FEAT_TRAINS, PARENT, switch_Comeng_CL627A_Pantograph_Timeline, current_year) {
-    0..1997: switch_Comeng_CL627A_Pantograph_Random;
-	1997..2100: switch_Comeng_CL627A_Pantograph_SingleOrDouble;
-  return switch_Comeng_CL627A_Pantograph_SingleOrDouble;
-}
-
 switch(FEAT_TRAINS, SELF, switch_Comeng_CL627A_Fw_railtype, tile_powers_railtype("OHLE_DC")) {
  0: spriteset_Comeng_CL627A_PantoDown;
- 1: switch_Comeng_CL627A_Pantograph_Timeline;
+ 1: switch_Comeng_CL627A_Pantograph_PantoUp;
 }
 
 switch(FEAT_TRAINS, SELF, switch_Comeng_CL627A_r_railtype, tile_powers_railtype("OHLE_DC")) {
  0: spriteset_Comeng_CL627A_PantoDown;
- 1: switch_Comeng_CL627A_Pantograph_Timeline;
+ 1: switch_Comeng_CL627A_Pantograph_PantoUp_r;
 }
 
 //Comeng_CL627A_Liv0
@@ -19600,124 +19594,132 @@ switch(FEAT_TRAINS, SELF, switch_Comeng_CL627A_Liv0_position, vehicle_is_flipped
  1: switch_Comeng_CL627A_Liv0_r;
 }
 
-item(FEAT_TRAINS, Item_Comeng_CL627A_Liv0, 35050) {
+const Comeng_CL627A_Liv0_ID = (Comeng_CL627A_ID + Liv0_ID);
+
+item(FEAT_TRAINS, Item_Comeng_CL627A_Liv0, Comeng_CL627A_Liv0_ID) {
     property {
-        sprite_id:                        SPRITE_ID_NEW_TRAIN;
-        refit_cost:                        0;
-        climates_available:                (param_RealDisable == 0) ? ALL_CLIMATES : NO_CLIMATE;
-        bitmask_vehicle_info:            0;
-        misc_flags:                        bitmask(TRAIN_FLAG_2CC, TRAIN_FLAG_SPRITE_STACK); // <- Train Flag MU needed here
+        sprite_id:                      SPRITE_ID_NEW_TRAIN;
+		misc_flags:                     bitmask(TRAIN_FLAG_2CC, TRAIN_FLAG_SPRITE_STACK); // <- Train Flag MU needed here
+		track_type:                     OHLE_DC;
+		running_cost_base:              RUNNING_COST_DIESEL;
+        engine_class:                   ENGINE_CLASS_ELECTRIC;
+//        ai_special_flag:                AI_FLAG_PASSENGER;
+		bitmask_vehicle_info:           0;
+	
+		climates_available:             (param_RealDisable == 0) ? ALL_CLIMATES : NO_CLIMATE;
+		visual_effect_and_powered: 		VISUAL_EFFECT_ELECTRIC;
 
-        track_type:                        OHLE_DC;
-        running_cost_base:                RUNNING_COST_DIESEL;
-        engine_class:                     ENGINE_CLASS_ELECTRIC;
-//        ai_special_flag:                AI_FLAG_CARGO;
-        dual_headed:                    0; // <- Double Headed, so cab on each end
-
-        visual_effect_and_powered: VISUAL_EFFECT_ELECTRIC;
-
-        name:                            string(STR_NAME_COMENG_CL627A);
-        introduction_date:                date(1983,1,1);
-        vehicle_life:                     50;
-        model_life:                        30;
-        length:                            8;
-
-        weight:                        119 ton;
-        speed:                            130 km/h;
-        power:                            3620 hp;
-        tractive_effort_coefficient:     0.3;
-        cost_factor:                     54;
-        running_cost_factor:             146;
-		cargo_capacity:                  0;
+        name:                           string(STR_NAME_COMENG_CL627A);
 		
-//        variant_group: Item_Comeng_CL627A_Liv0;
-//        extra_flags:  bitmask (VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE, VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW, VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW, VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+		refit_cost:                     0;
+        dual_headed:                    0;
+        air_drag_coefficient:           0.08;
+        model_life:                     30;
+		vehicle_life:                   50;
+		tractive_effort_coefficient:	0.3;
+		
+        introduction_date:              Comeng_CL627A_IntroDate;		
+		length:                         Comeng_CL627A_Length;
+		
+		speed:							Comeng_CL627A_Speed km/h;
+		cost_factor:					Comeng_CL627A_CostFactor;
+		running_cost_factor:			Comeng_CL627A_RunningCostFactor;
+		cargo_capacity: 				0;
+		power:							Comeng_CL627A_Power;
+		weight:							Comeng_CL627A_Weight;
+		
+//        variant_group: 					Item_Comeng_CL627A_Liv0;
+//        extra_flags:  					bitmask (VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE, VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW, VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW, VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
     }
     graphics {
-        default: switch_Comeng_CL627A_Liv0_position;
-//		sound_effect: switch_Modern_Electric_Horn;
-        purchase: switch_Comeng_CL627A_Liv0_Purchase_Stack;
-        additional_text: string(STR_INFO_COMENG_CL627A);
-		reverse_build_probability: return 50;
+        default: 						switch_Comeng_CL627A_Liv0_position;
+//		sound_effect:					 switch_Modern_Electric_Horn;
+        purchase: 						switch_Comeng_CL627A_Liv0_Purchase_Stack;
+        additional_text: 				string(STR_INFO_COMENG_CL627A);
+		reverse_build_probability:		return 50;
 }
 }
 
-//Comeng_CL627A_Liv0_TriBo
-spriteset(spriteset_Comeng_CL627A_Liv0_TriBo_Purchase,   "gfx/Comeng_CL627A_Liv0.png") {template_purchase_8(187, 21)}
-spriteset(spriteset_Comeng_CL627A_Liv0_TriBo,   "gfx/Comeng_CL627A_Liv0.png") {template_8(187, 39)}
+//Comeng_CL627A_TriBo_Liv0
+spriteset(spriteset_Comeng_CL627A_TriBo_Liv0_Purchase,   "gfx/Comeng_CL627A_Liv0.png") {template_purchase_8(187, 21)}
+spriteset(spriteset_Comeng_CL627A_TriBo_Liv0,   "gfx/Comeng_CL627A_Liv0.png") {template_8(187, 39)}
 
 //Purchase Sprite Stacker
-switch (FEAT_TRAINS, SELF, switch_Comeng_CL627A_Liv0_TriBo_Purchase_Stack, [
+switch (FEAT_TRAINS, SELF, switch_Comeng_CL627A_TriBo_Liv0_Purchase_Stack, [
     STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 2 ? CB_FLAG_MORE_SPRITES : 0) | PALETTE_USE_DEFAULT, 0x100),
     getbits(extra_callback_info1, 8, 8)
     ]) {
-    0: spriteset_Comeng_CL627A_Liv0_TriBo_Purchase;
+    0: spriteset_Comeng_CL627A_TriBo_Liv0_Purchase;
     1: switch_Couplers_8_Repeat_Purchase;
 	2: spriteset_Comeng_CL627A_Pantograph_Purchase;
 }
 
-switch (FEAT_TRAINS, SELF, switch_Comeng_CL627A_Liv0_TriBo_Fw, [
+switch (FEAT_TRAINS, SELF, switch_Comeng_CL627A_TriBo_Liv0_Fw, [
     STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 2 ? CB_FLAG_MORE_SPRITES : 0) | PALETTE_USE_DEFAULT, 0x100),
     getbits(extra_callback_info1, 8, 8)
     ]) {
-    0: spriteset_Comeng_CL627A_Liv0_TriBo;
+    0: spriteset_Comeng_CL627A_TriBo_Liv0;
 	1: switch_Couplers_8_Repeat;
     2: switch_Comeng_CL627A_Fw_railtype;
 }
 
-switch (FEAT_TRAINS, SELF, switch_Comeng_CL627A_Liv0_TriBo_r, [
+switch (FEAT_TRAINS, SELF, switch_Comeng_CL627A_TriBo_Liv0_r, [
     STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 2 ? CB_FLAG_MORE_SPRITES : 0) | PALETTE_USE_DEFAULT, 0x100),
     getbits(extra_callback_info1, 8, 8)
     ]) {
-    0: spriteset_Comeng_CL627A_Liv0_TriBo;
+    0: spriteset_Comeng_CL627A_TriBo_Liv0;
 	1: switch_Couplers_8_Repeat;
     2: switch_Comeng_CL627A_r_railtype;
 }
 
-switch(FEAT_TRAINS, SELF, switch_Comeng_CL627A_Liv0_TriBo_position, vehicle_is_flipped) {
- 0: switch_Comeng_CL627A_Liv0_TriBo_Fw;
- 1: switch_Comeng_CL627A_Liv0_TriBo_r;
+switch(FEAT_TRAINS, SELF, switch_Comeng_CL627A_TriBo_Liv0_position, vehicle_is_flipped) {
+ 0: switch_Comeng_CL627A_TriBo_Liv0_Fw;
+ 1: switch_Comeng_CL627A_TriBo_Liv0_r;
 }
 
-item(FEAT_TRAINS, Item_Comeng_CL627A_Liv0_TriBo, 35100) {
+const Comeng_CL627A_TriBo_Liv0_ID = (Comeng_CL627A_Liv0_ID + 50);
+
+item(FEAT_TRAINS, Item_Comeng_CL627A_TriBo_Liv0, Comeng_CL627A_TriBo_Liv0_ID) {
     property {
-        sprite_id:                        SPRITE_ID_NEW_TRAIN;
-        refit_cost:                        0;
-        climates_available:                (param_RealDisable == 0) ? ALL_CLIMATES : NO_CLIMATE;
-        bitmask_vehicle_info:            0;
-        misc_flags:                        bitmask(TRAIN_FLAG_2CC, TRAIN_FLAG_SPRITE_STACK); // <- Train Flag MU needed here
+        sprite_id:                      SPRITE_ID_NEW_TRAIN;
+		misc_flags:                     bitmask(TRAIN_FLAG_2CC, TRAIN_FLAG_SPRITE_STACK); // <- Train Flag MU needed here
+		track_type:                     OHLE_DC;
+		running_cost_base:              RUNNING_COST_DIESEL;
+        engine_class:                   ENGINE_CLASS_ELECTRIC;
+//        ai_special_flag:                AI_FLAG_PASSENGER;
+		bitmask_vehicle_info:           0;
+	
+		climates_available:             (param_PrototypeDisable == 0) ? ALL_CLIMATES : NO_CLIMATE;
+		visual_effect_and_powered: 		VISUAL_EFFECT_ELECTRIC;
 
-        track_type:                        OHLE_DC;
-        running_cost_base:                RUNNING_COST_DIESEL;
-        engine_class:                     ENGINE_CLASS_ELECTRIC;
-//        ai_special_flag:                AI_FLAG_CARGO;
-        dual_headed:                    0; // <- Double Headed, so cab on each end
-
-        visual_effect_and_powered: VISUAL_EFFECT_ELECTRIC;
-
-        name:                            string(STR_NAME_COMENG_CL627A_TRIBO);
-        introduction_date:                date(1985,1,1);
-        vehicle_life:                     50;
-        model_life:                        30;
-        length:                            8;
-
-        weight:                        123 ton;
-        speed:                            130 km/h;
-        power:                            3620 hp;
-        tractive_effort_coefficient:     0.3;
-        cost_factor:                     54;
-        running_cost_factor:             146;
-		cargo_capacity:                  0;
+        name:                           string(STR_NAME_COMENG_CL627A_TRIBO);
 		
-//        variant_group: Item_Comeng_CL627A_Liv0_TriBo;
-//        extra_flags:  bitmask (VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE, VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW, VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW, VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+		refit_cost:                     0;
+        dual_headed:                    0;
+        air_drag_coefficient:           0.08;
+        model_life:                     30;
+		vehicle_life:                   50;
+		tractive_effort_coefficient:	0.3;
+		
+        introduction_date:              Comeng_CL627A_TriBo_IntroDate;		
+		length:                         Comeng_CL627A_Length;
+		
+		speed:							Comeng_CL627A_Speed km/h;
+		cost_factor:					Comeng_CL627A_CostFactor;
+		running_cost_factor:			Comeng_CL627A_RunningCostFactor;
+		cargo_capacity: 				0;
+		power:							Comeng_CL627A_Power;
+		weight:							Comeng_CL627A_TriBo_Weight;
+		
+//        variant_group: 					Item_Comeng_CL627A_TriBo_Liv0;
+//        extra_flags:  					bitmask (VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE, VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW, VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW, VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
     }
     graphics {
-        default: switch_Comeng_CL627A_Liv0_TriBo_position;
-//		sound_effect: switch_Modern_Electric_Horn;
-        purchase: switch_Comeng_CL627A_Liv0_TriBo_Purchase_Stack;
-        additional_text: string(STR_INFO_COMENG_CL627A_TRIBO);
-		reverse_build_probability: return 50;
+        default: 						switch_Comeng_CL627A_TriBo_Liv0_position;
+//		sound_effect:					 switch_Modern_Electric_Horn;
+        purchase: 						switch_Comeng_CL627A_TriBo_Liv0_Purchase_Stack;
+        additional_text: 				string(STR_INFO_COMENG_CL627A_TRIBO);
+		reverse_build_probability:		return 50;
 }
 }
 
@@ -20486,471 +20488,6 @@ item(FEAT_TRAINS, Item_GMD_GT22MC_Liv0, GMD_GT22MC_Liv0_ID) {
 //		sound_effect: 					switch_GE_7FDL12;
         purchase: 						switch_GMD_GT22MC_Liv0_Purchase_Stack;
         additional_text: 				string(STR_INFO_GMD_GT22MC);
-}
-}
-
-spriteset(spriteset_Comeng_CL632_3RShoes_Purchase,   "gfx/Comeng_CL632_3RShoes.png") {template_purchase_8(7, 21)}
-spriteset(spriteset_Comeng_CL632_3RShoes,   "gfx/Comeng_CL632_3RShoes.png") {template_8_repeat(7, 39)}
-
-//Comeng_CL632_3R_Liv0
-//Change power output based on rail type
-switch (FEAT_TRAINS, SELF, switch_Comeng_CL632_3R_Liv0_power_2, tile_powers_railtype("OHLE_DC")) {
-            1: return 3620;}
-switch (FEAT_TRAINS, SELF, switch_Comeng_CL632_3R_Liv0_power_1, tile_powers_railtype("OHLE_AC")) {
-            1: return 4290;
-                return switch_Comeng_CL632_3R_Liv0_power_2;}
-switch (FEAT_TRAINS, SELF, switch_Comeng_CL632_3R_Liv0_power_0, tile_powers_railtype("SAA3")) {
-            1: return 3620;
-                return switch_Comeng_CL632_3R_Liv0_power_1;}
-
-//Power Language File Switch
-switch (FEAT_TRAINS, SELF, switch_Comeng_CL632_3R_Liv0_buy_menu_additional_text, [
-                STORE_TEMP(
-                    string(STR_POWER_SOURCE_OHLE_DC)
-                    | (3620 << 16),
-                    0x100
-                ),
-                STORE_TEMP(
-                    string(STR_POWER_SOURCE_OHLE_AC)
-                    | (4290 << 16),
-                    0x101
-                ),
-				STORE_TEMP(
-                    string(STR_POWER_SOURCE_3RAIL)
-                    | (3620 << 16),
-                    0x102
-                ),
-        ]) {
-            return string(STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_THREE_SUBSTR, string(STR_POWER_BY_POWER_SOURCE_THREE_SOURCES), string(STR_INFO_COMENG_CL632_3R));
-        }
-
-//Purchase Sprite Stacker
-switch (FEAT_TRAINS, SELF, switch_Comeng_CL632_3R_Liv0_Purchase_Stack, [
-    STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 3 ? CB_FLAG_MORE_SPRITES : 0) | PALETTE_USE_DEFAULT, 0x100),
-    getbits(extra_callback_info1, 8, 8)
-    ]) {
-    0: spriteset_Comeng_CL632_Liv0_Purchase;
-    1: switch_Couplers_8_Repeat_Purchase;
-	2: spriteset_Comeng_CL632_Pantograph_Purchase;
-	3: spriteset_Comeng_CL632_3RShoes_Purchase;
-}
-
-switch (FEAT_TRAINS, SELF, switch_Comeng_CL632_3R_Liv0_Fw, [
-    STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 3 ? CB_FLAG_MORE_SPRITES : 0) | PALETTE_USE_DEFAULT, 0x100),
-    getbits(extra_callback_info1, 8, 8)
-    ]) {
-    0: spriteset_Comeng_CL632_Liv0;
-	1: switch_Couplers_8_Repeat;
-    2: switch_Comeng_CL632_Fw_railtype_AC;
-	3: spriteset_Comeng_CL632_3RShoes;
-}
-
-switch (FEAT_TRAINS, SELF, switch_Comeng_CL632_3R_Liv0_r, [
-    STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 3 ? CB_FLAG_MORE_SPRITES : 0) | PALETTE_USE_DEFAULT, 0x100),
-    getbits(extra_callback_info1, 8, 8)
-    ]) {
-    0: spriteset_Comeng_CL632_Liv0;
-	1: switch_Couplers_8_Repeat;
-    2: switch_Comeng_CL632_r_railtype_AC;
-	3: spriteset_Comeng_CL632_3RShoes;
-}
-
-switch(FEAT_TRAINS, SELF, switch_Comeng_CL632_3R_Liv0_position, vehicle_is_flipped) {
- 0: switch_Comeng_CL632_3R_Liv0_Fw;
- 1: switch_Comeng_CL632_3R_Liv0_r;
-}
-
-item(FEAT_TRAINS, Item_Comeng_CL632_3R_Liv0, 57400) {
-    property {
-        sprite_id:                        SPRITE_ID_NEW_TRAIN;
-        refit_cost:                        0;
-        climates_available: (param_ProposalDisable == 0 && param_ThirdRailDisable == 0) ? ALL_CLIMATES : NO_CLIMATE;
-        bitmask_vehicle_info:            0;
-        misc_flags:                        bitmask(TRAIN_FLAG_2CC, TRAIN_FLAG_SPRITE_STACK); // <- Train Flag MU needed here
-
-        track_type:                        [OHLE_DC, OHLE_AC, SAA3];
-        running_cost_base:                RUNNING_COST_DIESEL;
-        engine_class:                     ENGINE_CLASS_ELECTRIC;
-//        ai_special_flag:                AI_FLAG_CARGO;
-        dual_headed:                    0; // <- Double Headed, so cab on each end
-
-        visual_effect_and_powered: VISUAL_EFFECT_ELECTRIC;
-
-        name:                            string(STR_NAME_COMENG_CL632_3R);
-        introduction_date:                date(1988,1,1);
-        vehicle_life:                     50;
-        model_life:                        30;
-        length:                            8;
-
-        weight:                        123 ton;
-        speed:                            130 km/h;
-        power:                            3620 hp;
-        tractive_effort_coefficient:     0.5;
-        cost_factor:                     65;
-        running_cost_factor:             174;
-		cargo_capacity:                  0;
-		
-//        variant_group: Item_Comeng_CL632_3R_Liv0;
-//        extra_flags:  bitmask (VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE, VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW, VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW, VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
-    }
-    graphics {
-        default: switch_Comeng_CL632_3R_Liv0_position;
-//		sound_effect: switch_Modern_Electric_Horn;
-        purchase: switch_Comeng_CL632_3R_Liv0_Purchase_Stack;
-		power: switch_Comeng_CL632_3R_Liv0_power_0;
-        additional_text: switch_Comeng_CL632_3R_Liv0_buy_menu_additional_text;
-		reverse_build_probability: return 50;
-}
-}
-
-spriteset(spriteset_MetroVick_46Class_3RShoes_Purchase,   "gfx/MetroVick_46Class_3RShoes.png") {template_purchase_7(7, 21)}
-spriteset(spriteset_MetroVick_46Class_3RShoes,   "gfx/MetroVick_46Class_3RShoes.png") {template_7_repeat(7, 39)}
-
-//MetroVick_46Class_3R_Liv0
-//Change power output based on rail type
-switch (FEAT_TRAINS, SELF, switch_MetroVick_46Class_3R_Liv0_power_1, tile_powers_railtype("OHLE_DC")) {
-            1: return 3400;
-        }
-        switch (FEAT_TRAINS, SELF, switch_MetroVick_46Class_3R_Liv0_power_0, tile_powers_railtype("SAA3")) {
-            1: return 3400;
-                return switch_MetroVick_46Class_3R_Liv0_power_1;
-        }
-
-//Change effects based on railtype
-switch (FEAT_TRAINS, SELF, switch_MetroVick_46Class_3R_Liv0_effect_spawn_model_and_powered, [tile_powers_railtype("SAA3")]) {
-            1: return VISUAL_EFFECT_DISABLE;
-            return visual_effect_and_powered(VISUAL_EFFECT_ELECTRIC, 3, ENABLE_WAGON_POWER);
-        }
-
-//Power Language File Switch
-switch (FEAT_TRAINS, SELF, switch_MetroVick_46Class_3R_Liv0_buy_menu_additional_text, [
-                STORE_TEMP(
-                    string(STR_POWER_SOURCE_OHLE_DC)
-                    | (3400 << 16),
-                    0x100
-                ),
-                STORE_TEMP(
-                    string(STR_POWER_SOURCE_3RAIL)
-                    | (3400 << 16),
-                    0x101
-                ),
-        ]) {
-            return string(STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_TWO_SUBSTR, string(STR_POWER_BY_POWER_SOURCE_TWO_SOURCES), string(STR_INFO_METROVICK_46CLASS_3R));
-        }
-
-//Purchase Sprite Stacker
-switch (FEAT_TRAINS, SELF, switch_MetroVick_46Class_3R_Liv0_Purchase_Stack, [
-    STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 2 ? CB_FLAG_MORE_SPRITES : 0) | PALETTE_USE_DEFAULT, 0x100),
-    getbits(extra_callback_info1, 8, 8)
-    ]) {
-    0: spriteset_MetroVick_46Class_Liv0_Purchase;
-    1: switch_Couplers_7_Repeat_Purchase;
-	2: spriteset_MetroVick_46Class_3RShoes_Purchase;
-}
-
-switch(FEAT_TRAINS, SELF, switch_MetroVick_46Class_3R_Liv0_Fw_railtype, tile_powers_railtype("OHLE_DC")) {
- 0: spriteset_MetroVick_46Class_PantoDown;
- 1: spriteset_MetroVick_46Class_PantoUp;
-}
-
-switch (FEAT_TRAINS, SELF, switch_MetroVick_46Class_3R_Liv0_Fw, [
-    STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 3 ? CB_FLAG_MORE_SPRITES : 0) | PALETTE_USE_DEFAULT, 0x100),
-    getbits(extra_callback_info1, 8, 8)
-    ]) {
-    0: spriteset_MetroVick_46Class_Liv0;
-	1: switch_Couplers_7_Repeat;
-    2: switch_MetroVick_46Class_3R_Liv0_Fw_railtype;
-	3: spriteset_MetroVick_46Class_3RShoes;
-}
-
-switch(FEAT_TRAINS, SELF, switch_MetroVick_46Class_3R_Liv0_r_railtype, tile_powers_railtype("OHLE_DC")) {
- 0: spriteset_MetroVick_46Class_PantoDown;
- 1: spriteset_MetroVick_46Class_PantoUp_r;
-}
-
-switch (FEAT_TRAINS, SELF, switch_MetroVick_46Class_3R_Liv0_r, [
-    STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 3 ? CB_FLAG_MORE_SPRITES : 0) | PALETTE_USE_DEFAULT, 0x100),
-    getbits(extra_callback_info1, 8, 8)
-    ]) {
-    0: spriteset_MetroVick_46Class_Liv0;
-	1: switch_Couplers_7_Repeat;
-    2: switch_MetroVick_46Class_3R_Liv0_r_railtype;
-	3: spriteset_MetroVick_46Class_3RShoes;
-}
-
-switch(FEAT_TRAINS, SELF, switch_MetroVick_46Class_3R_Liv0_position, vehicle_is_flipped) {
- 0: switch_MetroVick_46Class_3R_Liv0_Fw;
- 1: switch_MetroVick_46Class_3R_Liv0_r;
-}
-
-item(FEAT_TRAINS, Item_MetroVick_46Class_3R_Liv0, 58800) {
-    property {
-        sprite_id:                        SPRITE_ID_NEW_TRAIN;
-        refit_cost:                        0;
-        climates_available: (param_RealDisable == 0 && param_ThirdRailDisable == 0) ? ALL_CLIMATES : NO_CLIMATE;
-        bitmask_vehicle_info:            0;
-        misc_flags:                        bitmask(TRAIN_FLAG_2CC, TRAIN_FLAG_SPRITE_STACK); // <- Train Flag MU needed here
-
-        track_type:                        [OHLE_DC, SAA3];
-        running_cost_base:                RUNNING_COST_DIESEL;
-        engine_class:                     ENGINE_CLASS_ELECTRIC;
-//        ai_special_flag:                AI_FLAG_CARGO;
-        dual_headed:                    0; // <- Double Headed, so cab on each end
-
-        visual_effect_and_powered: VISUAL_EFFECT_ELECTRIC;
-
-        name:                            string(STR_NAME_METROVICK_46CLASS_3R);
-        introduction_date:                date(1956,1,1);
-        vehicle_life:                     50;
-        model_life:                        30;
-        length:                            7;
-
-        weight:                        111 ton;
-        speed:                            115 km/h;
-        power:                            3400 hp;
-        tractive_effort_coefficient:     0.3;
-        cost_factor:                     53;
-        running_cost_factor:             142;
-		cargo_capacity:                  0;
-		
-//        variant_group: Item_MetroVick_46Class_3R_Liv0;
-//        extra_flags:  bitmask (VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE, VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW, VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW, VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
-    }
-    graphics {
-        default: switch_MetroVick_46Class_3R_Liv0_position;
-//		sound_effect: switch_Modern_Electric_Horn;
-        purchase: switch_MetroVick_46Class_3R_Liv0_Purchase_Stack;
-        power: switch_MetroVick_46Class_3R_Liv0_power_0;
-        visual_effect_and_powered: switch_MetroVick_46Class_3R_Liv0_effect_spawn_model_and_powered;
-        additional_text: switch_MetroVick_46Class_3R_Liv0_buy_menu_additional_text;
-		reverse_build_probability: return 50;
-}
-}
-
-spriteset(spriteset_Comeng_CL627A_3RShoes_Purchase,   "gfx/Comeng_CL627A_3RShoes.png") {template_purchase_8(7, 21)}
-spriteset(spriteset_Comeng_CL627A_3RShoes,   "gfx/Comeng_CL627A_3RShoes.png") {template_8_repeat(7, 39)}
-
-//Comeng_CL627A_3R_Liv0
-//Change power output based on rail type
-switch (FEAT_TRAINS, SELF, switch_Comeng_CL627A_3R_Liv0_power_1, tile_powers_railtype("OHLE_DC")) {
-            1: return 3620;
-        }
-        switch (FEAT_TRAINS, SELF, switch_Comeng_CL627A_3R_Liv0_power_0, tile_powers_railtype("SAA3")) {
-            1: return 3620;
-                return switch_Comeng_CL627A_3R_Liv0_power_1;
-        }
-
-//Change effects based on railtype
-switch (FEAT_TRAINS, SELF, switch_Comeng_CL627A_3R_Liv0_effect_spawn_model_and_powered, [tile_powers_railtype("SAA3")]) {
-            1: return VISUAL_EFFECT_DISABLE;
-            return visual_effect_and_powered(VISUAL_EFFECT_ELECTRIC, 3, ENABLE_WAGON_POWER);
-        }
-
-//Power Language File Switch
-switch (FEAT_TRAINS, SELF, switch_Comeng_CL627A_3R_Liv0_buy_menu_additional_text, [
-                STORE_TEMP(
-                    string(STR_POWER_SOURCE_OHLE_DC)
-                    | (3620 << 16),
-                    0x100
-                ),
-                STORE_TEMP(
-                    string(STR_POWER_SOURCE_3RAIL)
-                    | (3620 << 16),
-                    0x101
-                ),
-        ]) {
-            return string(STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_TWO_SUBSTR, string(STR_POWER_BY_POWER_SOURCE_TWO_SOURCES), string(STR_INFO_COMENG_CL627A_3R));
-        }
-
-//Purchase Sprite Stacker
-switch (FEAT_TRAINS, SELF, switch_Comeng_CL627A_3R_Liv0_Purchase_Stack, [
-    STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 3 ? CB_FLAG_MORE_SPRITES : 0) | PALETTE_USE_DEFAULT, 0x100),
-    getbits(extra_callback_info1, 8, 8)
-    ]) {
-    0: spriteset_Comeng_CL627A_Liv0_Purchase;
-    1: switch_Couplers_8_Repeat_Purchase;
-	2: spriteset_Comeng_CL627A_Pantograph_Purchase;
-	3: spriteset_Comeng_CL627A_3RShoes_Purchase;
-}
-
-switch (FEAT_TRAINS, SELF, switch_Comeng_CL627A_3R_Liv0_Fw, [
-    STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 3 ? CB_FLAG_MORE_SPRITES : 0) | PALETTE_USE_DEFAULT, 0x100),
-    getbits(extra_callback_info1, 8, 8)
-    ]) {
-    0: spriteset_Comeng_CL627A_Liv0;
-	1: switch_Couplers_8_Repeat;
-    2: switch_Comeng_CL627A_Fw_railtype;
-	3: spriteset_Comeng_CL627A_3RShoes;
-}
-
-switch (FEAT_TRAINS, SELF, switch_Comeng_CL627A_3R_Liv0_r, [
-    STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 3 ? CB_FLAG_MORE_SPRITES : 0) | PALETTE_USE_DEFAULT, 0x100),
-    getbits(extra_callback_info1, 8, 8)
-    ]) {
-    0: spriteset_Comeng_CL627A_Liv0;
-	1: switch_Couplers_8_Repeat;
-    2: switch_Comeng_CL627A_r_railtype;
-	3: spriteset_Comeng_CL627A_3RShoes;
-}
-
-switch(FEAT_TRAINS, SELF, switch_Comeng_CL627A_3R_Liv0_position, vehicle_is_flipped) {
- 0: switch_Comeng_CL627A_3R_Liv0_Fw;
- 1: switch_Comeng_CL627A_3R_Liv0_r;
-}
-
-item(FEAT_TRAINS, Item_Comeng_CL627A_3R_Liv0, 59400) {
-    property {
-        sprite_id:                        SPRITE_ID_NEW_TRAIN;
-        refit_cost:                        0;
-        climates_available: (param_RealDisable == 0 && param_ThirdRailDisable == 0) ? ALL_CLIMATES : NO_CLIMATE;
-        bitmask_vehicle_info:            0;
-        misc_flags:                        bitmask(TRAIN_FLAG_2CC, TRAIN_FLAG_SPRITE_STACK); // <- Train Flag MU needed here
-
-        track_type:                        [OHLE_DC, SAA3];
-        running_cost_base:                RUNNING_COST_DIESEL;
-        engine_class:                     ENGINE_CLASS_ELECTRIC;
-//        ai_special_flag:                AI_FLAG_CARGO;
-        dual_headed:                    0; // <- Double Headed, so cab on each end
-
-        visual_effect_and_powered: VISUAL_EFFECT_ELECTRIC;
-
-        name:                            string(STR_NAME_COMENG_CL627A_3R);
-        introduction_date:                date(1983,1,1);
-        vehicle_life:                     50;
-        model_life:                        30;
-        length:                            8;
-
-        weight:                        119 ton;
-        speed:                            130 km/h;
-        power:                            3620 hp;
-        tractive_effort_coefficient:     0.3;
-        cost_factor:                     54;
-        running_cost_factor:             146;
-		cargo_capacity:                  0;
-		
-//        variant_group: Item_Comeng_CL627A_3R_Liv0;
-//        extra_flags:  bitmask (VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE, VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW, VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW, VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
-    }
-    graphics {
-        default: switch_Comeng_CL627A_3R_Liv0_position;
-//		sound_effect: switch_Modern_Electric_Horn;
-        purchase: switch_Comeng_CL627A_3R_Liv0_Purchase_Stack;
-        power: switch_Comeng_CL627A_3R_Liv0_power_0;
-        visual_effect_and_powered: switch_Comeng_CL627A_3R_Liv0_effect_spawn_model_and_powered;
-        additional_text: switch_Comeng_CL627A_3R_Liv0_buy_menu_additional_text;
-		reverse_build_probability: return 50;
-}
-}
-
-//Comeng_CL627A_3R_Liv0_TriBo
-//Change power output based on rail type
-switch (FEAT_TRAINS, SELF, switch_Comeng_CL627A_3R_Liv0_TriBo_power_1, tile_powers_railtype("OHLE_DC")) {
-            1: return 3620;
-        }
-        switch (FEAT_TRAINS, SELF, switch_Comeng_CL627A_3R_Liv0_TriBo_power_0, tile_powers_railtype("SAA3")) {
-            1: return 3620;
-                return switch_Comeng_CL627A_3R_Liv0_TriBo_power_1;
-        }
-
-//Change effects based on railtype
-switch (FEAT_TRAINS, SELF, switch_Comeng_CL627A_3R_Liv0_TriBo_effect_spawn_model_and_powered, [tile_powers_railtype("SAA3")]) {
-            1: return VISUAL_EFFECT_DISABLE;
-            return visual_effect_and_powered(VISUAL_EFFECT_ELECTRIC, 3, ENABLE_WAGON_POWER);
-        }
-
-//Power Language File Switch
-switch (FEAT_TRAINS, SELF, switch_Comeng_CL627A_3R_Liv0_TriBo_buy_menu_additional_text, [
-                STORE_TEMP(
-                    string(STR_POWER_SOURCE_OHLE_DC)
-                    | (3620 << 16),
-                    0x100
-                ),
-                STORE_TEMP(
-                    string(STR_POWER_SOURCE_3RAIL)
-                    | (3620 << 16),
-                    0x101
-                ),
-        ]) {
-            return string(STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_TWO_SUBSTR, string(STR_POWER_BY_POWER_SOURCE_TWO_SOURCES), string(STR_INFO_COMENG_CL627A_3R));
-        }
-
-//Purchase Sprite Stacker
-switch (FEAT_TRAINS, SELF, switch_Comeng_CL627A_3R_Liv0_TriBo_Purchase_Stack, [
-    STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 3 ? CB_FLAG_MORE_SPRITES : 0) | PALETTE_USE_DEFAULT, 0x100),
-    getbits(extra_callback_info1, 8, 8)
-    ]) {
-    0: spriteset_Comeng_CL627A_Liv0_TriBo_Purchase;
-    1: switch_Couplers_8_Repeat_Purchase;
-	2: spriteset_Comeng_CL627A_Pantograph_Purchase;
-	3: spriteset_Comeng_CL627A_3RShoes_Purchase;
-}
-
-switch (FEAT_TRAINS, SELF, switch_Comeng_CL627A_3R_Liv0_TriBo_Fw, [
-    STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 3 ? CB_FLAG_MORE_SPRITES : 0) | PALETTE_USE_DEFAULT, 0x100),
-    getbits(extra_callback_info1, 8, 8)
-    ]) {
-    0: spriteset_Comeng_CL627A_Liv0_TriBo;
-	1: switch_Couplers_8_Repeat;
-    2: switch_Comeng_CL627A_Fw_railtype;
-	3: spriteset_Comeng_CL627A_3RShoes;
-}
-
-switch (FEAT_TRAINS, SELF, switch_Comeng_CL627A_3R_Liv0_TriBo_r, [
-    STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 3 ? CB_FLAG_MORE_SPRITES : 0) | PALETTE_USE_DEFAULT, 0x100),
-    getbits(extra_callback_info1, 8, 8)
-    ]) {
-    0: spriteset_Comeng_CL627A_Liv0_TriBo;
-	1: switch_Couplers_8_Repeat;
-    2: switch_Comeng_CL627A_r_railtype;
-	3: spriteset_Comeng_CL627A_3RShoes;
-}
-
-switch(FEAT_TRAINS, SELF, switch_Comeng_CL627A_3R_Liv0_TriBo_position, vehicle_is_flipped) {
- 0: switch_Comeng_CL627A_3R_Liv0_TriBo_Fw;
- 1: switch_Comeng_CL627A_3R_Liv0_TriBo_r;
-}
-
-item(FEAT_TRAINS, Item_Comeng_CL627A_3R_Liv0_TriBo, 59500) {
-    property {
-        sprite_id:                        SPRITE_ID_NEW_TRAIN;
-        refit_cost:                        0;
-        climates_available: (param_RealDisable == 0 && param_ThirdRailDisable == 0) ? ALL_CLIMATES : NO_CLIMATE;
-        bitmask_vehicle_info:            0;
-        misc_flags:                        bitmask(TRAIN_FLAG_2CC, TRAIN_FLAG_SPRITE_STACK); // <- Train Flag MU needed here
-
-        track_type:                        [OHLE_DC, SAA3];
-        running_cost_base:                RUNNING_COST_DIESEL;
-        engine_class:                     ENGINE_CLASS_ELECTRIC;
-//        ai_special_flag:                AI_FLAG_CARGO;
-        dual_headed:                    0; // <- Double Headed, so cab on each end
-
-        visual_effect_and_powered: VISUAL_EFFECT_ELECTRIC;
-
-        name:                            string(STR_NAME_COMENG_CL627A_3R_TRIBO);
-        introduction_date:                date(1985,1,1);
-        vehicle_life:                     50;
-        model_life:                        30;
-        length:                            8;
-
-        weight:                        123 ton;
-        speed:                            130 km/h;
-        power:                            3620 hp;
-        tractive_effort_coefficient:     0.3;
-        cost_factor:                     54;
-        running_cost_factor:             146;
-		cargo_capacity:                  0;
-		
-//        variant_group: Item_Comeng_CL627A_3R_Liv0_TriBo;
-//        extra_flags:  bitmask (VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE, VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW, VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW, VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
-    }
-    graphics {
-        default: switch_Comeng_CL627A_3R_Liv0_TriBo_position;
-//		sound_effect: switch_Modern_Electric_Horn;
-        purchase: switch_Comeng_CL627A_3R_Liv0_TriBo_Purchase_Stack;
-        power: switch_Comeng_CL627A_3R_Liv0_TriBo_power_0;
-        visual_effect_and_powered: switch_Comeng_CL627A_3R_Liv0_TriBo_effect_spawn_model_and_powered;
-        additional_text: switch_Comeng_CL627A_3R_Liv0_TriBo_buy_menu_additional_text;
-		reverse_build_probability: return 50;
 }
 }
 
