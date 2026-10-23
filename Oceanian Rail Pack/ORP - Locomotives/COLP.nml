@@ -4530,6 +4530,169 @@ item(FEAT_TRAINS, Item_Clyde_JT22HC2_BG_Liv0, Clyde_JT22HC2_Liv0_BG_ID) {
 }
 }
 
+sort(FEAT_TRAINS, [Item_Clyde_JT22HC2_Liv0, Item_Clyde_JT22HC2_BG_Liv0, Item_Clyde_AJT32BH_Liv0, Item_Clyde_AJT32BH_BG_Liv0]);
+
+//ID
+const Clyde_AJT32BH_ID = 3000;
+//introduction_date
+const Clyde_AJT32BH_IntroDate = date(1993, 1, 1);
+//speed
+const Clyde_AJT32BH_Speed = 180;
+//cost_factor
+const Clyde_AJT32BH_CostFactor = 71;
+//running_cost_factor
+const Clyde_AJT32BH_RunningCostFactor = 189;
+//power
+const Clyde_AJT32BH_Power = 5000;
+//weight
+const Clyde_AJT32BH_Weight = 140;
+//length
+const Clyde_AJT32BH_Length = 6;
+
+//Clyde_AJT32BH_Liv0
+spriteset(spriteset_Clyde_AJT32BH_Liv0_Purchase,   "gfx/Clyde_AJT32BH_Liv0.png") {template_purchase_12(7, 21)}
+spriteset(spriteset_Clyde_AJT32BH_Liv0,   "gfx/Clyde_AJT32BH_Liv0.png") {template_6(7, 39)}
+spriteset(spriteset_Clyde_AJT32BH_Liv0_r,   "gfx/Clyde_AJT32BH_Liv0.png") {template_6_r(7, 39)}
+
+//Purchase Sprite Stacker
+switch (FEAT_TRAINS, SELF, switch_Clyde_AJT32BH_Liv0_Purchase_Stack, [
+    STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 1 ? CB_FLAG_MORE_SPRITES : 0) | PALETTE_USE_DEFAULT, 0x100),
+    getbits(extra_callback_info1, 8, 8)
+    ]) {
+    0: spriteset_Clyde_AJT32BH_Liv0_Purchase;
+    1: switch_Couplers_12_Repeat_Purchase;
+}
+
+//Forward Stack
+switch (FEAT_TRAINS, SELF, switch_Clyde_AJT32BH_Liv0_Fw_Stack, [
+    STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 1 ? CB_FLAG_MORE_SPRITES : 0) | PALETTE_USE_DEFAULT, 0x100),
+    getbits(extra_callback_info1, 8, 8)
+    ]) {
+    0: spriteset_Clyde_AJT32BH_Liv0;
+    1: switch_Couplers_6;
+}
+
+//Rear Stack
+switch (FEAT_TRAINS, SELF, switch_Clyde_AJT32BH_Liv0_Rw_Stack, [
+    STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 1 ? CB_FLAG_MORE_SPRITES : 0) | PALETTE_USE_DEFAULT, 0x100),
+    getbits(extra_callback_info1, 8, 8)
+    ]) {
+    0: spriteset_Clyde_AJT32BH_Liv0_r;
+    1: switch_Couplers_6_r;
+}
+
+switch(FEAT_TRAINS, SELF, switch_Clyde_AJT32BH_Liv0_position, position_in_articulated_veh) {
+ 0: switch_Clyde_AJT32BH_Liv0_Fw_Stack;
+ 1: switch_Clyde_AJT32BH_Liv0_Rw_Stack;
+}
+
+// Articulated part callback
+switch(FEAT_TRAINS, SELF, switch_Clyde_AJT32BH_Liv0_articulated_part, extra_callback_info1) {
+    0..1: return Item_Clyde_AJT32BH_Liv0;
+    return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
+}
+
+const Clyde_AJT32BH_Liv0_ID = (Clyde_AJT32BH_ID + Liv0_ID);
+
+item(FEAT_TRAINS, Item_Clyde_AJT32BH_Liv0, Clyde_AJT32BH_Liv0_ID) {
+    property {
+        sprite_id:                      SPRITE_ID_NEW_TRAIN;
+		misc_flags:                     bitmask(TRAIN_FLAG_2CC, TRAIN_FLAG_SPRITE_STACK); // <- Train Flag MU needed here
+		track_type:                     RAIL;
+		running_cost_base:              RUNNING_COST_DIESEL;
+        engine_class:                   ENGINE_CLASS_DIESEL;
+//        ai_special_flag:                AI_FLAG_PASSENGER;
+		bitmask_vehicle_info:           0;
+	
+		climates_available:             (param_ProposalDisable == 0) ? ALL_CLIMATES : NO_CLIMATE;
+		visual_effect_and_powered: 		visual_effect_and_powered(VISUAL_EFFECT_DIESEL, 3, DISABLE_WAGON_POWER);
+
+        name:                           string(STR_NAME_CLYDE_AJT32BH);
+		
+		refit_cost:                     0;
+        dual_headed:                    0;
+        air_drag_coefficient:           0.08;
+        model_life:                     30;
+		vehicle_life:                   50;
+		tractive_effort_coefficient:	0.3;
+		
+        introduction_date:              Clyde_AJT32BH_IntroDate;		
+		length:                         Clyde_AJT32BH_Length;
+		
+		speed:							Clyde_AJT32BH_Speed km/h;
+		cost_factor:					Clyde_AJT32BH_CostFactor;
+		running_cost_factor:			Clyde_AJT32BH_RunningCostFactor;
+		cargo_capacity: 				0;
+		power:							Clyde_AJT32BH_Power;
+		weight:							Clyde_AJT32BH_Weight;
+		
+//        variant_group: 					Item_Clyde_AJT32BH_Liv0;
+//        extra_flags:  					bitmask (VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE, VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW, VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW, VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+    }
+    graphics {
+		default: 						switch_Clyde_AJT32BH_Liv0_position;
+//		sound_effect: 					switch_EMD_12_645;
+        purchase: 						switch_Clyde_AJT32BH_Liv0_Purchase_Stack;
+        additional_text: 				string(STR_INFO_CLYDE_AJT32BH);
+//		reverse_build_probability: 		return 50;
+		articulated_part: 				switch_Clyde_AJT32BH_Liv0_articulated_part;
+}
+}
+
+const Clyde_AJT32BH_Liv0_BG_ID = (Clyde_AJT32BH_Liv0_ID + 50);
+
+// Articulated part callback
+switch(FEAT_TRAINS, SELF, switch_Clyde_AJT32BH_BG_Liv0_articulated_part, extra_callback_info1) {
+    0..1: return Item_Clyde_AJT32BH_BG_Liv0;
+    return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
+}
+
+//Clyde_AJT32BH_BG_Liv0
+item(FEAT_TRAINS, Item_Clyde_AJT32BH_BG_Liv0, Clyde_AJT32BH_Liv0_BG_ID) {
+    property {
+        sprite_id:                      SPRITE_ID_NEW_TRAIN;
+		misc_flags:                     bitmask(TRAIN_FLAG_2CC, TRAIN_FLAG_SPRITE_STACK); // <- Train Flag MU needed here
+		track_type:                     BG_RAIL_ONLY;
+		running_cost_base:              RUNNING_COST_DIESEL;
+        engine_class:                   ENGINE_CLASS_DIESEL;
+//        ai_special_flag:                AI_FLAG_PASSENGER;
+		bitmask_vehicle_info:           0;
+	
+		climates_available:             (param_ProposalDisable == 0) ? ALL_CLIMATES : NO_CLIMATE;
+		visual_effect_and_powered: 		visual_effect_and_powered(VISUAL_EFFECT_DIESEL, 3, DISABLE_WAGON_POWER);
+
+        name:                           string(STR_NAME_CLYDE_AJT32BH_BG);
+		
+		refit_cost:                     0;
+        dual_headed:                    0;
+        air_drag_coefficient:           0.08;
+        model_life:                     30;
+		vehicle_life:                   50;
+		tractive_effort_coefficient:	0.3;
+		
+        introduction_date:              Clyde_AJT32BH_IntroDate;		
+		length:                         Clyde_AJT32BH_Length;
+		
+		speed:							Clyde_AJT32BH_Speed km/h;
+		cost_factor:					Clyde_AJT32BH_CostFactor;
+		running_cost_factor:			Clyde_AJT32BH_RunningCostFactor;
+		cargo_capacity: 				0;
+		power:							Clyde_AJT32BH_Power;
+		weight:							Clyde_AJT32BH_Weight;
+		
+//        variant_group: 					Item_Clyde_AJT32BH_Liv0_BG;
+//        extra_flags:  					bitmask (VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE, VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW, VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW, VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+    }
+    graphics {
+		default: 						switch_Clyde_AJT32BH_Liv0_position;
+//		sound_effect: 					switch_EMD_12_645;
+        purchase: 						switch_Clyde_AJT32BH_Liv0_Purchase_Stack;
+        additional_text: 				string(STR_INFO_CLYDE_AJT32BH_BG);
+//		reverse_build_probability: 		return 50;
+		articulated_part: 				switch_Clyde_AJT32BH_BG_Liv0_articulated_part;
+}
+}
+
 //ID
 const EE_SE26_ID = 8400;
 //introduction_date
@@ -10098,7 +10261,7 @@ item(FEAT_TRAINS, Item_Clyde_GT26C_Liv0, Clyde_GT26C_Liv0_ID) {
 sort(FEAT_TRAINS, [Item_Clyde_GT26CW_Liv0, Item_Clyde_A32D_Liv0]);
 
 //ID
-const Clyde_A32D_ID = 2000;
+const Clyde_A32D_ID = 3500;
 //introduction_date
 const Clyde_A32D_IntroDate = date(1968, 1, 1);
 //speed

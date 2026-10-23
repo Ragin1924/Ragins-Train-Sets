@@ -138,6 +138,11 @@ STR_INFO_CLYDE_JT22HC2_BG:{BLACK}Role: {GOLD}Passenger {}{BLACK}Gauge: {GOLD}Bro
 STR_NAME_CLYDE_AJT32HB2:Clyde-EMD AJT32HB2
 STR_INFO_CLYDE_AJT32HB2:{BLACK}Role: {GOLD}Passenger {}{BLACK}Power: {BROWN}Diesel {}{BLACK}Based on: {GOLD}Fictional, but inspired by proposed Bo-Bo HPT Locomotive
 
+STR_NAME_CLYDE_AJT32BH:Clyde-EMD AJT32BH
+STR_INFO_CLYDE_AJT32BH:{BLACK}Role: {GOLD}Passenger {}{BLACK}Gauge: {GOLD}Standard Gauge {}{BLACK}Power: {BROWN}Diesel {}{BLACK}Based on: {GOLD}Fictional, but inspired by proposed Bo-Bo HPT Locomotive
+STR_NAME_CLYDE_AJT32BH_BG:Clyde-EMD AJT32BH
+STR_INFO_CLYDE_AJT32BH_BG:{BLACK}Role: {GOLD}Passenger {}{BLACK}Gauge: {GOLD}Broad Gauge {}{BLACK}Power: {BROWN}Diesel {}{BLACK}Based on: {GOLD}Fictional, but inspired by proposed Bo-Bo HPT Locomotive
+
 
 
 STR_NAME_EE_SE26:English-Electric SE26
