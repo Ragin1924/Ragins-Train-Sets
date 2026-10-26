@@ -2289,7 +2289,7 @@ switch(FEAT_TRAINS, SELF, switch_Mail_Early_4Wheel_Liv0_position, vehicle_is_fli
  1: switch_Mail_Early_4Wheel_Liv0_rearcheck2;
 }
 
-const Mail_Early_4Wheel_NG_Liv0_ID = (Early_4Wheel_Liv0_ID_NG + 50);
+const Mail_Early_4Wheel_NG_Liv0_ID = (Early_4Wheel_Liv0_ID_NG + 15);
 
 item (FEAT_TRAINS, Item_Mail_Early_4Wheel_NG_Liv0, Mail_Early_4Wheel_NG_Liv0_ID) {
     property {
@@ -2334,7 +2334,7 @@ item (FEAT_TRAINS, Item_Mail_Early_4Wheel_NG_Liv0, Mail_Early_4Wheel_NG_Liv0_ID)
 }
 }
 
-const Mail_Early_4Wheel_Liv0_ID = (Early_4Wheel_Liv0_ID + 50);
+const Mail_Early_4Wheel_Liv0_ID = (Early_4Wheel_Liv0_ID + 15);
 
 item (FEAT_TRAINS, Item_Mail_Early_4Wheel_Liv0, Mail_Early_4Wheel_Liv0_ID) {
     property {
@@ -2379,7 +2379,7 @@ item (FEAT_TRAINS, Item_Mail_Early_4Wheel_Liv0, Mail_Early_4Wheel_Liv0_ID) {
 }
 }
 
-const Mail_Early_4Wheel_BG_Liv0_ID = (Early_4Wheel_Liv0_ID_BG + 50);
+const Mail_Early_4Wheel_BG_Liv0_ID = (Early_4Wheel_Liv0_ID_BG + 15);
 
 item (FEAT_TRAINS, Item_Mail_Early_4Wheel_BG_Liv0, Mail_Early_4Wheel_BG_Liv0_ID) {
     property {
@@ -7688,7 +7688,7 @@ item (FEAT_TRAINS, Item_Mail_VR_EType_Liv3, Mail_VR_EType_Liv3_ID) {
 }
 }
 
-const Mail_VR_EType_Liv3_BG_ID = (VR_EType_BG_Liv3_ID + 50);
+const Mail_VR_EType_Liv3_BG_ID = (VR_EType_BG_Liv3_ID + 15);
 
 item (FEAT_TRAINS, Item_Mail_VR_EType_BG_Liv3, Mail_VR_EType_Liv3_BG_ID) {
     property {
@@ -8370,7 +8370,7 @@ item (FEAT_TRAINS, Item_Mail_VR_SType_Liv0, Mail_VR_SType_Liv0_ID) {
 }
 }
 
-const Mail_VR_SType_Liv0_BG_ID = (VR_SType_BG_Liv0_ID + 50);
+const Mail_VR_SType_Liv0_BG_ID = (VR_SType_BG_Liv0_ID + 15);
 
 item (FEAT_TRAINS, Item_Mail_VR_SType_BG_Liv0, Mail_VR_SType_Liv0_BG_ID) {
     property {
@@ -9617,7 +9617,7 @@ switch(FEAT_TRAINS, SELF, switch_Mail_Comeng_SunLanderCoach_Liv1_position, vehic
  1: switch_Mail_Comeng_SunLanderCoach_Liv1_rearcheck2;
 }
 
-const Mail_Comeng_SunLanderCoach_Liv1_ID = (Comeng_SunLanderCoach_Liv1_ID + 50);
+const Mail_Comeng_SunLanderCoach_Liv1_ID = (Comeng_SunLanderCoach_Liv1_ID + 15);
 
 item (FEAT_TRAINS, Item_Mail_Comeng_SunLanderCoach_Liv1, Mail_Comeng_SunLanderCoach_Liv1_ID) {
     property {
@@ -9897,7 +9897,7 @@ item (FEAT_TRAINS, Item_Mail_VR_ZType_Liv0, Mail_VR_ZType_Liv0_ID) {
 }
 }
 
-const Mail_VR_ZType_Liv0_BG_ID = (VR_ZType_BG_Liv0_ID + 50);
+const Mail_VR_ZType_Liv0_BG_ID = (VR_ZType_BG_Liv0_ID + 15);
 
 item (FEAT_TRAINS, Item_Mail_VR_ZType_BG_Liv0, Mail_VR_ZType_Liv0_BG_ID) {
     property {
@@ -10111,7 +10111,7 @@ switch(FEAT_TRAINS, SELF, switch_Mail_VR_ZType_Liv1_position, vehicle_is_flipped
  1: switch_Mail_VR_ZType_Liv1_rearcheck2;
 }
 
-const Mail_VR_ZType_Liv1_ID = (VR_ZType_Liv1_ID + 50);
+const Mail_VR_ZType_Liv1_ID = (VR_ZType_Liv1_ID + 15);
 
 item (FEAT_TRAINS, Item_Mail_VR_ZType_Liv1, Mail_VR_ZType_Liv1_ID) {
     property {
@@ -10156,7 +10156,7 @@ item (FEAT_TRAINS, Item_Mail_VR_ZType_Liv1, Mail_VR_ZType_Liv1_ID) {
 }
 }
 
-const Mail_VR_ZType_Liv1_BG_ID = (VR_ZType_BG_Liv1_ID + 50);
+const Mail_VR_ZType_Liv1_BG_ID = (VR_ZType_BG_Liv1_ID + 15);
 
 item (FEAT_TRAINS, Item_Mail_VR_ZType_BG_Liv1, Mail_VR_ZType_Liv1_BG_ID) {
     property {
@@ -10370,7 +10370,7 @@ switch(FEAT_TRAINS, SELF, switch_Mail_VR_ZType_Liv2_position, vehicle_is_flipped
  1: switch_Mail_VR_ZType_Liv2_rearcheck2;
 }
 
-const Mail_VR_ZType_Liv2_ID = (VR_ZType_Liv2_ID + 50);
+const Mail_VR_ZType_Liv2_ID = (VR_ZType_Liv2_ID + 15);
 
 item (FEAT_TRAINS, Item_Mail_VR_ZType_Liv2, Mail_VR_ZType_Liv2_ID) {
     property {
@@ -10415,7 +10415,7 @@ item (FEAT_TRAINS, Item_Mail_VR_ZType_Liv2, Mail_VR_ZType_Liv2_ID) {
 }
 }
 
-const Mail_VR_ZType_Liv2_BG_ID = (VR_ZType_BG_Liv2_ID + 50);
+const Mail_VR_ZType_Liv2_BG_ID = (VR_ZType_BG_Liv2_ID + 15);
 
 item (FEAT_TRAINS, Item_Mail_VR_ZType_BG_Liv2, Mail_VR_ZType_Liv2_BG_ID) {
     property {
@@ -10709,7 +10709,7 @@ item (FEAT_TRAINS, Item_Mail_Comeng_AuroraCoach_Liv0, Mail_Comeng_AuroraCoach_Li
 }
 }
 
-const Mail_Comeng_AuroraCoach_Liv0_BG_ID = (Comeng_AuroraCoach_BG_Liv0_ID + 50);
+const Mail_Comeng_AuroraCoach_Liv0_BG_ID = (Comeng_AuroraCoach_BG_Liv0_ID + 15);
 
 item (FEAT_TRAINS, Item_Mail_Comeng_AuroraCoach_BG_Liv0, Mail_Comeng_AuroraCoach_Liv0_BG_ID) {
     property {
@@ -10986,7 +10986,7 @@ item (FEAT_TRAINS, Item_Mail_Comeng_TranscontinentalCoachMkII_Liv0, Mail_Comeng_
 }
 }
 
-const Mail_Comeng_TranscontinentalCoachMkII_Liv0_BG_ID = (Comeng_TranscontinentalCoachMkII_BG_Liv0_ID + 50);
+const Mail_Comeng_TranscontinentalCoachMkII_Liv0_BG_ID = (Comeng_TranscontinentalCoachMkII_BG_Liv0_ID + 15);
 
 item (FEAT_TRAINS, Item_Mail_Comeng_TranscontinentalCoachMkII_BG_Liv0, Mail_Comeng_TranscontinentalCoachMkII_Liv0_BG_ID) {
     property {
@@ -11504,7 +11504,7 @@ item (FEAT_TRAINS, Item_Mail_Comeng_IntrastateCoach_Liv0, Mail_Comeng_Intrastate
 }
 }
 
-const Mail_Comeng_IntrastateCoach_Liv0_BG_ID = (Comeng_IntrastateCoach_BG_Liv0_ID + 50);
+const Mail_Comeng_IntrastateCoach_Liv0_BG_ID = (Comeng_IntrastateCoach_BG_Liv0_ID + 15);
 
 item (FEAT_TRAINS, Item_Mail_Comeng_IntrastateCoach_BG_Liv0, Mail_Comeng_IntrastateCoach_Liv0_BG_ID) {
     property {
@@ -11774,7 +11774,7 @@ item (FEAT_TRAINS, Item_Mail_VLine_RType_Liv0, Mail_VLine_RType_Liv0_ID) {
 }
 }
 
-const Mail_VLine_RType_Liv0_BG_ID = (Mail_VLine_RType_Liv0_ID + 50);
+const Mail_VLine_RType_Liv0_BG_ID = (Mail_VLine_RType_Liv0_ID + 15);
 
 item (FEAT_TRAINS, Item_Mail_VLine_RType_BG_Liv0, Mail_VLine_RType_Liv0_BG_ID) {
     property {
@@ -12025,7 +12025,7 @@ item (FEAT_TRAINS, Item_Mail_VLine_RType_Liv1, Mail_VLine_RType_Liv1_ID) {
 }
 }
 
-const Mail_VLine_RType_Liv1_BG_ID = (Mail_VLine_RType_Liv1_ID + 50);
+const Mail_VLine_RType_Liv1_BG_ID = (Mail_VLine_RType_Liv1_ID + 15);
 
 item (FEAT_TRAINS, Item_Mail_VLine_RType_BG_Liv1, Mail_VLine_RType_Liv1_BG_ID) {
     property {
@@ -12302,7 +12302,7 @@ item (FEAT_TRAINS, Item_Mail_BREL_Mk3_Liv0, Mail_BREL_Mk3_Liv0_ID) {
 }
 }
 
-const Mail_BREL_Mk3_Liv0_BG_ID = (BREL_Mk3_BG_Liv0_ID + 50);
+const Mail_BREL_Mk3_Liv0_BG_ID = (BREL_Mk3_BG_Liv0_ID + 15);
 
 item (FEAT_TRAINS, Item_Mail_BREL_Mk3_BG_Liv0, Mail_BREL_Mk3_Liv0_BG_ID) {
     property {
@@ -12701,7 +12701,7 @@ item (FEAT_TRAINS, Item_Mail_BREL_Mk3_Liv1, Mail_BREL_Mk3_Liv1_ID) {
 }
 }
 
-const Mail_BREL_Mk3_Liv1_BG_ID = (BREL_Mk3_BG_Liv1_ID + 50);
+const Mail_BREL_Mk3_Liv1_BG_ID = (BREL_Mk3_BG_Liv1_ID + 15);
 
 item (FEAT_TRAINS, Item_Mail_BREL_Mk3_BG_Liv1, Mail_BREL_Mk3_Liv1_BG_ID) {
     property {
