@@ -20777,6 +20777,284 @@ item(FEAT_TRAINS, Item_Clyde_JDAE34C_BG_Liv0, Clyde_JDAE34C_BG_Liv0_ID) {
 }
 }
 
+//ID
+const Bombardier_AusTRAXX_ID = 35800;
+//introduction_date
+const Bombardier_AusTRAXX_IntroDate = date(2005, 1, 1);
+//speed
+const Bombardier_AusTRAXX_Speed = 160;
+//cost_factor
+const Bombardier_AusTRAXX_CostFactor = 75;
+//running_cost_factor
+const Bombardier_AusTRAXX_RunningCostFactor = 202;
+//power
+const Bombardier_AusTRAXX_Power_AC = 7500;
+const Bombardier_AusTRAXX_Power_DC = 5400;
+//weight
+const Bombardier_AusTRAXX_Weight = 85;
+//length
+const Bombardier_AusTRAXX_Length = 8;
+
+//Change power output based on rail type
+switch (FEAT_TRAINS, SELF, switch_Bombardier_AusTRAXX_Liv0_power_1, tile_powers_railtype("OHLE_DC")) {
+            1: return Bombardier_AusTRAXX_Power_DC;
+        }
+        switch (FEAT_TRAINS, SELF, switch_Bombardier_AusTRAXX_Liv0_power_0, tile_powers_railtype("OHLE_AC")) {
+            1: return Bombardier_AusTRAXX_Power_AC;
+                return switch_Bombardier_AusTRAXX_Liv0_power_1;
+        }
+
+//Power Language File Switch
+//Standard Gauge
+switch (FEAT_TRAINS, SELF, switch_Bombardier_AusTRAXX_Liv0_buy_menu_additional_text, [
+                STORE_TEMP(
+                    string(STR_POWER_SOURCE_OHLE_DC)
+                    | (Bombardier_AusTRAXX_Power_DC << 16),
+                    0x100
+                ),
+                STORE_TEMP(
+                    string(STR_POWER_SOURCE_OHLE_AC)
+                    | (Bombardier_AusTRAXX_Power_AC << 16),
+                    0x101
+                ),
+        ]) {
+            return string(STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_TWO_SUBSTR, string(STR_POWER_BY_POWER_SOURCE_TWO_SOURCES), string(STR_INFO_BOMBARDIER_AUSTRAXX));
+        }
+
+//Broad Gauge
+switch (FEAT_TRAINS, SELF, switch_Bombardier_AusTRAXX_BG_Liv0_buy_menu_additional_text, [
+                STORE_TEMP(
+                    string(STR_POWER_SOURCE_OHLE_DC)
+                    | (Bombardier_AusTRAXX_Power_DC << 16),
+                    0x100
+                ),
+                STORE_TEMP(
+                    string(STR_POWER_SOURCE_OHLE_AC)
+                    | (Bombardier_AusTRAXX_Power_AC << 16),
+                    0x101
+                ),
+        ]) {
+            return string(STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_TWO_SUBSTR, string(STR_POWER_BY_POWER_SOURCE_TWO_SOURCES), string(STR_INFO_BOMBARDIER_AUSTRAXX_BG));
+        }
+
+
+spriteset(spriteset_Bombardier_AusTRAXX_Pantograph_Purchase,   "gfx/Bombardier_AusTRAXX_Pantographs.png") {template_purchase_8(7, 21)}
+spriteset(spriteset_Bombardier_AusTRAXX_PantoDown,   "gfx/Bombardier_AusTRAXX_Pantographs.png") {template_8(7, 39)}
+//AC Pantograph
+spriteset(spriteset_Bombardier_AusTRAXX_PantoUp_AC,   "gfx/Bombardier_AusTRAXX_Pantographs.png") {template_8(7, 69)}
+//DC Pantograph
+spriteset(spriteset_Bombardier_AusTRAXX_PantoUp,   "gfx/Bombardier_AusTRAXX_Pantographs.png") {template_8(187, 69)}
+spriteset(spriteset_Bombardier_AusTRAXX_PantoUp_r,   "gfx/Bombardier_AusTRAXX_Pantographs.png") {template_8(187, 99)}
+
+switch(FEAT_TRAINS, SELF, switch_Bombardier_AusTRAXX_Pantograph_PantoUp, train_is_driving_backwards) {
+ 0: spriteset_Bombardier_AusTRAXX_PantoUp;
+ 1: spriteset_Bombardier_AusTRAXX_PantoUp_r;
+}
+
+switch(FEAT_TRAINS, SELF, switch_Bombardier_AusTRAXX_Pantograph_PantoUp_r, train_is_driving_backwards) {
+ 0: spriteset_Bombardier_AusTRAXX_PantoUp_r;
+ 1: spriteset_Bombardier_AusTRAXX_PantoUp;
+}
+
+//Railtype checks
+//Standard Gauge
+switch(FEAT_TRAINS, SELF, switch_Bombardier_AusTRAXX_Fw_railtype_DC, tile_powers_railtype("OHLE_DC")) {
+ 0: spriteset_Bombardier_AusTRAXX_PantoDown;
+ 1: switch_Bombardier_AusTRAXX_Pantograph_PantoUp;
+}
+
+switch(FEAT_TRAINS, SELF, switch_Bombardier_AusTRAXX_r_railtype_DC, tile_powers_railtype("OHLE_DC")) {
+ 0: spriteset_Bombardier_AusTRAXX_PantoDown;
+ 1: switch_Bombardier_AusTRAXX_Pantograph_PantoUp_r;
+}
+
+switch(FEAT_TRAINS, SELF, switch_Bombardier_AusTRAXX_Fw_railtype_AC, tile_powers_railtype("OHLE_AC")) {
+ 0: switch_Bombardier_AusTRAXX_Fw_railtype_DC;
+ 1: spriteset_Bombardier_AusTRAXX_PantoUp_AC;
+}
+
+switch(FEAT_TRAINS, SELF, switch_Bombardier_AusTRAXX_r_railtype_AC, tile_powers_railtype("OHLE_AC")) {
+ 0: switch_Bombardier_AusTRAXX_r_railtype_DC;
+ 1: spriteset_Bombardier_AusTRAXX_PantoUp_AC;
+}
+
+//Broad Gauge
+switch(FEAT_TRAINS, SELF, switch_Bombardier_AusTRAXX_BG_Fw_railtype_DC, tile_powers_railtype("BG_RAIL_OHLE_DC")) {
+ 0: spriteset_Bombardier_AusTRAXX_PantoDown;
+ 1: switch_Bombardier_AusTRAXX_Pantograph_PantoUp;
+}
+
+switch(FEAT_TRAINS, SELF, switch_Bombardier_AusTRAXX_BG_r_railtype_DC, tile_powers_railtype("BG_RAIL_OHLE_DC")) {
+ 0: spriteset_Bombardier_AusTRAXX_PantoDown;
+ 1: switch_Bombardier_AusTRAXX_Pantograph_PantoUp_r;
+}
+
+switch(FEAT_TRAINS, SELF, switch_Bombardier_AusTRAXX_BG_Fw_railtype_AC, tile_powers_railtype("BG_RAIL_OHLE_AC")) {
+ 0: switch_Bombardier_AusTRAXX_BG_Fw_railtype_DC;
+ 1: spriteset_Bombardier_AusTRAXX_PantoUp_AC;
+}
+
+switch(FEAT_TRAINS, SELF, switch_Bombardier_AusTRAXX_BG_r_railtype_AC, tile_powers_railtype("BG_RAIL_OHLE_AC")) {
+ 0: switch_Bombardier_AusTRAXX_BG_r_railtype_DC;
+ 1: spriteset_Bombardier_AusTRAXX_PantoUp_AC;
+}
+
+//Bombardier_AusTRAXX_Liv0
+spriteset(spriteset_Bombardier_AusTRAXX_Liv0_Purchase,   "gfx/Bombardier_AusTRAXX_Liv0.png") {template_purchase_8(7, 21)}
+spriteset(spriteset_Bombardier_AusTRAXX_Liv0,   "gfx/Bombardier_AusTRAXX_Liv0.png") {template_8(7, 39)}
+
+//Purchase Sprite Stacker
+switch (FEAT_TRAINS, SELF, switch_Bombardier_AusTRAXX_Liv0_Purchase_Stack, [
+    STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 2 ? CB_FLAG_MORE_SPRITES : 0) | PALETTE_USE_DEFAULT, 0x100),
+    getbits(extra_callback_info1, 8, 8)
+    ]) {
+    0: spriteset_Bombardier_AusTRAXX_Liv0_Purchase;
+    1: switch_Couplers_8_Repeat_Purchase;
+	2: spriteset_Bombardier_AusTRAXX_Pantograph_Purchase;
+}
+
+switch (FEAT_TRAINS, SELF, switch_Bombardier_AusTRAXX_Liv0_Fw, [
+    STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 2 ? CB_FLAG_MORE_SPRITES : 0) | PALETTE_USE_DEFAULT, 0x100),
+    getbits(extra_callback_info1, 8, 8)
+    ]) {
+    0: spriteset_Bombardier_AusTRAXX_Liv0;
+	1: switch_Couplers_8_Repeat;
+    2: switch_Bombardier_AusTRAXX_Fw_railtype_AC;
+}
+
+switch (FEAT_TRAINS, SELF, switch_Bombardier_AusTRAXX_Liv0_r, [
+    STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 2 ? CB_FLAG_MORE_SPRITES : 0) | PALETTE_USE_DEFAULT, 0x100),
+    getbits(extra_callback_info1, 8, 8)
+    ]) {
+    0: spriteset_Bombardier_AusTRAXX_Liv0;
+	1: switch_Couplers_8_Repeat;
+    2: switch_Bombardier_AusTRAXX_r_railtype_AC;
+}
+
+switch(FEAT_TRAINS, SELF, switch_Bombardier_AusTRAXX_Liv0_position, vehicle_is_flipped) {
+ 0: switch_Bombardier_AusTRAXX_Liv0_Fw;
+ 1: switch_Bombardier_AusTRAXX_Liv0_r;
+}
+
+const Bombardier_AusTRAXX_Liv0_ID = (Bombardier_AusTRAXX_ID + Liv0_ID);
+
+item(FEAT_TRAINS, Item_Bombardier_AusTRAXX_Liv0, Bombardier_AusTRAXX_Liv0_ID) {
+    property {
+        sprite_id:                      SPRITE_ID_NEW_TRAIN;
+		misc_flags:                     bitmask(TRAIN_FLAG_2CC, TRAIN_FLAG_SPRITE_STACK); // <- Train Flag MU needed here
+		track_type:                     [OHLE_DC, OHLE_AC];
+		running_cost_base:              RUNNING_COST_DIESEL;
+        engine_class:                   ENGINE_CLASS_ELECTRIC;
+//        ai_special_flag:                AI_FLAG_PASSENGER;
+		bitmask_vehicle_info:           0;
+	
+		climates_available:             (param_FictionalDisable == 0) ? ALL_CLIMATES : NO_CLIMATE;
+		visual_effect_and_powered: 		VISUAL_EFFECT_ELECTRIC;
+
+        name:                           string(STR_NAME_BOMBARDIER_AUSTRAXX);
+		
+		refit_cost:                     0;
+        dual_headed:                    0;
+        air_drag_coefficient:           0.08;
+        model_life:                     30;
+		vehicle_life:                   50;
+		tractive_effort_coefficient:	0.3;
+		
+        introduction_date:              Bombardier_AusTRAXX_IntroDate;		
+		length:                         Bombardier_AusTRAXX_Length;
+		
+		speed:							Bombardier_AusTRAXX_Speed km/h;
+		cost_factor:					Bombardier_AusTRAXX_CostFactor;
+		running_cost_factor:			Bombardier_AusTRAXX_RunningCostFactor;
+		cargo_capacity: 				0;
+		power:							1 hp;
+		weight:							Bombardier_AusTRAXX_Weight;
+		
+//        variant_group: 					Item_Bombardier_AusTRAXX_Liv0;
+//        extra_flags:  					bitmask (VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE, VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW, VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW, VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+    }
+    graphics {
+        default: 						switch_Bombardier_AusTRAXX_Liv0_position;
+//		sound_effect:					 switch_Modern_Electric_Horn;
+        purchase: 						switch_Bombardier_AusTRAXX_Liv0_Purchase_Stack;
+        additional_text: 				switch_Bombardier_AusTRAXX_Liv0_buy_menu_additional_text;
+		reverse_build_probability:		return 50;
+		power: 							switch_Bombardier_AusTRAXX_Liv0_power_0;
+}
+}
+
+
+//Bombardier_AusTRAXX_BG_Liv0
+switch (FEAT_TRAINS, SELF, switch_Bombardier_AusTRAXX_BG_Liv0_Fw, [
+    STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 2 ? CB_FLAG_MORE_SPRITES : 0) | PALETTE_USE_DEFAULT, 0x100),
+    getbits(extra_callback_info1, 8, 8)
+    ]) {
+    0: spriteset_Bombardier_AusTRAXX_Liv0;
+	1: switch_Couplers_8_Repeat;
+    2: switch_Bombardier_AusTRAXX_BG_Fw_railtype_AC;
+}
+
+switch (FEAT_TRAINS, SELF, switch_Bombardier_AusTRAXX_BG_Liv0_r, [
+    STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 2 ? CB_FLAG_MORE_SPRITES : 0) | PALETTE_USE_DEFAULT, 0x100),
+    getbits(extra_callback_info1, 8, 8)
+    ]) {
+    0: spriteset_Bombardier_AusTRAXX_Liv0;
+	1: switch_Couplers_8_Repeat;
+    2: switch_Bombardier_AusTRAXX_BG_r_railtype_AC;
+}
+
+switch(FEAT_TRAINS, SELF, switch_Bombardier_AusTRAXX_BG_Liv0_position, vehicle_is_flipped) {
+ 0: switch_Bombardier_AusTRAXX_BG_Liv0_Fw;
+ 1: switch_Bombardier_AusTRAXX_BG_Liv0_r;
+}
+
+const Bombardier_AusTRAXX_BG_Liv0_ID = (Bombardier_AusTRAXX_Liv0_ID + 50);
+
+item(FEAT_TRAINS, Item_Bombardier_AusTRAXX_BG_Liv0, Bombardier_AusTRAXX_BG_Liv0_ID) {
+    property {
+        sprite_id:                      SPRITE_ID_NEW_TRAIN;
+		misc_flags:                     bitmask(TRAIN_FLAG_2CC, TRAIN_FLAG_SPRITE_STACK); // <- Train Flag MU needed here
+		track_type:                     [BG_RAIL_ONLY_OHLE_DC, BG_RAIL_ONLY_OHLE_AC];
+		running_cost_base:              RUNNING_COST_DIESEL;
+        engine_class:                   ENGINE_CLASS_ELECTRIC;
+//        ai_special_flag:                AI_FLAG_PASSENGER;
+		bitmask_vehicle_info:           0;
+	
+		climates_available:             (param_FictionalDisable == 0) ? ALL_CLIMATES : NO_CLIMATE;
+		visual_effect_and_powered: 		VISUAL_EFFECT_ELECTRIC;
+
+        name:                           string(STR_NAME_BOMBARDIER_AUSTRAXX_BG);
+		
+		refit_cost:                     0;
+        dual_headed:                    0;
+        air_drag_coefficient:           0.08;
+        model_life:                     30;
+		vehicle_life:                   50;
+		tractive_effort_coefficient:	0.3;
+		
+        introduction_date:              Bombardier_AusTRAXX_IntroDate;		
+		length:                         Bombardier_AusTRAXX_Length;
+		
+		speed:							Bombardier_AusTRAXX_Speed km/h;
+		cost_factor:					Bombardier_AusTRAXX_CostFactor;
+		running_cost_factor:			Bombardier_AusTRAXX_RunningCostFactor;
+		cargo_capacity: 				0;
+		power:							1 hp;
+		weight:							Bombardier_AusTRAXX_Weight;
+		
+//        variant_group: 					Item_Bombardier_AusTRAXX_BG_Liv0;
+//        extra_flags:  					bitmask (VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE, VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW, VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW, VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+    }
+    graphics {
+        default: 						switch_Bombardier_AusTRAXX_BG_Liv0_position;
+//		sound_effect:					 switch_Modern_Electric_Horn;
+        purchase: 						switch_Bombardier_AusTRAXX_Liv0_Purchase_Stack;
+        additional_text: 				switch_Bombardier_AusTRAXX_BG_Liv0_buy_menu_additional_text;
+		reverse_build_probability:		return 50;
+		power: 							switch_Bombardier_AusTRAXX_Liv0_power_0;
+}
+}
+
 sort(FEAT_TRAINS, [Item_Clyde_G12A_Liv0, Item_Clyde_G22AR_Liv0]);
 
 //ID

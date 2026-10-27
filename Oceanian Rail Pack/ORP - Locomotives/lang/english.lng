@@ -465,6 +465,11 @@ STR_INFO_CLYDE_JDAE34C:{BLACK}Role: {GOLD}Mixed Traffic {}{BLACK}Gauge: {GOLD}St
 STR_NAME_CLYDE_JDAE34C_BG:ASEA-Clyde JDAE34-C
 STR_INFO_CLYDE_JDAE34C_BG:{BLACK}Role: {GOLD}Mixed Traffic {}{BLACK}Gauge: {GOLD}Broad Gauge {}{BLACK}Power: {BLUE}DC Overhead Line {RED}AC Overhead Line {}{BLACK}Based on: {GOLD}Fictional.
 
+STR_NAME_BOMBARDIER_AUSTRAXX:Bombardier AusTRAXX
+STR_INFO_BOMBARDIER_AUSTRAXX:{BLACK}Role: {GOLD}Mixed Traffic {}{BLACK}Gauge: {GOLD}Standard Gauge {}{BLACK}Power: {BLUE}DC Overhead Line {RED}AC Overhead Line {}{BLACK}Based on: {GOLD}Fictional Australian version of the TRAXX Platform.
+STR_NAME_BOMBARDIER_AUSTRAXX_BG:Bombardier AusTRAXX
+STR_INFO_BOMBARDIER_AUSTRAXX_BG:{BLACK}Role: {GOLD}Mixed Traffic {}{BLACK}Gauge: {GOLD}Broad Gauge {}{BLACK}Power: {BLUE}DC Overhead Line {RED}AC Overhead Line {}{BLACK}Based on: {GOLD}Fictional Australian version of the TRAXX Platform..
+
 
 
 STR_NAME_COMENG_CL632_3R:Comeng CL632
