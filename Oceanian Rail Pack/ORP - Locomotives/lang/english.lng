@@ -72,7 +72,7 @@ STR_NAME_NSW_D50:2-8-0 D50 Class
 STR_INFO_NSW_D50:{BLACK}Role: {GOLD}Freight {}{BLACK}Gauge:{GOLD} Standard Gauge {}{BLACK}Power: {WHITE}Steam {}{BLACK}Based on: {GOLD}NSW D50 Class (Formerly T Class) & Commonwealth Railways K Class
 
 STR_NAME_SMR_10:2-8-2T 10 Class
-STR_INFO_SMR_10:{BLACK}Role: {GOLD}Freight {}{BLACK}Gauge:{GOLD} Standard Gauge {}{BLACK}Power: {WHITE}Steam {}{BLACK}Based on: {GOLD}South Maitland Railways 10 Class {}{GOLD}These hauled the steam hauled commercial freight service in late 1987
+STR_INFO_SMR_10:{BLACK}Role: {GOLD}Freight {}{BLACK}Gauge:{GOLD} Standard Gauge {}{BLACK}Power: {WHITE}Steam {}{BLACK}Based on: {GOLD}South Maitland Railways 10 Class {}{GOLD}These hauled the last revenue steam service in Australia in late 1987
 
 STR_NAME_NSW_D53:2-8-0 D53 Class
 STR_INFO_NSW_D53:{BLACK}Role: {GOLD}Freight {}{BLACK}Gauge:{GOLD} Standard Gauge {}{BLACK}Power: {WHITE}Steam {}{BLACK}Based on: {GOLD}NSW D53 Class (Formerly TF Class) & Commonwealth Railways KA Class
@@ -481,7 +481,7 @@ STR_NAME_CLYDE_G22AR:Clyde-EMD G22AR
 STR_INFO_CLYDE_G22AR:{BLACK}Role: {GOLD}Mixed Traffic {}{BLACK}Gauge:{GOLD} Narrow Gauge {}{BLACK}Power: {BROWN}Diesel {}{BLACK}Rebuild of: {GOLD}GMD G12A {}{BLACK}Based on: {GOLD}NZ DC Class
 
 STR_NAME_CLYDE_J26C2SS:Clyde-EMD J26C-2SS
-STR_INFO_CLYDE_J26C2SS:{BLACK}Role: {GOLD}Mixed Traffic {}{BLACK}Gauge: {GOLD}Standard Gauge {}{BLACK}Power: {BROWN}Diesel {}{BLACK}Rebuild of: {GOLD}Clyde-EMD J26C {}{BLACK}Based on: {GOLD}NSW 42220 Rebuild {}{GOLD}Built to demonstrate the SD50 series Super-Series creep control later used in the 81 Class (JT26C-2SS)
+STR_INFO_CLYDE_J26C2SS:{BLACK}Role: {GOLD}Mixed Traffic {}{BLACK}Gauge: {GOLD}Standard Gauge {}{BLACK}Power: {BROWN}Diesel {}{BLACK}Rebuild of: {GOLD}Clyde-EMD J26C {}{BLACK}Based on: {GOLD}NSW 42220 Rebuild {}{GOLD}Built to demonstrate the SD50 Super-Series creep control later used in the 81 Class (JT26C-2SS)
 
 STR_NAME_CLYDE_AAT22C2R:Clyde-EMD AAT22C-2R
 STR_INFO_CLYDE_AAT22C2R:{BLACK}Role: {GOLD}Passenger {}{BLACK}Gauge:{GOLD} Standard Gauge {}{BLACK}Power: {BROWN}Diesel {}{BLACK}Rebuild of: {GOLD}Clyde-EMD ML2 {}{BLACK}Based on: {GOLD}V/Line A Class

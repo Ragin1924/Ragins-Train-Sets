@@ -20796,17 +20796,17 @@ const Bombardier_AusTRAXX_Weight = 85;
 const Bombardier_AusTRAXX_Length = 8;
 
 //Change power output based on rail type
-switch (FEAT_TRAINS, SELF, switch_Bombardier_AusTRAXX_Liv0_power_1, tile_powers_railtype("OHLE_DC")) {
+switch (FEAT_TRAINS, SELF, switch_Bombardier_AusTRAXX_power_1, tile_powers_railtype("OHLE_DC")) {
             1: return Bombardier_AusTRAXX_Power_DC;
         }
-        switch (FEAT_TRAINS, SELF, switch_Bombardier_AusTRAXX_Liv0_power_0, tile_powers_railtype("OHLE_AC")) {
+        switch (FEAT_TRAINS, SELF, switch_Bombardier_AusTRAXX_power_0, tile_powers_railtype("OHLE_AC")) {
             1: return Bombardier_AusTRAXX_Power_AC;
                 return switch_Bombardier_AusTRAXX_Liv0_power_1;
         }
 
 //Power Language File Switch
 //Standard Gauge
-switch (FEAT_TRAINS, SELF, switch_Bombardier_AusTRAXX_Liv0_buy_menu_additional_text, [
+switch (FEAT_TRAINS, SELF, switch_Bombardier_AusTRAXX_buy_menu_additional_text, [
                 STORE_TEMP(
                     string(STR_POWER_SOURCE_OHLE_DC)
                     | (Bombardier_AusTRAXX_Power_DC << 16),
@@ -20822,7 +20822,7 @@ switch (FEAT_TRAINS, SELF, switch_Bombardier_AusTRAXX_Liv0_buy_menu_additional_t
         }
 
 //Broad Gauge
-switch (FEAT_TRAINS, SELF, switch_Bombardier_AusTRAXX_BG_Liv0_buy_menu_additional_text, [
+switch (FEAT_TRAINS, SELF, switch_Bombardier_AusTRAXX_BG_buy_menu_additional_text, [
                 STORE_TEMP(
                     string(STR_POWER_SOURCE_OHLE_DC)
                     | (Bombardier_AusTRAXX_Power_DC << 16),
@@ -20977,9 +20977,9 @@ item(FEAT_TRAINS, Item_Bombardier_AusTRAXX_Liv0, Bombardier_AusTRAXX_Liv0_ID) {
         default: 						switch_Bombardier_AusTRAXX_Liv0_position;
 //		sound_effect:					 switch_Modern_Electric_Horn;
         purchase: 						switch_Bombardier_AusTRAXX_Liv0_Purchase_Stack;
-        additional_text: 				switch_Bombardier_AusTRAXX_Liv0_buy_menu_additional_text;
+        additional_text: 				switch_Bombardier_AusTRAXX_buy_menu_additional_text;
 		reverse_build_probability:		return 50;
-		power: 							switch_Bombardier_AusTRAXX_Liv0_power_0;
+		power: 							switch_Bombardier_AusTRAXX_power_0;
 }
 }
 
@@ -21048,10 +21048,10 @@ item(FEAT_TRAINS, Item_Bombardier_AusTRAXX_BG_Liv0, Bombardier_AusTRAXX_BG_Liv0_
     graphics {
         default: 						switch_Bombardier_AusTRAXX_BG_Liv0_position;
 //		sound_effect:					 switch_Modern_Electric_Horn;
-        purchase: 						switch_Bombardier_AusTRAXX_Liv0_Purchase_Stack;
+        purchase: 						switch_Bombardier_AusTRAXX_Purchase_Stack;
         additional_text: 				switch_Bombardier_AusTRAXX_BG_Liv0_buy_menu_additional_text;
 		reverse_build_probability:		return 50;
-		power: 							switch_Bombardier_AusTRAXX_Liv0_power_0;
+		power: 							switch_Bombardier_AusTRAXX_power_0;
 }
 }
 

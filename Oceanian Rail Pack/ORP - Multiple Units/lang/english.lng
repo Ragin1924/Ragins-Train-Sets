@@ -39,6 +39,15 @@ STR_PARAM_DESC_FICTIONALDISABLE:Enable/disable Fictional trains (trains that are
 STR_PARAM_NAME_MISCDISABLE:Disable Miscellaneous Trains
 STR_PARAM_DESC_MISCDISABLE:Enable/disable trains that are included, but don't fit into any of the other categories (Mostly just proposed export stuff).
 
+STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_TWO_SUBSTR:{STRING}{}{STRING}
+STR_POWER_BY_POWER_SOURCE_TWO_SOURCES:{BLACK}Power on {STRING}: {GOLD}{POWER} {}{BLACK}Power on {STRING}: {GOLD}{POWER}
+STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_THREE_SUBSTR:{STRING}{}{STRING}{}{STRING}
+STR_POWER_BY_POWER_SOURCE_THREE_SOURCES:{BLACK}Power on {STRING}: {GOLD}{POWER} {}{BLACK}Power on {STRING}: {GOLD}{POWER} {}{BLACK}Power on {STRING}: {GOLD}{POWER}
+STR_POWER_SOURCE_DIESEL: {BROWN}Diesel
+STR_POWER_SOURCE_OHLE_DC: {BLUE}DC Overhead Line
+STR_POWER_SOURCE_OHLE_AC: {RED}AC Overhead Line
+STR_POWER_SOURCE_3RAIL:{GREEN}Third Rail
+
 
 
 STR_NO_COUPLE_MU:Only attach Multiple Unit trains or trains of the same type!
@@ -340,6 +349,9 @@ STR_INFO_HYUNDAI_MARIYUNG:{BLACK}Role: {GOLD}Intercity {}{BLACK}Formation: {GOLD
 
 STR_NAME_EXP_EMU_XPTE:Comeng XPT-E
 STR_INFO_EXP_EMU_XPTE:{BLACK}Role: {GOLD}Express Service{}{BLACK}Formation: {GOLD}Push-Pull Trainset {}{BLACK}Power: {LTBLUE}Overhead Line
+
+STR_NAME_COMENG_XPTE:Comeng XPT-E
+STR_INFO_COMENG_XPTE:{BLACK}Role: {GOLD}Express Service {}{BLACK}Formation: {GOLD}Push-Pull Trainset {}{BLACK}Gauge: {GOLD}Standard Gauge {}{BLACK}Power: {BLUE}DC Overhead Line {RED}AC Overhead Line {}{BLACK}Based on: Proposed electric XPT.
 
 STR_NAME_X2000:Adtranz X2000
 STR_INFO_X2000:{BLACK}Role: {GOLD}Express Service {}{BLACK}Formation: {GOLD}Push-Pull Trainset {}{BLACK}Gauge: {GOLD}Standard Gauge {}{BLACK}Power: {BLUE}DC Overhead Line {RED}AC Overhead Line {}{BLACK}Special: {GOLD}Tilt train (20% faster through curves)

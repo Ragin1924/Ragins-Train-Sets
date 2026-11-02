@@ -21511,6 +21511,621 @@ item(FEAT_TRAINS, Item_Hyundai_Mariyung_Liv0, Hyundai_Mariyung_ID_Liv0) {
 }
 
 //ID
+const Comeng_XPTE_ID = 15020;
+//introduction_date
+const Comeng_XPTE_IntroDate = date(1983, 1, 1);
+//speed
+const Comeng_XPTE_Speed = 200;
+//cost_factor
+const Comeng_XPTE_CostFactor = 39;
+//running_cost_factor
+const Comeng_XPTE_RunningCostFactor = 98;
+//Cargo Capacity
+const Comeng_XPTE_CargoCapacity = 75;
+//power
+const Comeng_XPTE_Power_DC = 4800;
+const Comeng_XPTE_Power_AC = 6000;
+//weight
+const Comeng_XPTE_Weight = 76;
+const Comeng_XPTE_Weight_T = 26;
+//length
+const Comeng_XPTE_Length = 7;
+const Comeng_XPTE_Length_T = 8;
+
+//Change power output based on rail type
+switch (FEAT_TRAINS, SELF, switch_Comeng_XPTE_power_1, tile_powers_railtype("OHLE_DC")) {
+            1: return Comeng_XPTE_Power_DC;
+        }
+        switch (FEAT_TRAINS, SELF, switch_Comeng_XPTE_power_0, tile_powers_railtype("OHLE_AC")) {
+            1: return Comeng_XPTE_Power_AC;
+                return switch_Comeng_XPTE_power_1;
+        }
+
+//Power Language File Switch
+switch (FEAT_TRAINS, SELF, switch_Comeng_XPTE_buy_menu_additional_text, [
+                STORE_TEMP(
+                    string(STR_POWER_SOURCE_OHLE_DC)
+                    | (Comeng_XPTE_Power_DC << 16),
+                    0x100
+                ),
+                STORE_TEMP(
+                    string(STR_POWER_SOURCE_OHLE_AC)
+                    | (Comeng_XPTE_Power_AC << 16),
+                    0x101
+                ),
+        ]) {
+            return string(STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_TWO_SUBSTR, string(STR_POWER_BY_POWER_SOURCE_TWO_SOURCES), string(STR_INFO_COMENG_XPTE));
+        }
+
+//Pantograph Purchase
+spriteset(spriteset_Comeng_XPTE_Pantograph_Purchase,   "gfx/Comeng_XPTE_Pantographs.png") {template_purchase_77mu(7, 21)}
+//Panto Down
+spriteset(spriteset_Comeng_XPTE_PantoDown,   "gfx/Comeng_XPTE_Pantographs.png") {template_7(7, 39)}
+spriteset(spriteset_Comeng_XPTE_PantoDown_alt,   "gfx/Comeng_XPTE_Pantographs.png") {template_7_alt(7, 39)}
+//AC Pantograph
+spriteset(spriteset_Comeng_XPTE_PantoUp_AC,   "gfx/Comeng_XPTE_Pantographs.png") {template_7(7, 69)}
+spriteset(spriteset_Comeng_XPTE_PantoUp_AC_alt,   "gfx/Comeng_XPTE_Pantographs.png") {template_7_alt(7, 69)}
+//DC Pantograph
+spriteset(spriteset_Comeng_XPTE_PantoUp_DC,   "gfx/Comeng_XPTE_Pantographs.png") {template_7(7, 99)}
+spriteset(spriteset_Comeng_XPTE_PantoUp_DC_alt,   "gfx/Comeng_XPTE_Pantographs.png") {template_7_alt(7, 99)}
+
+//Lead Power Car
+switch(FEAT_TRAINS, SELF, switch_Comeng_XPTE_Fw_railtype_DC, tile_powers_railtype("OHLE_DC")) {
+ 0: spriteset_Comeng_XPTE_PantoDown;
+ 1: spriteset_Comeng_XPTE_PantoUp_DC;
+}
+
+switch(FEAT_TRAINS, SELF, switch_Comeng_XPTE_railtype_AC, tile_powers_railtype("OHLE_AC")) {
+ 0: switch_Comeng_XPTE_Fw_railtype_DC;
+ 1: spriteset_Comeng_XPTE_PantoUp_AC;
+}
+
+//Lead Power Car Alt
+switch(FEAT_TRAINS, SELF, switch_Comeng_XPTE_Alt_railtype_DC, tile_powers_railtype("OHLE_DC")) {
+ 0: spriteset_Comeng_XPTE_PantoDown_alt;
+ 1: spriteset_Comeng_XPTE_PantoUp_DC_alt;
+}
+
+switch(FEAT_TRAINS, SELF, switch_Comeng_XPTE_Alt_railtype_AC, tile_powers_railtype("OHLE_AC")) {
+ 0: switch_Comeng_XPTE_Alt_railtype_DC;
+ 1: spriteset_Comeng_XPTE_PantoUp_AC_alt;
+}
+
+//Purchase Sprite Stacker
+switch (FEAT_TRAINS, SELF, switch_Comeng_XPTE_Liv0_Purchase_Stack, [
+    STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 2 ? CB_FLAG_MORE_SPRITES : 0) | PALETTE_USE_DEFAULT, 0x100),
+    getbits(extra_callback_info1, 8, 8)
+    ]) {
+    0: spriteset_Comeng_XPT_Liv0_purchase;
+    1: spriteset_Comeng_XPTE_Pantograph_Purchase;
+}
+
+switch (FEAT_TRAINS, SELF, switch_Comeng_XPTE_Liv0, [
+    STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 2 ? CB_FLAG_MORE_SPRITES : 0) | PALETTE_USE_DEFAULT, 0x100),
+    getbits(extra_callback_info1, 8, 8)
+    ]) {
+    0: spriteset_Comeng_XPT_Liv0_lead;
+	1: switch_Comeng_XPTE_railtype_AC;
+}
+
+switch (FEAT_TRAINS, SELF, switch_Comeng_XPTE_Liv0_Alt, [
+    STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 2 ? CB_FLAG_MORE_SPRITES : 0) | PALETTE_USE_DEFAULT, 0x100),
+    getbits(extra_callback_info1, 8, 8)
+    ]) {
+    0: spriteset_Comeng_XPT_Liv0_lead_alt;
+	1: switch_Comeng_XPTE_Alt_railtype_AC;
+}
+
+//Power Cars
+switch(FEAT_TRAINS, SELF, switch_Comeng_XPTE_Liv0_PowerCar, vehicle_is_flipped){ 
+    0:    switch_Comeng_XPTE_Liv0;
+    switch_Comeng_XPTE_Liv0_Alt;
+}
+
+const Comeng_XPTE_ID_Liv0 = (Comeng_XPTE_ID + Liv0_ID );
+
+item(FEAT_TRAINS, Item_Comeng_XPTE_Liv0, Comeng_XPTE_ID_Liv0) {
+    property {
+        sprite_id:                      SPRITE_ID_NEW_TRAIN;
+		misc_flags:                     bitmask(TRAIN_FLAG_MU,TRAIN_FLAG_2CC, TRAIN_FLAG_SPRITE_STACK); // <- Train Flag MU needed here
+		track_type:                     [OHLE_DC, OHLE_AC];
+		running_cost_base:              RUNNING_COST_ELECTRIC;
+        engine_class:                   ENGINE_CLASS_ELECTRIC;
+        ai_special_flag:                AI_FLAG_PASSENGER;
+		bitmask_vehicle_info:           0;
+	
+		climates_available:             (param_ProposalDisable == 0) ? ALL_CLIMATES : NO_CLIMATE;
+		refittable_cargo_classes:       CC_PASSENGERS;
+		default_cargo_type:				PASS;
+		cargo_allow_refit:              [PASS, TOUR];
+		visual_effect_and_powered: 		VISUAL_EFFECT_ELECTRIC;
+
+        name:                           string(STR_NAME_COMENG_XPTE);
+		
+		refit_cost:                     0;
+        dual_headed:                    1;
+        air_drag_coefficient:           0.08;
+        model_life:                     30;
+		vehicle_life:                   50;
+		tractive_effort_coefficient:	0.3;
+		
+        introduction_date:              Comeng_XPTE_IntroDate;		
+		length:                         Comeng_XPTE_Length;
+		
+		loading_speed:					SD_Express_LoadingSpeed;
+		speed:							Comeng_XPTE_Speed km/h;
+		cost_factor:					(Comeng_XPTE_CostFactor * 2);
+		running_cost_factor:			(Comeng_XPTE_RunningCostFactor * 2);
+		cargo_capacity: 				0;
+		power:							1 hp;
+		weight:							Comeng_XPTE_Weight ton;
+
+//        variant_group: 					Item_Comeng_XPTE_Liv0;
+//        extra_flags:  					bitmask (VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE, VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW, VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW, VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+    }
+    graphics {
+        default: 						switch_Comeng_XPTE_Liv0_PowerCar;
+        purchase: 						switch_Comeng_XPTE_Liv0_Purchase_Stack;
+        additional_text: 				switch_Comeng_XPTE_buy_menu_additional_text;
+		power:							switch_Comeng_XPTE_power_0;
+    }
+    livery_override (Item_MU_Trailer){
+        default: 						switch_Comeng_XPT_Liv0_Trailer ;
+        length: 						Comeng_XPTE_Length_T;
+        cargo_capacity:                 (Comeng_XPTE_CargoCapacity / param_capacity_mod);
+        power:                          0;
+		weight:                        	Comeng_XPTE_Weight_T;
+		running_cost_factor:            (Comeng_XPTE_RunningCostFactor / 2); //maybe remove the divide?
+
+}
+}
+
+//Purchase Sprite Stacker
+switch (FEAT_TRAINS, SELF, switch_Comeng_XPTE_Liv1_Purchase_Stack, [
+    STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 2 ? CB_FLAG_MORE_SPRITES : 0) | PALETTE_USE_DEFAULT, 0x100),
+    getbits(extra_callback_info1, 8, 8)
+    ]) {
+    0: spriteset_Comeng_XPT_Liv1_purchase;
+    1: spriteset_Comeng_XPTE_Pantograph_Purchase;
+}
+
+switch (FEAT_TRAINS, SELF, switch_Comeng_XPTE_Liv1, [
+    STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 2 ? CB_FLAG_MORE_SPRITES : 0) | PALETTE_USE_DEFAULT, 0x100),
+    getbits(extra_callback_info1, 8, 8)
+    ]) {
+    0: spriteset_Comeng_XPT_Liv1_lead;
+	1: switch_Comeng_XPTE_railtype_AC;
+}
+
+switch (FEAT_TRAINS, SELF, switch_Comeng_XPTE_Liv1_Alt, [
+    STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 2 ? CB_FLAG_MORE_SPRITES : 0) | PALETTE_USE_DEFAULT, 0x100),
+    getbits(extra_callback_info1, 8, 8)
+    ]) {
+    0: spriteset_Comeng_XPT_Liv1_lead_alt;
+	1: switch_Comeng_XPTE_Alt_railtype_AC;
+}
+
+//Power Cars
+switch(FEAT_TRAINS, SELF, switch_Comeng_XPTE_Liv1_PowerCar, vehicle_is_flipped){ 
+    0:    switch_Comeng_XPTE_Liv1;
+    switch_Comeng_XPTE_Liv1_Alt;
+}
+
+const Comeng_XPTE_ID_Liv1 = (Comeng_XPTE_ID + Liv1_ID );
+
+item(FEAT_TRAINS, Item_Comeng_XPTE_Liv1, Comeng_XPTE_ID_Liv1) {
+    property {
+        sprite_id:                      SPRITE_ID_NEW_TRAIN;
+		misc_flags:                     bitmask(TRAIN_FLAG_MU,TRAIN_FLAG_2CC, TRAIN_FLAG_SPRITE_STACK); // <- Train Flag MU needed here
+		track_type:                     [OHLE_DC, OHLE_AC];
+		running_cost_base:              RUNNING_COST_ELECTRIC;
+        engine_class:                   ENGINE_CLASS_ELECTRIC;
+        ai_special_flag:                AI_FLAG_PASSENGER;
+		bitmask_vehicle_info:           0;
+	
+		climates_available:             (param_ProposalDisable == 0) ? ALL_CLIMATES : NO_CLIMATE;
+		refittable_cargo_classes:       CC_PASSENGERS;
+		default_cargo_type:				PASS;
+		cargo_allow_refit:              [PASS, TOUR];
+		visual_effect_and_powered: 		VISUAL_EFFECT_ELECTRIC;
+
+        name:                           string(STR_NAME_COMENG_XPTE);
+		
+		refit_cost:                     0;
+        dual_headed:                    1;
+        air_drag_coefficient:           0.08;
+        model_life:                     30;
+		vehicle_life:                   50;
+		tractive_effort_coefficient:	0.3;
+		
+        introduction_date:              Comeng_XPTE_IntroDate;		
+		length:                         Comeng_XPTE_Length;
+		
+		loading_speed:					SD_Express_LoadingSpeed;
+		speed:							Comeng_XPTE_Speed km/h;
+		cost_factor:					(Comeng_XPTE_CostFactor * 2);
+		running_cost_factor:			(Comeng_XPTE_RunningCostFactor * 2);
+		cargo_capacity: 				0;
+		power:							1 hp;
+		weight:							Comeng_XPTE_Weight ton;
+
+        variant_group: 					Item_Comeng_XPTE_Liv0;
+        extra_flags:  					bitmask (VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE, VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW, VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW, VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+    }
+    graphics {
+        default: 						switch_Comeng_XPTE_Liv1_PowerCar;
+        purchase: 						switch_Comeng_XPTE_Liv1_Purchase_Stack;
+        additional_text: 				switch_Comeng_XPTE_buy_menu_additional_text;
+		power:							switch_Comeng_XPTE_power_0;
+    }
+    livery_override (Item_MU_Trailer){
+        default: 						switch_Comeng_XPT_Liv1_Trailer ;
+        length: 						Comeng_XPTE_Length_T;
+        cargo_capacity:                 (Comeng_XPTE_CargoCapacity / param_capacity_mod);
+        power:                          0;
+		weight:                        	Comeng_XPTE_Weight_T;
+		running_cost_factor:            (Comeng_XPTE_RunningCostFactor / 2); //maybe remove the divide?
+
+}
+}
+
+//Purchase Sprite Stacker
+switch (FEAT_TRAINS, SELF, switch_Comeng_XPTE_Liv2_Purchase_Stack, [
+    STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 2 ? CB_FLAG_MORE_SPRITES : 0) | PALETTE_USE_DEFAULT, 0x100),
+    getbits(extra_callback_info1, 8, 8)
+    ]) {
+    0: spriteset_Comeng_XPT_Liv2_purchase;
+    1: spriteset_Comeng_XPTE_Pantograph_Purchase;
+}
+
+switch (FEAT_TRAINS, SELF, switch_Comeng_XPTE_Liv2, [
+    STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 2 ? CB_FLAG_MORE_SPRITES : 0) | PALETTE_USE_DEFAULT, 0x100),
+    getbits(extra_callback_info1, 8, 8)
+    ]) {
+    0: spriteset_Comeng_XPT_Liv2_lead;
+	1: switch_Comeng_XPTE_railtype_AC;
+}
+
+switch (FEAT_TRAINS, SELF, switch_Comeng_XPTE_Liv2_Alt, [
+    STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 2 ? CB_FLAG_MORE_SPRITES : 0) | PALETTE_USE_DEFAULT, 0x100),
+    getbits(extra_callback_info1, 8, 8)
+    ]) {
+    0: spriteset_Comeng_XPT_Liv2_lead_alt;
+	1: switch_Comeng_XPTE_Alt_railtype_AC;
+}
+
+//Power Cars
+switch(FEAT_TRAINS, SELF, switch_Comeng_XPTE_Liv2_PowerCar, vehicle_is_flipped){ 
+    0:    switch_Comeng_XPTE_Liv2;
+    switch_Comeng_XPTE_Liv2_Alt;
+}
+
+const Comeng_XPTE_ID_Liv2 = (Comeng_XPTE_ID + Liv2_ID );
+
+item(FEAT_TRAINS, Item_Comeng_XPTE_Liv2, Comeng_XPTE_ID_Liv2) {
+    property {
+        sprite_id:                      SPRITE_ID_NEW_TRAIN;
+		misc_flags:                     bitmask(TRAIN_FLAG_MU,TRAIN_FLAG_2CC, TRAIN_FLAG_SPRITE_STACK); // <- Train Flag MU needed here
+		track_type:                     [OHLE_DC, OHLE_AC];
+		running_cost_base:              RUNNING_COST_ELECTRIC;
+        engine_class:                   ENGINE_CLASS_ELECTRIC;
+        ai_special_flag:                AI_FLAG_PASSENGER;
+		bitmask_vehicle_info:           0;
+	
+		climates_available:             (param_ProposalDisable == 0) ? ALL_CLIMATES : NO_CLIMATE;
+		refittable_cargo_classes:       CC_PASSENGERS;
+		default_cargo_type:				PASS;
+		cargo_allow_refit:              [PASS, TOUR];
+		visual_effect_and_powered: 		VISUAL_EFFECT_ELECTRIC;
+
+        name:                           string(STR_NAME_COMENG_XPTE);
+		
+		refit_cost:                     0;
+        dual_headed:                    1;
+        air_drag_coefficient:           0.08;
+        model_life:                     30;
+		vehicle_life:                   50;
+		tractive_effort_coefficient:	0.3;
+		
+        introduction_date:              Comeng_XPTE_IntroDate;		
+		length:                         Comeng_XPTE_Length;
+		
+		loading_speed:					SD_Express_LoadingSpeed;
+		speed:							Comeng_XPTE_Speed km/h;
+		cost_factor:					(Comeng_XPTE_CostFactor * 2);
+		running_cost_factor:			(Comeng_XPTE_RunningCostFactor * 2);
+		cargo_capacity: 				0;
+		power:							1 hp;
+		weight:							Comeng_XPTE_Weight ton;
+
+        variant_group: 					Item_Comeng_XPTE_Liv0;
+        extra_flags:  					bitmask (VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE, VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW, VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW, VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+    }
+    graphics {
+        default: 						switch_Comeng_XPTE_Liv2_PowerCar;
+        purchase: 						switch_Comeng_XPTE_Liv2_Purchase_Stack;
+        additional_text: 				switch_Comeng_XPTE_buy_menu_additional_text;
+		power:							switch_Comeng_XPTE_power_0;
+    }
+    livery_override (Item_MU_Trailer){
+        default: 						switch_Comeng_XPT_Liv2_Trailer ;
+        length: 						Comeng_XPTE_Length_T;
+        cargo_capacity:                 (Comeng_XPTE_CargoCapacity / param_capacity_mod);
+        power:                          0;
+		weight:                        	Comeng_XPTE_Weight_T;
+		running_cost_factor:            (Comeng_XPTE_RunningCostFactor / 2); //maybe remove the divide?
+
+}
+}
+
+//Purchase Sprite Stacker
+switch (FEAT_TRAINS, SELF, switch_Comeng_XPTE_Liv3_Purchase_Stack, [
+    STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 2 ? CB_FLAG_MORE_SPRITES : 0) | PALETTE_USE_DEFAULT, 0x100),
+    getbits(extra_callback_info1, 8, 8)
+    ]) {
+    0: spriteset_Comeng_XPT_Liv3_purchase;
+    1: spriteset_Comeng_XPTE_Pantograph_Purchase;
+}
+
+switch (FEAT_TRAINS, SELF, switch_Comeng_XPTE_Liv3, [
+    STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 2 ? CB_FLAG_MORE_SPRITES : 0) | PALETTE_USE_DEFAULT, 0x100),
+    getbits(extra_callback_info1, 8, 8)
+    ]) {
+    0: spriteset_Comeng_XPT_Liv3_lead;
+	1: switch_Comeng_XPTE_railtype_AC;
+}
+
+switch (FEAT_TRAINS, SELF, switch_Comeng_XPTE_Liv3_Alt, [
+    STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 2 ? CB_FLAG_MORE_SPRITES : 0) | PALETTE_USE_DEFAULT, 0x100),
+    getbits(extra_callback_info1, 8, 8)
+    ]) {
+    0: spriteset_Comeng_XPT_Liv3_lead_alt;
+	1: switch_Comeng_XPTE_Alt_railtype_AC;
+}
+
+//Power Cars
+switch(FEAT_TRAINS, SELF, switch_Comeng_XPTE_Liv3_PowerCar, vehicle_is_flipped){ 
+    0:    switch_Comeng_XPTE_Liv3;
+    switch_Comeng_XPTE_Liv3_Alt;
+}
+
+const Comeng_XPTE_ID_Liv3 = (Comeng_XPTE_ID + Liv3_ID );
+
+item(FEAT_TRAINS, Item_Comeng_XPTE_Liv3, Comeng_XPTE_ID_Liv3) {
+    property {
+        sprite_id:                      SPRITE_ID_NEW_TRAIN;
+		misc_flags:                     bitmask(TRAIN_FLAG_MU,TRAIN_FLAG_2CC, TRAIN_FLAG_SPRITE_STACK); // <- Train Flag MU needed here
+		track_type:                     [OHLE_DC, OHLE_AC];
+		running_cost_base:              RUNNING_COST_ELECTRIC;
+        engine_class:                   ENGINE_CLASS_ELECTRIC;
+        ai_special_flag:                AI_FLAG_PASSENGER;
+		bitmask_vehicle_info:           0;
+	
+		climates_available:             (param_ProposalDisable == 0) ? ALL_CLIMATES : NO_CLIMATE;
+		refittable_cargo_classes:       CC_PASSENGERS;
+		default_cargo_type:				PASS;
+		cargo_allow_refit:              [PASS, TOUR];
+		visual_effect_and_powered: 		VISUAL_EFFECT_ELECTRIC;
+
+        name:                           string(STR_NAME_COMENG_XPTE);
+		
+		refit_cost:                     0;
+        dual_headed:                    1;
+        air_drag_coefficient:           0.08;
+        model_life:                     30;
+		vehicle_life:                   50;
+		tractive_effort_coefficient:	0.3;
+		
+        introduction_date:              Comeng_XPTE_IntroDate;		
+		length:                         Comeng_XPTE_Length;
+		
+		loading_speed:					SD_Express_LoadingSpeed;
+		speed:							Comeng_XPTE_Speed km/h;
+		cost_factor:					(Comeng_XPTE_CostFactor * 2);
+		running_cost_factor:			(Comeng_XPTE_RunningCostFactor * 2);
+		cargo_capacity: 				0;
+		power:							1 hp;
+		weight:							Comeng_XPTE_Weight ton;
+
+        variant_group: 					Item_Comeng_XPTE_Liv0;
+        extra_flags:  					bitmask (VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE, VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW, VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW, VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+    }
+    graphics {
+        default: 						switch_Comeng_XPTE_Liv3_PowerCar;
+        purchase: 						switch_Comeng_XPTE_Liv3_Purchase_Stack;
+        additional_text: 				switch_Comeng_XPTE_buy_menu_additional_text;
+		power:							switch_Comeng_XPTE_power_0;
+    }
+    livery_override (Item_MU_Trailer){
+        default: 						switch_Comeng_XPT_Liv3_Trailer ;
+        length: 						Comeng_XPTE_Length_T;
+        cargo_capacity:                 (Comeng_XPTE_CargoCapacity / param_capacity_mod);
+        power:                          0;
+		weight:                        	Comeng_XPTE_Weight_T;
+		running_cost_factor:            (Comeng_XPTE_RunningCostFactor / 2); //maybe remove the divide?
+
+}
+}
+
+//Purchase Sprite Stacker
+switch (FEAT_TRAINS, SELF, switch_Comeng_XPTE_Liv4_Purchase_Stack, [
+    STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 2 ? CB_FLAG_MORE_SPRITES : 0) | PALETTE_USE_DEFAULT, 0x100),
+    getbits(extra_callback_info1, 8, 8)
+    ]) {
+    0: spriteset_Comeng_XPT_Liv4_purchase;
+    1: spriteset_Comeng_XPTE_Pantograph_Purchase;
+}
+
+switch (FEAT_TRAINS, SELF, switch_Comeng_XPTE_Liv4, [
+    STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 2 ? CB_FLAG_MORE_SPRITES : 0) | PALETTE_USE_DEFAULT, 0x100),
+    getbits(extra_callback_info1, 8, 8)
+    ]) {
+    0: spriteset_Comeng_XPT_Liv4_lead;
+	1: switch_Comeng_XPTE_railtype_AC;
+}
+
+switch (FEAT_TRAINS, SELF, switch_Comeng_XPTE_Liv4_Alt, [
+    STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 2 ? CB_FLAG_MORE_SPRITES : 0) | PALETTE_USE_DEFAULT, 0x100),
+    getbits(extra_callback_info1, 8, 8)
+    ]) {
+    0: spriteset_Comeng_XPT_Liv4_lead_alt;
+	1: switch_Comeng_XPTE_Alt_railtype_AC;
+}
+
+//Power Cars
+switch(FEAT_TRAINS, SELF, switch_Comeng_XPTE_Liv4_PowerCar, vehicle_is_flipped){ 
+    0:    switch_Comeng_XPTE_Liv4;
+    switch_Comeng_XPTE_Liv4_Alt;
+}
+
+const Comeng_XPTE_ID_Liv4 = (Comeng_XPTE_ID + Liv4_ID );
+
+item(FEAT_TRAINS, Item_Comeng_XPTE_Liv4, Comeng_XPTE_ID_Liv4) {
+    property {
+        sprite_id:                      SPRITE_ID_NEW_TRAIN;
+		misc_flags:                     bitmask(TRAIN_FLAG_MU,TRAIN_FLAG_2CC, TRAIN_FLAG_SPRITE_STACK); // <- Train Flag MU needed here
+		track_type:                     [OHLE_DC, OHLE_AC];
+		running_cost_base:              RUNNING_COST_ELECTRIC;
+        engine_class:                   ENGINE_CLASS_ELECTRIC;
+        ai_special_flag:                AI_FLAG_PASSENGER;
+		bitmask_vehicle_info:           0;
+	
+		climates_available:             (param_ProposalDisable == 0) ? ALL_CLIMATES : NO_CLIMATE;
+		refittable_cargo_classes:       CC_PASSENGERS;
+		default_cargo_type:				PASS;
+		cargo_allow_refit:              [PASS, TOUR];
+		visual_effect_and_powered: 		VISUAL_EFFECT_ELECTRIC;
+
+        name:                           string(STR_NAME_COMENG_XPTE);
+		
+		refit_cost:                     0;
+        dual_headed:                    1;
+        air_drag_coefficient:           0.08;
+        model_life:                     30;
+		vehicle_life:                   50;
+		tractive_effort_coefficient:	0.3;
+		
+        introduction_date:              Comeng_XPTE_IntroDate;		
+		length:                         Comeng_XPTE_Length;
+		
+		loading_speed:					SD_Express_LoadingSpeed;
+		speed:							Comeng_XPTE_Speed km/h;
+		cost_factor:					(Comeng_XPTE_CostFactor * 2);
+		running_cost_factor:			(Comeng_XPTE_RunningCostFactor * 2);
+		cargo_capacity: 				0;
+		power:							1 hp;
+		weight:							Comeng_XPTE_Weight ton;
+
+        variant_group: 					Item_Comeng_XPTE_Liv0;
+        extra_flags:  					bitmask (VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE, VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW, VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW, VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+    }
+    graphics {
+        default: 						switch_Comeng_XPTE_Liv4_PowerCar;
+        purchase: 						switch_Comeng_XPTE_Liv4_Purchase_Stack;
+        additional_text: 				switch_Comeng_XPTE_buy_menu_additional_text;
+		power:							switch_Comeng_XPTE_power_0;
+    }
+    livery_override (Item_MU_Trailer){
+        default: 						switch_Comeng_XPT_Liv4_Trailer ;
+        length: 						Comeng_XPTE_Length_T;
+        cargo_capacity:                 (Comeng_XPTE_CargoCapacity / param_capacity_mod);
+        power:                          0;
+		weight:                        	Comeng_XPTE_Weight_T;
+		running_cost_factor:            (Comeng_XPTE_RunningCostFactor / 2); //maybe remove the divide?
+
+}
+}
+
+//Purchase Sprite Stacker
+switch (FEAT_TRAINS, SELF, switch_Comeng_XPTE_Liv5_Purchase_Stack, [
+    STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 2 ? CB_FLAG_MORE_SPRITES : 0) | PALETTE_USE_DEFAULT, 0x100),
+    getbits(extra_callback_info1, 8, 8)
+    ]) {
+    0: spriteset_Comeng_XPT_Liv5_purchase;
+    1: spriteset_Comeng_XPTE_Pantograph_Purchase;
+}
+
+switch (FEAT_TRAINS, SELF, switch_Comeng_XPTE_Liv5, [
+    STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 2 ? CB_FLAG_MORE_SPRITES : 0) | PALETTE_USE_DEFAULT, 0x100),
+    getbits(extra_callback_info1, 8, 8)
+    ]) {
+    0: spriteset_Comeng_XPT_Liv5_lead;
+	1: switch_Comeng_XPTE_railtype_AC;
+}
+
+switch (FEAT_TRAINS, SELF, switch_Comeng_XPTE_Liv5_Alt, [
+    STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 2 ? CB_FLAG_MORE_SPRITES : 0) | PALETTE_USE_DEFAULT, 0x100),
+    getbits(extra_callback_info1, 8, 8)
+    ]) {
+    0: spriteset_Comeng_XPT_Liv5_lead_alt;
+	1: switch_Comeng_XPTE_Alt_railtype_AC;
+}
+
+//Power Cars
+switch(FEAT_TRAINS, SELF, switch_Comeng_XPTE_Liv5_PowerCar, vehicle_is_flipped){ 
+    0:    switch_Comeng_XPTE_Liv5;
+    switch_Comeng_XPTE_Liv5_Alt;
+}
+
+const Comeng_XPTE_ID_Liv5 = (Comeng_XPTE_ID + Liv5_ID );
+
+item(FEAT_TRAINS, Item_Comeng_XPTE_Liv5, Comeng_XPTE_ID_Liv5) {
+    property {
+        sprite_id:                      SPRITE_ID_NEW_TRAIN;
+		misc_flags:                     bitmask(TRAIN_FLAG_MU,TRAIN_FLAG_2CC, TRAIN_FLAG_SPRITE_STACK); // <- Train Flag MU needed here
+		track_type:                     [OHLE_DC, OHLE_AC];
+		running_cost_base:              RUNNING_COST_ELECTRIC;
+        engine_class:                   ENGINE_CLASS_ELECTRIC;
+        ai_special_flag:                AI_FLAG_PASSENGER;
+		bitmask_vehicle_info:           0;
+	
+		climates_available:             (param_ProposalDisable == 0) ? ALL_CLIMATES : NO_CLIMATE;
+		refittable_cargo_classes:       CC_PASSENGERS;
+		default_cargo_type:				PASS;
+		cargo_allow_refit:              [PASS, TOUR];
+		visual_effect_and_powered: 		VISUAL_EFFECT_ELECTRIC;
+
+        name:                           string(STR_NAME_COMENG_XPTE);
+		
+		refit_cost:                     0;
+        dual_headed:                    1;
+        air_drag_coefficient:           0.08;
+        model_life:                     30;
+		vehicle_life:                   50;
+		tractive_effort_coefficient:	0.3;
+		
+        introduction_date:              Comeng_XPTE_IntroDate;		
+		length:                         Comeng_XPTE_Length;
+		
+		loading_speed:					SD_Express_LoadingSpeed;
+		speed:							Comeng_XPTE_Speed km/h;
+		cost_factor:					(Comeng_XPTE_CostFactor * 2);
+		running_cost_factor:			(Comeng_XPTE_RunningCostFactor * 2);
+		cargo_capacity: 				0;
+		power:							1 hp;
+		weight:							Comeng_XPTE_Weight ton;
+
+        variant_group: 					Item_Comeng_XPTE_Liv0;
+        extra_flags:  					bitmask (VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE, VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW, VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW, VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+    }
+    graphics {
+        default: 						switch_Comeng_XPTE_Liv5_PowerCar;
+        purchase: 						switch_Comeng_XPTE_Liv5_Purchase_Stack;
+        additional_text: 				switch_Comeng_XPTE_buy_menu_additional_text;
+		power:							switch_Comeng_XPTE_power_0;
+    }
+    livery_override (Item_MU_Trailer){
+        default: 						switch_Comeng_XPT_Liv5_Trailer ;
+        length: 						Comeng_XPTE_Length_T;
+        cargo_capacity:                 (Comeng_XPTE_CargoCapacity / param_capacity_mod);
+        power:                          0;
+		weight:                        	Comeng_XPTE_Weight_T;
+		running_cost_factor:            (Comeng_XPTE_RunningCostFactor / 2); //maybe remove the divide?
+
+}
+}
+
+//ID
 const X2000 = 15040;
 //introduction_date
 const X2000_IntroDate = date(1997, 1, 1);
