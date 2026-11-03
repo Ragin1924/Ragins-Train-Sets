@@ -207,6 +207,9 @@ STR_INFO_CLYDE_G16CS1:{BLACK}Role: {GOLD}Freight {}{BLACK}Gauge:{GOLD} Standard 
 STR_NAME_CLYDE_G16CS1_BG:Clyde-EMD G16C
 STR_INFO_CLYDE_G16CS1_BG:{BLACK}Role: {GOLD}Freight {}{BLACK}Gauge:{GOLD} Broad Gauge {}{BLACK}Power: {BROWN}Diesel {}{BLACK}Based on: {GOLD}VR X Class Series 1
 
+STR_NAME_CLYDE_GL26C:Clyde-EMD GL26C
+STR_INFO_CLYDE_GL26C:{BLACK}Role: {GOLD}Freight {}{BLACK}Gauge:{GOLD} Narrow Gauge {}{BLACK}Power: {BROWN}Diesel {}{BLACK}Based on: {GOLD}QR 2100 Class
+
 STR_NAME_CLYDE_G26CS2:Clyde-EMD G26C (Series 1)
 STR_INFO_CLYDE_G26CS2:{BLACK}Role: {GOLD}Freight {}{BLACK}Gauge:{GOLD} Standard Gauge {}{BLACK}Power: {BROWN}Diesel {}{BLACK}Based on: {GOLD}VR X Class Series 2
 STR_NAME_CLYDE_G26CS2_BG:Clyde-EMD G26C (Series 1)
