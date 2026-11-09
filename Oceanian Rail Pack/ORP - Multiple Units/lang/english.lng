@@ -106,7 +106,7 @@ STR_INFO_COMENG_3000CLASS:{BLACK}Role: {GOLD}Suburban Service {}{BLACK}Gauge: {G
 STR_NAME_COMENG_3000CLASS_DMU:Comeng 3100 Class DMU
 STR_INFO_COMENG_3000CLASS_DMU:{BLACK}Role: {GOLD}Suburban Service {}{BLACK}Gauge: {GOLD}Broad Gauge {}{BLACK}Formation: {GOLD}Multiple Unit {}{BLACK}Power: {BROWN}Diesel {}{BLACK}Based on: {GOLD}SA 3100 Class Suburban Railmotors.
 
-STR_NAME_GONINAN_SPRINTER:Goninan_Sprinter
+STR_NAME_GONINAN_SPRINTER:Goninan Sprinter
 STR_INFO_GONINAN_SPRINTER:{BLACK}Role: {GOLD}Suburban/Country Service {}{BLACK}Gauge: {GOLD}Broad Gauge {}{BLACK}Formation: {GOLD}Single Car {}{BLACK}Power: {BROWN}Diesel {}{BLACK}Based on: {GOLD}V/Line Sprinters.
 
 STR_NAME_GONINAN_HUNTERRAILCAR:UGL Hunter Railcar

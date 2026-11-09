@@ -4415,6 +4415,8 @@ const Clyde_JT22HC2_RunningCostFactor = 148;
 const Clyde_JT22HC2_Power = 2510;
 //weight
 const Clyde_JT22HC2_Weight = 123;
+//length
+const Clyde_JT22HC2_Length = 8;
 
 //Clyde_JT22HC2_Liv0
 spriteset(spriteset_Clyde_JT22HC2_Liv0_Purchase,   "gfx/Clyde_JT22HC2_Liv0.png") {template_purchase_8(7, 21)}
@@ -4462,7 +4464,7 @@ item(FEAT_TRAINS, Item_Clyde_JT22HC2_Liv0, Clyde_JT22HC2_Liv0_ID) {
 		tractive_effort_coefficient:	0.3;
 		
         introduction_date:              Clyde_JT22HC2_IntroDate;		
-		length:                         8;
+		length:                         Clyde_JT22HC2_Length;
 		
 		speed:							Clyde_JT22HC2_Speed km/h;
 		cost_factor:					Clyde_JT22HC2_CostFactor;
@@ -4509,7 +4511,7 @@ item(FEAT_TRAINS, Item_Clyde_JT22HC2_BG_Liv0, Clyde_JT22HC2_Liv0_BG_ID) {
 		tractive_effort_coefficient:	0.3;
 		
         introduction_date:              Clyde_JT22HC2_IntroDate;		
-		length:                         8;
+		length:                         Clyde_JT22HC2_Length;
 		
 		speed:							Clyde_JT22HC2_Speed km/h;
 		cost_factor:					Clyde_JT22HC2_CostFactor;
@@ -4518,13 +4520,355 @@ item(FEAT_TRAINS, Item_Clyde_JT22HC2_BG_Liv0, Clyde_JT22HC2_Liv0_BG_ID) {
 		power:							Clyde_JT22HC2_Power;
 		weight:							Clyde_JT22HC2_Weight;
 		
-//        variant_group: 					Item_Clyde_JT22HC2_Liv0_BG;
+//        variant_group: 					Item_Clyde_JT22HC2_BG_Liv0;
 //        extra_flags:  					bitmask (VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE, VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW, VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW, VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
     }
     graphics {
 		default: 						switch_Clyde_JT22HC2_Liv0_Normal_Stack;
 //		sound_effect: 					switch_EMD_12_645;
         purchase: 						switch_Clyde_JT22HC2_Liv0_Purchase_Stack;
+        additional_text: 				string(STR_INFO_CLYDE_JT22HC2_BG);
+		reverse_build_probability: 		return 50;
+}
+}
+
+//Clyde_JT22HC2_Liv24
+spriteset(spriteset_Clyde_JT22HC2_Liv24_Purchase,   "gfx/Clyde_JT22HC2_Liv24.png") {template_purchase_8(7, 21)}
+spriteset(spriteset_Clyde_JT22HC2_Liv24,   "gfx/Clyde_JT22HC2_Liv24.png") {template_8(7, 39)}
+
+//Purchase Sprite Stacker
+switch (FEAT_TRAINS, SELF, switch_Clyde_JT22HC2_Liv24_Purchase_Stack, [
+    STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 1 ? CB_FLAG_MORE_SPRITES : 0) | PALETTE_USE_DEFAULT, 0x100),
+    getbits(extra_callback_info1, 8, 8)
+    ]) {
+    0: spriteset_Clyde_JT22HC2_Liv24_Purchase;
+    1: switch_Couplers_8_Repeat_Purchase;
+}
+
+switch (FEAT_TRAINS, SELF, switch_Clyde_JT22HC2_Liv24_Normal_Stack, [
+    STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 1 ? CB_FLAG_MORE_SPRITES : 0) | PALETTE_USE_DEFAULT, 0x100),
+    getbits(extra_callback_info1, 8, 8)
+    ]) {
+    0: spriteset_Clyde_JT22HC2_Liv24;
+    1: switch_Couplers_8_Repeat;
+}
+
+const Clyde_JT22HC2_Liv24_ID = (Clyde_JT22HC2_ID + Liv24_ID);
+
+item(FEAT_TRAINS, Item_Clyde_JT22HC2_Liv24, Clyde_JT22HC2_Liv24_ID) {
+    property {
+        sprite_id:                      SPRITE_ID_NEW_TRAIN;
+		misc_flags:                     bitmask(TRAIN_FLAG_2CC, TRAIN_FLAG_SPRITE_STACK); // <- Train Flag MU needed here
+		track_type:                     RAIL;
+		running_cost_base:              RUNNING_COST_DIESEL;
+        engine_class:                   ENGINE_CLASS_DIESEL;
+//        ai_special_flag:                AI_FLAG_PASSENGER;
+		bitmask_vehicle_info:           0;
+	
+		climates_available:             (param_RealDisable == 0) ? ALL_CLIMATES : NO_CLIMATE;
+		visual_effect_and_powered: 		visual_effect_and_powered(VISUAL_EFFECT_DIESEL, 3, DISABLE_WAGON_POWER);
+
+        name:                           string(STR_NAME_CLYDE_JT22HC2);
+		
+		refit_cost:                     0;
+        dual_headed:                    0;
+        air_drag_coefficient:           0.08;
+        model_life:                     30;
+		vehicle_life:                   50;
+		tractive_effort_coefficient:	0.3;
+		
+        introduction_date:              Clyde_JT22HC2_IntroDate;		
+		length:                         Clyde_JT22HC2_Length;
+		
+		speed:							Clyde_JT22HC2_Speed km/h;
+		cost_factor:					Clyde_JT22HC2_CostFactor;
+		running_cost_factor:			Clyde_JT22HC2_RunningCostFactor;
+		cargo_capacity: 				0;
+		power:							Clyde_JT22HC2_Power;
+		weight:							Clyde_JT22HC2_Weight;
+		
+        variant_group: 					Item_Clyde_JT22HC2_Liv0;
+        extra_flags:  					bitmask (VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE, VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW, VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW, VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+    }
+    graphics {
+		default: 						switch_Clyde_JT22HC2_Liv24_Normal_Stack;
+//		sound_effect: 					switch_EMD_12_645;
+        purchase: 						switch_Clyde_JT22HC2_Liv24_Purchase_Stack;
+        additional_text: 				string(STR_INFO_CLYDE_JT22HC2);
+		reverse_build_probability: 		return 50;
+}
+}
+
+const Clyde_JT22HC2_Liv24_BG_ID = (Clyde_JT22HC2_Liv24_ID + 50);
+
+//Clyde_JT22HC2_BG_Liv24
+item(FEAT_TRAINS, Item_Clyde_JT22HC2_BG_Liv24, Clyde_JT22HC2_Liv24_BG_ID) {
+    property {
+        sprite_id:                      SPRITE_ID_NEW_TRAIN;
+		misc_flags:                     bitmask(TRAIN_FLAG_2CC, TRAIN_FLAG_SPRITE_STACK); // <- Train Flag MU needed here
+		track_type:                     BG_RAIL_ONLY;
+		running_cost_base:              RUNNING_COST_DIESEL;
+        engine_class:                   ENGINE_CLASS_DIESEL;
+//        ai_special_flag:                AI_FLAG_PASSENGER;
+		bitmask_vehicle_info:           0;
+	
+		climates_available:             (param_RealDisable == 0) ? ALL_CLIMATES : NO_CLIMATE;
+		visual_effect_and_powered: 		visual_effect_and_powered(VISUAL_EFFECT_DIESEL, 3, DISABLE_WAGON_POWER);
+
+        name:                           string(STR_NAME_CLYDE_JT22HC2_BG);
+		
+		refit_cost:                     0;
+        dual_headed:                    0;
+        air_drag_coefficient:           0.08;
+        model_life:                     30;
+		vehicle_life:                   50;
+		tractive_effort_coefficient:	0.3;
+		
+        introduction_date:              Clyde_JT22HC2_IntroDate;		
+		length:                         Clyde_JT22HC2_Length;
+		
+		speed:							Clyde_JT22HC2_Speed km/h;
+		cost_factor:					Clyde_JT22HC2_CostFactor;
+		running_cost_factor:			Clyde_JT22HC2_RunningCostFactor;
+		cargo_capacity: 				0;
+		power:							Clyde_JT22HC2_Power;
+		weight:							Clyde_JT22HC2_Weight;
+		
+        variant_group: 					Item_Clyde_JT22HC2_BG_Liv0;
+        extra_flags:  					bitmask (VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE, VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW, VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW, VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+    }
+    graphics {
+		default: 						switch_Clyde_JT22HC2_Liv24_Normal_Stack;
+//		sound_effect: 					switch_EMD_12_645;
+        purchase: 						switch_Clyde_JT22HC2_Liv24_Purchase_Stack;
+        additional_text: 				string(STR_INFO_CLYDE_JT22HC2_BG);
+		reverse_build_probability: 		return 50;
+}
+}
+
+//Clyde_JT22HC2_Liv25
+spriteset(spriteset_Clyde_JT22HC2_Liv25_Purchase,   "gfx/Clyde_JT22HC2_Liv25.png") {template_purchase_8(7, 21)}
+spriteset(spriteset_Clyde_JT22HC2_Liv25,   "gfx/Clyde_JT22HC2_Liv25.png") {template_8(7, 39)}
+
+//Purchase Sprite Stacker
+switch (FEAT_TRAINS, SELF, switch_Clyde_JT22HC2_Liv25_Purchase_Stack, [
+    STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 1 ? CB_FLAG_MORE_SPRITES : 0) | PALETTE_USE_DEFAULT, 0x100),
+    getbits(extra_callback_info1, 8, 8)
+    ]) {
+    0: spriteset_Clyde_JT22HC2_Liv25_Purchase;
+    1: switch_Couplers_8_Repeat_Purchase;
+}
+
+switch (FEAT_TRAINS, SELF, switch_Clyde_JT22HC2_Liv25_Normal_Stack, [
+    STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 1 ? CB_FLAG_MORE_SPRITES : 0) | PALETTE_USE_DEFAULT, 0x100),
+    getbits(extra_callback_info1, 8, 8)
+    ]) {
+    0: spriteset_Clyde_JT22HC2_Liv25;
+    1: switch_Couplers_8_Repeat;
+}
+
+const Clyde_JT22HC2_Liv25_ID = (Clyde_JT22HC2_ID + Liv25_ID);
+
+item(FEAT_TRAINS, Item_Clyde_JT22HC2_Liv25, Clyde_JT22HC2_Liv25_ID) {
+    property {
+        sprite_id:                      SPRITE_ID_NEW_TRAIN;
+		misc_flags:                     bitmask(TRAIN_FLAG_2CC, TRAIN_FLAG_SPRITE_STACK); // <- Train Flag MU needed here
+		track_type:                     RAIL;
+		running_cost_base:              RUNNING_COST_DIESEL;
+        engine_class:                   ENGINE_CLASS_DIESEL;
+//        ai_special_flag:                AI_FLAG_PASSENGER;
+		bitmask_vehicle_info:           0;
+	
+		climates_available:             (param_RealDisable == 0) ? ALL_CLIMATES : NO_CLIMATE;
+		visual_effect_and_powered: 		visual_effect_and_powered(VISUAL_EFFECT_DIESEL, 3, DISABLE_WAGON_POWER);
+
+        name:                           string(STR_NAME_CLYDE_JT22HC2);
+		
+		refit_cost:                     0;
+        dual_headed:                    0;
+        air_drag_coefficient:           0.08;
+        model_life:                     30;
+		vehicle_life:                   50;
+		tractive_effort_coefficient:	0.3;
+		
+        introduction_date:              Clyde_JT22HC2_IntroDate;		
+		length:                         Clyde_JT22HC2_Length;
+		
+		speed:							Clyde_JT22HC2_Speed km/h;
+		cost_factor:					Clyde_JT22HC2_CostFactor;
+		running_cost_factor:			Clyde_JT22HC2_RunningCostFactor;
+		cargo_capacity: 				0;
+		power:							Clyde_JT22HC2_Power;
+		weight:							Clyde_JT22HC2_Weight;
+		
+        variant_group: 					Item_Clyde_JT22HC2_Liv0;
+        extra_flags:  					bitmask (VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE, VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW, VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW, VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+    }
+    graphics {
+		default: 						switch_Clyde_JT22HC2_Liv25_Normal_Stack;
+//		sound_effect: 					switch_EMD_12_645;
+        purchase: 						switch_Clyde_JT22HC2_Liv25_Purchase_Stack;
+        additional_text: 				string(STR_INFO_CLYDE_JT22HC2);
+		reverse_build_probability: 		return 50;
+}
+}
+
+const Clyde_JT22HC2_Liv25_BG_ID = (Clyde_JT22HC2_Liv25_ID + 50);
+
+//Clyde_JT22HC2_BG_Liv25
+item(FEAT_TRAINS, Item_Clyde_JT22HC2_BG_Liv25, Clyde_JT22HC2_Liv25_BG_ID) {
+    property {
+        sprite_id:                      SPRITE_ID_NEW_TRAIN;
+		misc_flags:                     bitmask(TRAIN_FLAG_2CC, TRAIN_FLAG_SPRITE_STACK); // <- Train Flag MU needed here
+		track_type:                     BG_RAIL_ONLY;
+		running_cost_base:              RUNNING_COST_DIESEL;
+        engine_class:                   ENGINE_CLASS_DIESEL;
+//        ai_special_flag:                AI_FLAG_PASSENGER;
+		bitmask_vehicle_info:           0;
+	
+		climates_available:             (param_RealDisable == 0) ? ALL_CLIMATES : NO_CLIMATE;
+		visual_effect_and_powered: 		visual_effect_and_powered(VISUAL_EFFECT_DIESEL, 3, DISABLE_WAGON_POWER);
+
+        name:                           string(STR_NAME_CLYDE_JT22HC2_BG);
+		
+		refit_cost:                     0;
+        dual_headed:                    0;
+        air_drag_coefficient:           0.08;
+        model_life:                     30;
+		vehicle_life:                   50;
+		tractive_effort_coefficient:	0.3;
+		
+        introduction_date:              Clyde_JT22HC2_IntroDate;		
+		length:                         Clyde_JT22HC2_Length;
+		
+		speed:							Clyde_JT22HC2_Speed km/h;
+		cost_factor:					Clyde_JT22HC2_CostFactor;
+		running_cost_factor:			Clyde_JT22HC2_RunningCostFactor;
+		cargo_capacity: 				0;
+		power:							Clyde_JT22HC2_Power;
+		weight:							Clyde_JT22HC2_Weight;
+		
+        variant_group: 					Item_Clyde_JT22HC2_BG_Liv0;
+        extra_flags:  					bitmask (VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE, VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW, VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW, VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+    }
+    graphics {
+		default: 						switch_Clyde_JT22HC2_Liv25_Normal_Stack;
+//		sound_effect: 					switch_EMD_12_645;
+        purchase: 						switch_Clyde_JT22HC2_Liv25_Purchase_Stack;
+        additional_text: 				string(STR_INFO_CLYDE_JT22HC2_BG);
+		reverse_build_probability: 		return 50;
+}
+}
+
+//Clyde_JT22HC2_Liv26
+spriteset(spriteset_Clyde_JT22HC2_Liv26_Purchase,   "gfx/Clyde_JT22HC2_Liv26.png") {template_purchase_8(7, 21)}
+spriteset(spriteset_Clyde_JT22HC2_Liv26,   "gfx/Clyde_JT22HC2_Liv26.png") {template_8(7, 39)}
+
+//Purchase Sprite Stacker
+switch (FEAT_TRAINS, SELF, switch_Clyde_JT22HC2_Liv26_Purchase_Stack, [
+    STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 1 ? CB_FLAG_MORE_SPRITES : 0) | PALETTE_USE_DEFAULT, 0x100),
+    getbits(extra_callback_info1, 8, 8)
+    ]) {
+    0: spriteset_Clyde_JT22HC2_Liv26_Purchase;
+    1: switch_Couplers_8_Repeat_Purchase;
+}
+
+switch (FEAT_TRAINS, SELF, switch_Clyde_JT22HC2_Liv26_Normal_Stack, [
+    STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 1 ? CB_FLAG_MORE_SPRITES : 0) | PALETTE_USE_DEFAULT, 0x100),
+    getbits(extra_callback_info1, 8, 8)
+    ]) {
+    0: spriteset_Clyde_JT22HC2_Liv26;
+    1: switch_Couplers_8_Repeat;
+}
+
+const Clyde_JT22HC2_Liv26_ID = (Clyde_JT22HC2_ID + Liv26_ID);
+
+item(FEAT_TRAINS, Item_Clyde_JT22HC2_Liv26, Clyde_JT22HC2_Liv26_ID) {
+    property {
+        sprite_id:                      SPRITE_ID_NEW_TRAIN;
+		misc_flags:                     bitmask(TRAIN_FLAG_2CC, TRAIN_FLAG_SPRITE_STACK); // <- Train Flag MU needed here
+		track_type:                     RAIL;
+		running_cost_base:              RUNNING_COST_DIESEL;
+        engine_class:                   ENGINE_CLASS_DIESEL;
+//        ai_special_flag:                AI_FLAG_PASSENGER;
+		bitmask_vehicle_info:           0;
+	
+		climates_available:             (param_RealDisable == 0) ? ALL_CLIMATES : NO_CLIMATE;
+		visual_effect_and_powered: 		visual_effect_and_powered(VISUAL_EFFECT_DIESEL, 3, DISABLE_WAGON_POWER);
+
+        name:                           string(STR_NAME_CLYDE_JT22HC2);
+		
+		refit_cost:                     0;
+        dual_headed:                    0;
+        air_drag_coefficient:           0.08;
+        model_life:                     30;
+		vehicle_life:                   50;
+		tractive_effort_coefficient:	0.3;
+		
+        introduction_date:              Clyde_JT22HC2_IntroDate;		
+		length:                         Clyde_JT22HC2_Length;
+		
+		speed:							Clyde_JT22HC2_Speed km/h;
+		cost_factor:					Clyde_JT22HC2_CostFactor;
+		running_cost_factor:			Clyde_JT22HC2_RunningCostFactor;
+		cargo_capacity: 				0;
+		power:							Clyde_JT22HC2_Power;
+		weight:							Clyde_JT22HC2_Weight;
+		
+        variant_group: 					Item_Clyde_JT22HC2_Liv0;
+        extra_flags:  					bitmask (VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE, VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW, VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW, VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+    }
+    graphics {
+		default: 						switch_Clyde_JT22HC2_Liv26_Normal_Stack;
+//		sound_effect: 					switch_EMD_12_645;
+        purchase: 						switch_Clyde_JT22HC2_Liv26_Purchase_Stack;
+        additional_text: 				string(STR_INFO_CLYDE_JT22HC2);
+		reverse_build_probability: 		return 50;
+}
+}
+
+const Clyde_JT22HC2_Liv26_BG_ID = (Clyde_JT22HC2_Liv26_ID + 50);
+
+//Clyde_JT22HC2_BG_Liv26
+item(FEAT_TRAINS, Item_Clyde_JT22HC2_BG_Liv26, Clyde_JT22HC2_Liv26_BG_ID) {
+    property {
+        sprite_id:                      SPRITE_ID_NEW_TRAIN;
+		misc_flags:                     bitmask(TRAIN_FLAG_2CC, TRAIN_FLAG_SPRITE_STACK); // <- Train Flag MU needed here
+		track_type:                     BG_RAIL_ONLY;
+		running_cost_base:              RUNNING_COST_DIESEL;
+        engine_class:                   ENGINE_CLASS_DIESEL;
+//        ai_special_flag:                AI_FLAG_PASSENGER;
+		bitmask_vehicle_info:           0;
+	
+		climates_available:             (param_RealDisable == 0) ? ALL_CLIMATES : NO_CLIMATE;
+		visual_effect_and_powered: 		visual_effect_and_powered(VISUAL_EFFECT_DIESEL, 3, DISABLE_WAGON_POWER);
+
+        name:                           string(STR_NAME_CLYDE_JT22HC2_BG);
+		
+		refit_cost:                     0;
+        dual_headed:                    0;
+        air_drag_coefficient:           0.08;
+        model_life:                     30;
+		vehicle_life:                   50;
+		tractive_effort_coefficient:	0.3;
+		
+        introduction_date:              Clyde_JT22HC2_IntroDate;		
+		length:                         Clyde_JT22HC2_Length;
+		
+		speed:							Clyde_JT22HC2_Speed km/h;
+		cost_factor:					Clyde_JT22HC2_CostFactor;
+		running_cost_factor:			Clyde_JT22HC2_RunningCostFactor;
+		cargo_capacity: 				0;
+		power:							Clyde_JT22HC2_Power;
+		weight:							Clyde_JT22HC2_Weight;
+		
+        variant_group: 					Item_Clyde_JT22HC2_BG_Liv0;
+        extra_flags:  					bitmask (VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE, VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW, VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW, VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+    }
+    graphics {
+		default: 						switch_Clyde_JT22HC2_Liv26_Normal_Stack;
+//		sound_effect: 					switch_EMD_12_645;
+        purchase: 						switch_Clyde_JT22HC2_Liv26_Purchase_Stack;
         additional_text: 				string(STR_INFO_CLYDE_JT22HC2_BG);
 		reverse_build_probability: 		return 50;
 }

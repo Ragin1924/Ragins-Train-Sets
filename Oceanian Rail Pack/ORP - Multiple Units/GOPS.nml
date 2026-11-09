@@ -9081,7 +9081,7 @@ switch (FEAT_TRAINS, SELF, switch_Comeng_SMU_Liv0_NonControlMotorStack, [
     STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 1 ? CB_FLAG_MORE_SPRITES : 0) | PALETTE_USE_DEFAULT, 0x100),
     getbits(extra_callback_info1, 8, 8)
     ]) {
-    0: spriteset_Comeng_SMU_Liv0_lead;
+    0: spriteset_Comeng_SMU_Liv0_Trailer;
 	1: switch_Comeng_SMU_Fw_railtype;
 }
 //N Rear
@@ -9089,7 +9089,7 @@ switch (FEAT_TRAINS, SELF, switch_Comeng_SMU_Liv0_NonControlMotorStack_r, [
     STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 1 ? CB_FLAG_MORE_SPRITES : 0) | PALETTE_USE_DEFAULT, 0x100),
     getbits(extra_callback_info1, 8, 8)
     ]) {
-    0: spriteset_Comeng_SMU_Liv0_lead_r;
+    0: spriteset_Comeng_SMU_Liv0_Trailer;
 	1: switch_Comeng_SMU_Rw_railtype;
 }
 
@@ -9243,7 +9243,7 @@ switch (FEAT_TRAINS, SELF, switch_Comeng_SMU_Liv1_NonControlMotorStack, [
     STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 1 ? CB_FLAG_MORE_SPRITES : 0) | PALETTE_USE_DEFAULT, 0x100),
     getbits(extra_callback_info1, 8, 8)
     ]) {
-    0: spriteset_Comeng_SMU_Liv1_lead;
+    0: spriteset_Comeng_SMU_Liv1_Trailer;
 	1: switch_Comeng_SMU_Fw_railtype;
 }
 //N Rear
@@ -9251,7 +9251,7 @@ switch (FEAT_TRAINS, SELF, switch_Comeng_SMU_Liv1_NonControlMotorStack_r, [
     STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 1 ? CB_FLAG_MORE_SPRITES : 0) | PALETTE_USE_DEFAULT, 0x100),
     getbits(extra_callback_info1, 8, 8)
     ]) {
-    0: spriteset_Comeng_SMU_Liv1_lead_r;
+    0: spriteset_Comeng_SMU_Liv1_Trailer;
 	1: switch_Comeng_SMU_Rw_railtype;
 }
 
