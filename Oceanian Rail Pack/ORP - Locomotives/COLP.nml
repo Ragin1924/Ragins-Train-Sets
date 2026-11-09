@@ -14305,7 +14305,7 @@ item(FEAT_TRAINS, Item_Clyde_G12A_Liv0, 25250) {
 }
 
 //ID
-const ALCO_DL500B_ID = 25450;
+const ALCO_DL500B_ID = 25550;
 //introduction_date
 const ALCO_DL500B_IntroDate = date(1957, 1, 1);
 //speed
@@ -15150,7 +15150,7 @@ item(FEAT_TRAINS, Item_ALCO_DL500B_Liv20_BG, ALCO_DL500B_Liv20_BG_ID) {
 }
 
 //ID
-const Clyde_J26C_ID = 25750;
+const Clyde_J26C_ID = 25850;
 //introduction_date
 const Clyde_J26C_IntroDate = date(1969, 1, 1);
 //speed
@@ -15368,7 +15368,7 @@ item(FEAT_TRAINS, Item_Clyde_J26C_Liv18, Clyde_J26C_Liv18_ID) {
 }
 
 //ID
-const ALCO_DL500G_ID = 25800;
+const ALCO_DL500G_ID = 25900;
 //introduction_date
 const ALCO_DL500G_IntroDate = date(1970, 1, 1);
 //speed
@@ -15497,7 +15497,7 @@ item(FEAT_TRAINS, Item_ALCO_DL500G_BG_Liv0, ALCO_DL500G_Liv0_BG_ID) {
 }
 
 //ID
-const Comeng_CE615A_ID = 26050;
+const Comeng_CE615A_ID = 26150;
 //introduction_date
 const Comeng_CE615A_IntroDate = date(1978, 1, 1);
 //speed
@@ -15581,7 +15581,7 @@ item(FEAT_TRAINS, Item_Comeng_CE615A_Liv0, Comeng_CE615A_Liv0_ID) {
 }
 
 //ID
-const Clyde_JT26C2SS_81_ID = 26100;
+const Clyde_JT26C2SS_81_ID = 26200;
 //introduction_date
 const Clyde_JT26C2SS_81_IntroDate = date(1982, 1, 1);
 //speed
@@ -15933,7 +15933,7 @@ item(FEAT_TRAINS, Item_Clyde_JT26C2SS_81_Liv46, Clyde_JT26C2SS_81_Liv46_ID) {
 }
 
 //ID
-const Clyde_JT26C2SS_G_ID = 26200;
+const Clyde_JT26C2SS_G_ID = 26300;
 //introduction_date
 const Clyde_JT26C2SS_G_IntroDate = date(1984, 1, 1);
 //speed
@@ -16634,7 +16634,7 @@ item(FEAT_TRAINS, Item_Clyde_JT26C2SS_G_BG_Liv46, Clyde_JT26C2SS_G_Liv46_BG_ID) 
 }
 
 //ID
-const Clyde_AT42C_ID = 26300;
+const Clyde_AT42C_ID = 26400;
 //introduction_date
 const Clyde_AT42C_IntroDate = date(1988, 1, 1);
 //speed
@@ -16756,7 +16756,7 @@ item(FEAT_TRAINS, Item_Clyde_AT42C_Liv0, Clyde_AT42C_Liv0_ID) {
 }
 
 //ID
-const Clyde_GT46CW_ID = 26550;
+const Clyde_GT46CW_ID = 26650;
 //introduction_date
 const Clyde_GT46CW_IntroDate = date(1996, 1, 1);
 //speed
@@ -16863,7 +16863,7 @@ item(FEAT_TRAINS, Item_Clyde_GT46CW_Liv0, Clyde_GT46CW_Liv0_ID) {
 }
 
 //ID
-const Goninan_Cv409i_ID = 26600;
+const Goninan_Cv409i_ID = 26700;
 //introduction_date
 const Goninan_Cv409i_IntroDate = date(1996, 1, 1);
 //speed
