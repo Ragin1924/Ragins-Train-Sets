@@ -410,8 +410,11 @@ STR_INFO_COMENG_CL630_BG:{BLACK}Role: {GOLD}Passenger {}{BLACK}Gauge: {GOLD}Broa
 
 
 
+STR_NAME_COMENG_CL629:Comeng CL629
+STR_INFO_COMENG_CL629:{BLACK}Role: {GOLD}Freight {}{BLACK}Gauge: {GOLD}Narrow Gauge {}{BLACK}Power: {RED}AC Overhead Line {}{BLACK}Based on: {GOLD}QR 3100 (Command)/3200 (Slave) Class.
+
 STR_NAME_CLYDE_CF48:Asea-Clyde-Walkers CF48
-STR_INFO_CLYDE_CF48:{BLACK}Role: {GOLD}Freight {}{BLACK}Gauge: {GOLD}Narrow Gauge {}{BLACK}Power: {RED}AC Overhead Line {}{BLACK}Based on: {GOLD}QR 3500/3600 Class.
+STR_INFO_CLYDE_CF48:{BLACK}Role: {GOLD}Freight {}{BLACK}Gauge: {GOLD}Narrow Gauge {}{BLACK}Power: {RED}AC Overhead Line {}{BLACK}Based on: {GOLD}QR 3500 (Command)/3600 (Slave) Class.
 
 STR_NAME_COMENG_CL637:Comeng CL637
 STR_INFO_COMENG_CL637:{BLACK}Role: {GOLD}Freight {}{BLACK}Gauge: {GOLD}Standard Gauge{}{BLACK}Power: {BLUE}DC Overhead Line {RED}AC Overhead Line {}{BLACK}Based on: {GOLD}Proposed Maldon-Dombarton locomotive based on 8650.
